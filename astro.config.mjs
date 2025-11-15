@@ -1,6 +1,10 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import github from '@astrojs/github';
 
 export default defineConfig({
-  integrations: [tailwind()],
+site: 'https://nil-munte.github.io',
+integrations: [tailwind()],
+output: 'static',
+adapter: github(),
 });
