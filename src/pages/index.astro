@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout>
+<section class="flex flex-col items-center justify-center text-center py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+  <!-- Name & Title -->
+  <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 drop-shadow-md">Nil Munté Guerrero</h1>
+  <p class="text-xl md:text-2xl text-gray-700 mt-4">R&D Engineer · Associate Professor · Project Manager</p>
+
+  <!-- Short Presentation -->
+  <p class="mt-6 max-w-3xl mx-auto text-gray-600 leading-relaxed">
+    Engineering professional bridging university research and industry innovation.
+    Specializing in embedded systems, robotics, applied AI, and multidisciplinary project leadership.
+  </p>
+
+  <!-- Links -->
+  <div class="mt-8 flex flex-wrap justify-center gap-4">
+    <a href="https://www.linkedin.com/in/nilmunte/" target="_blank"
+       class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
+      LinkedIn
+    </a>
+    <a href="https://github.com/nil-munte" target="_blank"
+       class="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg shadow hover:bg-gray-800 transition">
+      GitHub
+    </a>
+    <a href="/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf" download
+       class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow hover:bg-green-700 transition">
+      Download CV
+    </a>
+  </div>
+
+  <!-- Optional subtle decorative element -->
+  <div class="mt-12 w-64 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+</section>
+</BaseLayout>
