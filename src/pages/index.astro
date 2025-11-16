@@ -1,35 +1,69 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+
 <BaseLayout>
-<section class="flex flex-col items-center justify-center text-center py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
-  <!-- Name & Title -->
-  <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 drop-shadow-md">Nil Munté Guerrero</h1>
-  <p class="text-xl md:text-2xl text-gray-700 mt-4">R&D Engineer · Associate Professor · Project Manager</p>
+  <section
+    class="flex flex-col items-center justify-center text-center py-28 px-6
+         bg-gradient-to-b from-gray-100 via-white to-gray-100"
+  >
+    <!-- Name & Title -->
+    <h1
+      class="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight drop-shadow-sm"
+    >
+      Nil Munté Guerrero
+    </h1>
 
-  <!-- Short Presentation -->
-  <p class="mt-6 max-w-3xl mx-auto text-gray-600 leading-relaxed">
-    Engineering professional bridging university research and industry innovation.
-    Specializing in embedded systems, robotics, applied AI, and multidisciplinary project leadership.
-  </p>
+    <p class="text-xl md:text-2xl text-gray-700 mt-6 font-semibold">
+      R&D Engineer · Associate Professor · Project Manager
+    </p>
 
-  <!-- Links -->
-  <div class="mt-8 flex flex-wrap justify-center gap-4">
-    <a href="https://www.linkedin.com/in/nilmunte/" target="_blank"
-       class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
-      LinkedIn
-    </a>
-    <a href="https://github.com/nil-munte" target="_blank"
-       class="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg shadow hover:bg-gray-800 transition">
-      GitHub
-    </a>
-    <a href="info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf" download
-       class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow hover:bg-green-700 transition">
-      Download CV
-    </a>
-  </div>
+    <p class="text-lg md:text-xl text-gray-600 mt-1">
+      Telecommunications Engineer · Master’s in Artificial Intelligence
+    </p>
 
-  <!-- Optional subtle decorative element -->
-  <div class="mt-12 w-64 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full animate-pulse"></div>
-</section>
+    <!-- Short Presentation -->
+    <p class="mt-10 max-w-3xl text-gray-700 leading-relaxed text-lg md:text-xl">
+      With hands-on experience in embedded systems, software development,
+      data-driven applications, and education, I bring both technical depth and
+      project management skills to deliver meaningful solutions. I’m always
+      looking to contribute to local initiatives, and I’m especially passionate
+      about electric mobility.
+    </p>
+
+    <!-- Links -->
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a
+        href="https://www.linkedin.com/in/nilmunte/"
+        target="_blank"
+        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-md
+             hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="https://github.com/nil-munte"
+        target="_blank"
+        class="px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl shadow-md
+             hover:bg-gray-800 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+      >
+        GitHub
+      </a>
+      <a
+        href="info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf"
+        download
+        class="px-6 py-3 bg-green-600 text-white font-semibold rounded-xl shadow-md
+             hover:bg-green-700 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+      >
+        Download CV
+      </a>
+    </div>
+
+    <!-- Decorative Element -->
+    <div
+      class="mt-14 w-56 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+           rounded-full animate-pulse opacity-80"
+    >
+    </div>
+  </section>
 </BaseLayout>
