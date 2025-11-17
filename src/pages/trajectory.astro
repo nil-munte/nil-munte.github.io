@@ -1,50 +1,280 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <BaseLayout>
-    <h2 class="text-3xl font-bold mb-8">AA Trajectory</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center">My Trajectory</h2>
+    <!-- Aligned Gradient Line -->
 
     <div class="pl-6 space-y-10">
-        <div>
-            <h3 class="text-2xl font-semibold text-indigo-700">
-                2023 – Present · Associate Professor
-            </h3>
-            <p class="text-gray-700 mt-2 max-w-3xl">
-                Leading research in robotics and applied AI. Supervising
-                graduate students, developing new engineering courses, and
-                collaborating with industry for joint R&D projects.
-            </p>
+        <div
+            class="mt-5 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+              rounded-full animate-pulse opacity-80 max-w-4xl mx-auto"
+        >
         </div>
-
-        <div>
-            <h3 class="text-2xl font-semibold text-indigo-700">
-                2018 – Present · Engineering Manager
+        <div
+            class="bg-white shadow p-6 rounded-2xl hover:shadow-lg max-w-4xl mx-auto my-8 transition"
+        >
+            <h3 class="text-2xl font-bold text-indigo-700 mb-1">
+                Software Engineer · Project Manager
             </h3>
-            <p class="text-gray-700 mt-2 max-w-3xl">
-                Overseeing multidisciplinary engineering teams. Managing
-                projects in automation, embedded systems, and industrial IoT
-                deployments.
+            <p class="text-gray-500 mb-6 leading-relaxed">Applus+ IDIADA</p>
+
+            <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                During this period, I led and contributed to several ADAS and
+                Autonomous Mobility projects, working across system evaluation,
+                computer vision, project management, and tool development.
             </p>
-            <iframe
-                class="mt-4 rounded-lg shadow"
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="YouTube video about engineering management"
-                allowfullscreen
-                loading="lazy"></iframe>
+
+            <!-- Autobrains project -->
+            <div class="mb-8">
+                <h4 class="text-gray-700 font-semibold text-lg mb-3">
+                    Evaluation of a Client's Perception System
+                </h4>
+
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    I developed and coordinated a complete ADAS EuroNCAP testing
+                    program for an AI-based camera system, contributing from the
+                    earliest client interactions—defining KPIs, planning
+                    validation strategies, and aligning expectations—through to
+                    implementation and delivery. As part of the software team, I
+                    helped configure the test environment, enabling sensor data
+                    capture and automated test triggering using technologies
+                    such as CAN, C++, Python, and Linux.
+                    <span class="block mt-2">
+                        To improve communication with the customer, I designed
+                        and built a reporting tool that visualized test results
+                        and analytics using React, HTML/CSS, and
+                        Python—significantly enhancing how insights were
+                        presented and increasing the impact of the project.
+                    </span>
+                </p>
+
+                <!-- Single responsive image -->
+                <div
+                    class="mt-8 relative w-full pb-[50%] overflow-hidden rounded-lg shadow-lg"
+                >
+                    <img
+                        src="info/IDIADA's CAVkit.jpg"
+                        alt="IDIADA's CAVkit"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+
+            <!-- European projects -->
+            <div class="mb-8">
+                <h4 class="text-gray-700 font-semibold text-lg mb-3">
+                    European Projects
+                </h4>
+
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    Beyond my technical work, I served as Project Manager for
+                    two European initiatives in the autonomous mobility domain,
+                    <a
+                        href="https://aithena.eu"
+                        target="_blank"
+                        class="font-semibold text-indigo-600 hover:underline"
+                    >
+                        AITHENA
+                    </a>
+                    and
+                    <a
+                        href="https://aiggregate.eu"
+                        target="_blank"
+                        class="font-semibold text-indigo-600 hover:underline"
+                    >
+                        AIGGREGATE
+                    </a>. Within the AITHENA project, I was responsible for
+                    leading a Work Package, coordinating multiple partners
+                    across Europe and driving the consortium toward the
+                    successful completion of key milestones.
+                </p>
+
+                <!-- Centered download buttons -->
+                <div class="mt-4 flex flex-wrap justify-center gap-3">
+                    <a
+                        href="https://aithena.eu/advancing-tools-and-testing-facilities-in-the-aithena-project-a-look-into-wp4/"
+                        target="_blank"
+                        class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-100 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                    >
+                        🔗 AITHENA WP4 summary
+                    </a>
+                </div>
+
+                <!-- Two responsive images side by side -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-6">
+                    <!-- Image 1 -->
+                    <div
+                        class="relative w-full sm:w-1/2 pb-[40%] overflow-hidden rounded-lg shadow-lg"
+                    >
+                        <img
+                            src="info/Aithena.jpg"
+                            alt="Aithena"
+                            class="absolute top-0 left-0 w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div
+                        class="relative w-full sm:w-1/2 pb-[40%] overflow-hidden rounded-lg shadow-lg"
+                    >
+                        <img
+                            src="info/Aiggregate.jpg"
+                            alt="Aiggregate"
+                            class="absolute top-0 left-0 w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div>
-            <h3 class="text-2xl font-semibold text-indigo-700">
-                2014 – 2018 · R&D Engineer (University)
+    <!-- NEPHOS Lab -->
+    <div class="pl-6 space-y-10">
+
+        <div
+            class="bg-white shadow p-6 rounded-2xl hover:shadow-lg max-w-4xl mx-auto my-8 transition"
+        >
+            <h3 class="text-2xl font-bold text-indigo-700 mb-1">
+                R&D Engineer
             </h3>
-            <p class="text-gray-700 mt-2 max-w-3xl">
-                Contributed to national and European engineering research
-                projects. Focus areas included automation, control systems, and
-                signal processing.
+            <p class="text-gray-500 mb-6 leading-relaxed">
+                NEPHOS Lab · Universitat Rovira i Virgili (URV)
             </p>
+
+            <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                During my time at the NEPHOS Lab, I focused on analyzing
+                commercial radar systems and developing real-world applications.
+                My work centered on two main automotive projects working with a
+                Texas Instruments Radar:
+            </p>
+
+            <!-- Occupancy Detection System -->
+            <div class="mb-8">
+                <h4 class="text-gray-700 font-semibold text-lg mb-3">
+                    Occupancy Detection System
+                </h4>
+
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    I developed a radar-based occupancy detection system for the
+                    interior of vehicles, leveraging Texas Instruments radar
+                    technology.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    This project formed the thesis of my Final
+                    Telecommunications degree and was recognized with the
+                    <a
+                        href="https://acarmitt.es/index.php/noticias/117-alto-nivel-demostrado-en-esta-xv-premios-futuro-de-las-telecomunicaciones"
+                        target="_blank"
+                        class="font-semibold text-indigo-600 hover:underline"
+                    >
+                        "Future of Telecommunications" Award
+                    </a>
+                    by the Official College of Telecommunication Engineers (COITT)
+                    in the category of Telecommunications Systems Engineering.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    The results were also published in the <em
+                        >IEEE Sensors Journal</em
+                    > as the paper <em
+                        >“Vehicle Occupancy Detector Based on FMCW mm-Wave Radar
+                        at 77 GHz”</em
+                    >
+                </p>
+
+                <!-- Centered download buttons -->
+                <div class="mt-4 flex flex-wrap justify-center gap-3">
+                    <a
+                        href="info/IEEESensors_77GHz.pdf"
+                        class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-100 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                        download
+                    >
+                        📄 Paper (PDF)
+                    </a>
+                    <a
+                        href="info/MemoriaTFG_NilMunteGuerrero.pdf"
+                        class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-100 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                        download
+                    >
+                        🎓 Final Thesis Project (PDF)
+                    </a>
+                    <a
+                        href="https://github.com/nil-munte/Radar_Texas_AWR1642/tree/main/01-Matlab/01-ProjecteCotxe"
+                        target="_blank"
+                        class="inline-block bg-gray-800 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                    >
+                        💻 View Project (GitHub)
+                    </a>
+                </div>
+
+                <!-- Responsive YouTube video -->
+                <div
+                    class="relative w-full pb-[56.25%] overflow-hidden rounded-lg shadow-lg mt-6"
+                >
+                    <iframe
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/6adK5tNakV8"
+                        title="Occupancy Detection Project Video"
+                        loading="lazy"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Hand-Gesture Detection System -->
+            <div class="mb-8">
+                <h4 class="text-gray-700 font-semibold text-lg mb-2">
+                    Hand-Gesture Detection System
+                </h4>
+
+                <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+                    Designed and implemented a hand-gesture recognition system
+                    using Matlab and Convolutional Neural Networks (CNNs). The
+                    results of this project were published under the title
+                    <em
+                        >“In-Vehicle Monitoring Based on a Low-Cost mm-Wave
+                        Radar at 60 GHz”</em
+                    >
+                    at the <em>IEEE IMOC 2023 conference. </em>
+
+                    <div class="mt-4 flex flex-wrap justify-center gap-3">
+                        <a
+                            href="info/IEEE_IMOC2023_60GHz_v3short.pdf"
+                            class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-100 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                            download
+                        >
+                            📄 Paper (PDF)
+                        </a>
+                        <a
+                            href="https://github.com/nil-munte/Radar_Texas_AWR1642/tree/main/01-Matlab/02-ProjecteGestos"
+                            target="_blank"
+                            class="inline-block bg-gray-800 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                        >
+                            💻 View Project (GitHub)
+                        </a>
+                    </div>
+
+                    <!-- Embedded Video -->
+                    <div
+                        class="relative w-full pb-[56.25%] overflow-hidden rounded-lg shadow-lg mt-4"
+                    >
+                        <iframe
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/TX15-d1m26U"
+                            title="Example Project Video"
+                            loading="lazy"
+                            allowfullscreen
+                        >
+                        </iframe>
+                    </div>
+                </p>
+            </div>
         </div>
     </div>
 </BaseLayout>
