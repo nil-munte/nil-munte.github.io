@@ -1,13 +1,40 @@
+---
+const { currentPath } = Astro.props;
+---
+
 <nav class="w-full bg-white shadow fixed top-0 left-0 z-50">
-<div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-<a href="/" class="text-xl font-bold text-indigo-600">Nil's Portfolio</a>
-<div class="flex gap-6 text-gray-700 font-medium">
-<a href="/" class="hover:text-indigo-600">Home</a>
-<!--a href="/cv" class="hover:text-indigo-600">CV</a-->
-<!--a href="/projects" class="hover:text-indigo-600">Projects</a-->
-<a href="/trajectory" class="hover:text-indigo-600">Trajectory</a>
-<!--a href="/interests" class="hover:text-indigo-600">Interests</a-->
-</div>
-</div>
+  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+    <a href="/" class="text-xl font-bold text-indigo-600">Nil's Portfolio</a>
+    <div class="flex gap-6 text-gray-700 font-medium">
+      <a
+        href="/"
+        class={`hover:text-indigo-600 ${currentPath === '/' ? 'text-indigo-600 font-bold' : ''}`}
+      >
+        Home
+      </a>
+      <!--
+      <a
+        href="/projects"
+        class={`hover:text-indigo-600 ${currentPath === '/projects' ? 'text-indigo-600 font-bold' : ''}`}
+      >
+        Projects
+      </a>
+      -->
+      <a
+        href="/trajectory"
+        class={`hover:text-indigo-600 ${currentPath === '/trajectory' ? 'text-indigo-600 font-bold' : ''}`}
+      >
+        Trajectory
+      </a>
+      <!--
+      <a
+        href="/interests"
+        class={`hover:text-indigo-600 ${currentPath === '/interests' ? 'text-indigo-600 font-bold' : ''}`}
+      >
+        Interests
+      </a>
+      -->
+    </div>
+  </div>
 </nav>
 <div class="h-20"></div>
