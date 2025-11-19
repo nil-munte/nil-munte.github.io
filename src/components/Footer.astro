@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+---
+
+<footer class="mt-16 py-4 bg-gray-100 border-t border-gray-300">
+    <div class="max-w-4xl mx-auto px-4 text-center text-gray-700">
+        <div
+            class="mt-2 flex flex-col md:flex-row justify-center gap-4 text-sm items-center"
+        >
+            <!-- Email -->
+            <a
+                href="mailto:nilmunte@gmail.com"
+                class="hover:text-blue-600 flex items-center gap-1"
+            >
+                📧 nilmunte@gmail.com
+            </a>
+
+            <span class="hidden md:inline">•</span>
+
+            <!-- Phone -->
+            <a
+                href="tel:+34628119680"
+                class="hover:text-blue-600 flex items-center gap-1"
+            >
+                📞 +34 628 119 680
+            </a>
+
+            <span class="hidden md:inline">•</span>
+
+            <!-- LinkedIn Icon -->
+            <a
+                href="https://www.linkedin.com/in/nilmunte"
+                target="_blank"
+                class="hover:text-blue-600"
+            >
+                <Image
+                    src="/logos/linkedin.png"
+                    alt="LinkedIn"
+                    width="20"
+                    height="20"
+                />
+            </a>
+            <span class="hidden md:inline">•</span>
+
+            <!-- GitHub Icon -->
+            <a
+                href="https://github.com/nil-munte"
+                target="_blank"
+                class="hover:text-gray-800"
+            >
+                <Image
+                    src="/logos/github-mark.png"
+                    alt="LinkedIn"
+                    width="20"
+                    height="20"
+                />
+            </a>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-4">
+            © {new Date().getFullYear()} Nil Munté — All rights reserved.
+        </p>
+    </div>
+</footer>
