@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 ---
 
 <BaseLayout>
-    <h2 class="text-3xl font-bold mb-10 text-center">My Trajectory</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center">My Career</h2>
     <!-- Aligned Gradient Line -->
 
     <div
@@ -121,6 +121,7 @@ import { Image } from "astro:assets";
                         class="absolute top-0 left-0 w-full h-full object-cover"
                         width="1"
                         height="1"
+                        loading="eager"
                     />
                 </div>
 
@@ -134,6 +135,7 @@ import { Image } from "astro:assets";
                         class="absolute top-0 left-0 w-full h-full object-cover"
                         width="1"
                         height="1"
+                        loading="eager"
                     />
                 </div>
             </div>
@@ -157,31 +159,27 @@ import { Image } from "astro:assets";
             their double-degree program at URV. My teaching portfolio includes:
         </p>
 
-        <ul
-            class="list-disc list-inside text-gray-700 space-y-2 mb-4 text-justify"
-        >
-            <li>
-                <strong>Digital Electronics:</strong> Students worked with Xilinx
-                FPGA boards, programming logic in VHDL, and developed a multi-functional
-                clock project.
-            </li>
-            <li>
-                <strong
-                    >Technologies for Sensor Networks, IoT, and Smart Cities:</strong
-                > Practical exercises included Arduino UNO applications with WiFi/Zigbee,
-                uploading sensor data to ThinkSpeak, and using Silicon Labs EFR32
-                modules programmed in C (Simplicity Studio IDE) with Zigbee connectivity.
-            </li>
-            <li>
-                <strong>Digital Communications:</strong> Students learned digital
-                modulation techniques (M-PSK, M-QAM, etc.) and error calculation
-                metrics, simulating them in Matlab.
-            </li>
-            <li>
-                <strong>Communications Fundamentals:</strong> Covers analog and digital
-                communication concepts (FFT, AM, FM, etc.) with practical exercises.
-            </li>
-        </ul>
+        <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+            <strong>Digital Electronics:</strong> Students worked with Xilinx FPGA
+            boards, programming logic in VHDL, and developed a multi-functional clock
+            project.
+        </p>
+        <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+            <strong
+                >Technologies for Sensor Networks, IoT, and Smart Cities:</strong
+            > Practical exercises included Arduino UNO applications with WiFi/Zigbee,
+            uploading sensor data to ThinkSpeak, and using Silicon Labs EFR32 modules
+            programmed in C (Simplicity Studio IDE) with Zigbee connectivity.
+        </p>
+        <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+            <strong>Digital Communications:</strong> Students learned digital modulation
+            techniques (M-PSK, M-QAM, etc.) and error calculation metrics, simulating
+            them in Matlab.
+        </p>
+        <p class="text-gray-700 mb-4 leading-relaxed text-justify">
+            <strong>Communications Fundamentals:</strong> Covers analog and digital
+            communication concepts (FFT, AM, FM, etc.) with practical exercises.
+        </p>
 
         <!-- Centered button for professor courses -->
         <div class="mt-4 flex flex-wrap justify-center gap-3">
@@ -203,6 +201,7 @@ import { Image } from "astro:assets";
                 class="absolute top-0 left-0 w-full h-full object-cover"
                 width="1"
                 height="1"
+                loading="eager"
             />
         </div>
     </div>
@@ -263,6 +262,7 @@ import { Image } from "astro:assets";
                 class="absolute top-0 left-0 w-full h-full object-cover"
                 width="1"
                 height="1"
+                loading="eager"
             />
         </div>
     </div>
@@ -310,7 +310,8 @@ import { Image } from "astro:assets";
             <p class="text-gray-700 mb-4 leading-relaxed text-justify">
                 The results were also published in the <em
                     >IEEE Sensors Journal</em
-                > as the paper <em
+                >
+                as the paper <em
                     >“Vehicle Occupancy Detector Based on FMCW mm-Wave Radar at
                     77 GHz”</em
                 >
@@ -349,7 +350,7 @@ import { Image } from "astro:assets";
                     class="absolute top-0 left-0 w-full h-full"
                     src="https://www.youtube.com/embed/6adK5tNakV8"
                     title="Occupancy Detection Project Video"
-                    loading="lazy"
+                    loading="eager"
                     allowfullscreen
                 >
                 </iframe>
@@ -397,7 +398,7 @@ import { Image } from "astro:assets";
                         class="absolute top-0 left-0 w-full h-full"
                         src="https://www.youtube.com/embed/TX15-d1m26U"
                         title="Example Project Video"
-                        loading="lazy"
+                        loading="eager"
                         allowfullscreen
                     >
                     </iframe>

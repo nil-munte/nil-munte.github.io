@@ -4,25 +4,22 @@ import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <BaseLayout>
-    <h2 class="text-3xl font-bold mb-6">Projects</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center">Projects</h2>
+    <!-- Aligned Gradient Line -->
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <ProjectCard
-            title="Autonomous Inspection Robot"
-            description="Designed a mobile robotic system for structural inspection using computer vision and embedded AI."
-            link="https://github.com/random/robot-project"
-        />
+    <div
+        class="mt-5 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+              rounded-full animate-pulse opacity-80 max-w-4xl mx-auto"
+    >
+    </div>
 
-        <ProjectCard
-            title="IoT Environmental Monitoring Platform"
-            description="Led the development of a sensor network and data analytics platform used in university research."
-            link="https://github.com/random/iot-platform"
-        />
 
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 hover: max-w-4xl mx-auto my-8 ">
         <ProjectCard
-            title="Industrial Automation Workflow"
-            description="Project managed automation upgrades for a manufacturing line, increasing throughput by 23%."
-            link="https://github.com/random/automation-workflow"
+            title="My Portfolio"
+            description="Design of a personal portfolio website using Astro and Tailwind CSS."
+            link="https://github.com/nil-munte/nil-munte.github.io"
         />
     </div>
 </BaseLayout>

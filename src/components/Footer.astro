@@ -10,7 +10,7 @@ import { Image } from "astro:assets";
             <!-- Email -->
             <a
                 href="mailto:nilmunte@gmail.com"
-                class="hover:text-blue-600 flex items-center gap-1"
+                class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
                 📧 nilmunte@gmail.com
             </a>
@@ -20,7 +20,7 @@ import { Image } from "astro:assets";
             <!-- Phone -->
             <a
                 href="tel:+34628119680"
-                class="hover:text-blue-600 flex items-center gap-1"
+                class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
                 📞 +34 628 119 680
             </a>
@@ -31,7 +31,7 @@ import { Image } from "astro:assets";
             <a
                 href="https://www.linkedin.com/in/nilmunte"
                 target="_blank"
-                class="hover:text-blue-600"
+                class="hover:text-gray-800 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
                 <Image
                     src="/logos/linkedin.png"
@@ -46,7 +46,7 @@ import { Image } from "astro:assets";
             <a
                 href="https://github.com/nil-munte"
                 target="_blank"
-                class="hover:text-gray-800"
+                class="hover:text-gray-800 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
                 <Image
                     src="/logos/github-mark.png"
@@ -54,6 +54,17 @@ import { Image } from "astro:assets";
                     width="20"
                     height="20"
                 />
+            </a>
+
+            <span class="hidden md:inline">•</span>
+
+            <!-- CV -->
+            <a
+                href="/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf"
+                download
+                class="hover:text-blue-600 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+            >
+                📄 CV
             </a>
         </div>
 

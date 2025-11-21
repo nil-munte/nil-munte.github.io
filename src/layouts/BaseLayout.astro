@@ -6,15 +6,15 @@ import Footer from "../components/Footer.astro";
 const currentPath = Astro.url.pathname; // get current page path
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth h-full">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Nil's Portfolio</title>
     </head>
-    <body class="bg-gray-50 text-gray-800">
+    <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
         <Navbar currentPath={currentPath} />
-        <main class="px-6 md:px-16 lg:px-32 py-8">
+        <main class="flex-grow px-6 md:px-16 lg:px-32 py-8">
             <slot />
         </main>
         <Footer />
