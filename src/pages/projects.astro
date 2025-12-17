@@ -13,13 +13,26 @@ import ProjectCard from "../components/ProjectCard.astro";
     >
     </div>
 
-
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 hover: max-w-4xl mx-auto my-8 ">
+    <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 hover: max-w-4xl mx-auto my-8"
+    >
         <ProjectCard
             title="My Portfolio"
             description="Design of a personal portfolio website using Astro and Tailwind CSS."
             link="https://github.com/nil-munte/nil-munte.github.io"
         />
+
+        <ProjectCard
+            title="Introduction to Python"
+            description="Introductory Python programming course designed for Catalan speakers."
+            link="https://github.com/nil-munte/Python_course_CAT"
+        />
+
+        <ProjectCard
+            title="Neural Network implementation"
+            description="A simple neural network implemented from scratch in Java."
+            link="https://github.com/nil-munte/Neural-Net"
+        />
+
     </div>
 </BaseLayout>
