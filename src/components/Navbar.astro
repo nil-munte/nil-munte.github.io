@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { lang, currentPath } = Astro.props;
+const normalizedPath = currentPath.replace(/\/$/, '');
 
 const routeMapping: Record<string, { en: string; ca: string }> = {
   '/en/': { en: '/en/', ca: '/ca/' },
@@ -22,7 +23,7 @@ const routeMapping: Record<string, { en: string; ca: string }> = {
 function getLanguageSwitchPath(targetLang: Lang): string {
   const sortedPaths = Object.keys(routeMapping).sort((a, b) => b.length - a.length);
   for (const path of sortedPaths) {
-    if (currentPath.startsWith(path)) {
+    if (normalizedPath.startsWith(path.replace(/\/$/, ''))) {
       return currentPath.replace(path, routeMapping[path][targetLang]);
     }
   }
@@ -38,25 +39,25 @@ function getLanguageSwitchPath(targetLang: Lang): string {
         <div class="flex gap-6 text-gray-700 font-medium items-center">
             <a
                 href={`/${lang}/`}
-                class={`hover:text-indigo-600 ${currentPath === `/${lang}/` ? "text-indigo-600 font-bold" : ""}`}
+                class={`hover:text-indigo-600 ${normalizedPath === `/${lang}/` || normalizedPath === `/${lang}` ? "text-indigo-600 font-bold" : ""}`}
             >
                 {lang === 'en' ? "Home" : "Inici"}
             </a>
             <a
                 href={lang === 'en' ? `/${lang}/career` : `/${lang}/carrera`}
-                class={`hover:text-indigo-600 ${currentPath === (lang === 'en' ? `/${lang}/career` : `/${lang}/carrera`) ? "text-indigo-600 font-bold" : ""}`}
+                class={`hover:text-indigo-600 ${normalizedPath === (lang === 'en' ? `/${lang}/career` : `/${lang}/carrera`) ? "text-indigo-600 font-bold" : ""}`}
             >
                 {lang === 'en' ? "Career" : "Carrera"}
             </a>
             <a
                 href={lang === 'en' ? `/${lang}/projects` : `/${lang}/projectes`}
-                class={`hover:text-indigo-600 ${currentPath === (lang === 'en' ? `/${lang}/projects` : `/${lang}/projectes`) ? "text-indigo-600 font-bold" : ""}`}
+                class={`hover:text-indigo-600 ${normalizedPath === (lang === 'en' ? `/${lang}/projects` : `/${lang}/projectes`) ? "text-indigo-600 font-bold" : ""}`}
             >
                 {lang === 'en' ? "Projects" : "Projectes"}
             </a>
             <a
                 href={lang === 'en' ? `/${lang}/about` : `/${lang}/sobre-mi`}
-                class={`hover:text-indigo-600 ${currentPath === (lang === 'en' ? `/${lang}/about` : `/${lang}/sobre-mi`) ? "text-indigo-600 font-bold" : ""}`}
+                class={`hover:text-indigo-600 ${normalizedPath === (lang === 'en' ? `/${lang}/about` : `/${lang}/sobre-mi`) ? "text-indigo-600 font-bold" : ""}`}
             >
                 {lang === 'en' ? "About Me" : "Sobre Mi"}
             </a>
