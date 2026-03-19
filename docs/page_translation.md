@@ -109,11 +109,16 @@ public/info/
 
 ## TODO
 
-- [ ] Add translated CV PDF to `public/info/en/CV_Nil_Munte_Guerrero_EN.pdf`
-- [ ] Add translated CV PDF to `public/info/ca/CV_Nil_Munte_Guerrero_CA.pdf`
+- [x] Placeholder CV PDFs in `public/info/en/` and `public/info/ca/` (same file, needs translation)
+- [ ] Replace placeholder CV PDFs with actual translated versions
 - [ ] Update sitemap (if using @astrojs/sitemap)
-- [ ] Test language switching on all pages
 - [ ] Test mobile responsiveness
+
+## Notes
+
+- Language switching tested and working (URL mapping fixed for localized Catalan slugs)
+- All translations stored in single `src/i18n/utils.ts` file
+- PDFs are placeholders - same English file duplicated for both languages
 
 ## Commands
 
