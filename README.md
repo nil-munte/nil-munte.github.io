@@ -1,17 +1,21 @@
 # Nil Munté Guerrero — Portfolio
 
-Welcome to the source code of my personal portfolio website! This portfolio showcases my professional trajectory, projects, and teaching experience in Telecommunications, AI, and Autonomous Mobility.  
+Welcome to the source code of my personal portfolio website! This portfolio showcases my professional trajectory, projects, and teaching experience in Telecommunications, AI, and Autonomous Mobility.
 
 ---
 
 ## 🌐 Live Site
 [Visit my portfolio](https://nil-munte.github.io)
 
+**Available in:**
+- [English](https://nil-munte.github.io/en/)
+- [Català](https://nil-munte.github.io/ca/)
+
 ---
 
 ## 👨‍💻 About Me
-I am a Telecommunications Engineer with a Master’s in Artificial Intelligence.  
-I have hands-on experience in embedded systems, software development, ADAS & autonomous mobility projects, research & development, and teaching.  
+I am a Telecommunications Engineer with a Master's in Artificial Intelligence.  
+I have hands-on experience in embedded systems, software development, ADAS & autonomous mobility projects, research & development, and teaching.
 
 Highlights:  
 - Winner of **three awards** for university projects.  
@@ -40,6 +44,7 @@ Highlights:
 ---
 
 ## 🎯 Features
+- **Bilingual support** (English / Catalan) with language switcher.  
 - Fully responsive layout for desktop and mobile.  
 - Smooth scrolling and animations with Tailwind utilities.  
 - Interactive project sections with links to papers, GitHub repositories, and demo videos.  
@@ -54,11 +59,38 @@ Highlights:
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/nil-munte/my-portfolio.git
-cd my-portfolio
+git clone https://github.com/nil-munte/nil-munte.github.io.git
+cd nil-munte.github.io
 
 # Install dependencies
 npm install
 
 # Start local dev server
 npm run dev
+```
+
+### Build
+```bash
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
+
+## 🌐 Internationalization
+
+The site is fully bilingual (English / Catalan). All translations are managed in `src/i18n/utils.ts`.
+
+To add or modify content:
+1. Edit the translation keys in `src/i18n/utils.ts`
+2. Add both English and Catalan versions of each text
+
+---
+
+## 📄 CV Downloads
+
+- [Download CV (English)](https://nil-munte.github.io/info/en/CV_Nil_Munte_Guerrero_EN.pdf)
+- [Descarregar CV (Català)](https://nil-munte.github.io/info/ca/CV_Nil_Munte_Guerrero_CA.pdf)

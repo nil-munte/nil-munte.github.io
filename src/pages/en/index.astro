@@ -10,7 +10,7 @@ export function getStaticPaths() {
 }
 
 const lang = 'en' as Lang;
-const t = useTranslations(lang);
+const t = useTranslations(lang) as (key: string) => string;
 ---
 
 <BaseLayout lang={lang}>

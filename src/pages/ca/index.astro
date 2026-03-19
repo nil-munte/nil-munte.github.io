@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import { useTranslations, type Lang } from "../../i18n/utils";
 
 const lang = 'ca' as Lang;
-const t = useTranslations(lang);
+const t = useTranslations(lang) as (key: string) => string;
 ---
 
 <BaseLayout lang={lang}>

@@ -2,23 +2,79 @@
 
 ## Project Overview
 
-This is a personal portfolio website built with **Astro 5.x** and **Tailwind CSS**. It's a static site (SSG) deployed to GitHub Pages.
+This is a personal portfolio website built with **Astro 5.x** and **Tailwind CSS**. It's a static site (SSG) deployed to GitHub Pages with **bilingual support (English/Catalan)**.
 
 ## Directory Structure
 
 ```
 ├── src/
-│   ├── components/       # Reusable Astro components (Navbar, Footer, ProjectCard)
-│   ├── layouts/          # Page layouts (BaseLayout)
-│   ├── pages/            # Route pages (index, career, projects, about_me)
-│   └── styles/           # Global CSS (Tailwind directives)
+│   ├── i18n/
+│   │   └── utils.ts          # Translation strings (EN/CA) and helpers
+│   ├── components/            # Reusable Astro components
+│   │   ├── Navbar.astro      # With language switcher
+│   │   ├── Footer.astro      # With translations
+│   │   └── ProjectCard.astro # With translations
+│   ├── layouts/
+│   │   └── BaseLayout.astro  # With hreflang, lang attribute
+│   ├── pages/
+│   │   ├── index.astro       # Redirects to /en/
+│   │   ├── en/               # English pages
+│   │   │   ├── index.astro
+│   │   │   ├── career.astro
+│   │   │   ├── projects.astro
+│   │   │   └── about.astro
+│   │   └── ca/               # Catalan pages (localized URLs)
+│   │       ├── index.astro
+│   │       ├── carrera.astro
+│   │       ├── projectes.astro
+│   │       └── sobre-mi.astro
+│   └── styles/
+│       └── global.css        # Global CSS (Tailwind directives)
 ├── public/
-│   ├── info/             # CVs, PDFs, images
-│   └── logos/            # Social media icons
-├── astro.config.mjs      # Astro configuration
-├── tailwind.config.cjs  # Tailwind configuration
-├── tsconfig.json         # TypeScript config (extends astro/tsconfigs/strict)
+│   ├── info/
+│   │   ├── en/               # English CV PDF
+│   │   ├── ca/               # Catalan CV PDF
+│   │   └── *.pdf             # Papers, thesis
+│   └── logos/                # Social media icons
+├── docs/
+│   └── page_translation.md   # Translation plan documentation
+├── astro.config.mjs          # Astro configuration
+├── tailwind.config.cjs       # Tailwind configuration
+├── tsconfig.json             # TypeScript config (extends astro/tsconfigs/strict)
 └── package.json
+```
+
+## URL Structure
+
+| Language | URL | Page |
+|----------|-----|------|
+| English | `/en/` | Home |
+| English | `/en/career` | Career |
+| English | `/en/projects` | Projects |
+| English | `/en/about` | About Me |
+| Catalan | `/ca/` | Home |
+| Catalan | `/ca/carrera` | Career |
+| Catalan | `/ca/projectes` | Projects |
+| Catalan | `/ca/sobre-mi` | About Me |
+| Root | `/` | Redirects to `/en/` |
+
+## Translation System
+
+All translations are in `src/i18n/utils.ts`. To add or modify translations:
+
+1. Find the key in the `ui` object
+2. Add/modify the English (`en`) and Catalan (`ca`) versions
+
+```typescript
+// Example: Adding a new translation key
+'en': {
+  'home.new_text': 'New English Text',
+  // ...
+},
+'ca': {
+  'home.new_text': 'Nou Text en Català',
+  // ...
+},
 ```
 
 ## Build & Development Commands
@@ -89,8 +145,8 @@ const { title, description } = Astro.props;
 | Element | Convention | Example |
 |---------|------------|---------|
 | Components | PascalCase | `Navbar.astro`, `ProjectCard.astro` |
-| Pages | kebab-case | `about_me.astro`, `career.astro` |
-| Props | camelCase | `currentPath`, `projectTitle` |
+| Pages | kebab-case (EN), localized (CA) | `career.astro`, `carrera.astro` |
+| Props | camelCase | `currentPath`, `lang` |
 | CSS classes | kebab-case (Tailwind) | `text-indigo-600`, `flex-grow` |
 
 ### File Organization
