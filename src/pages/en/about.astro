@@ -1,11 +1,19 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { useTranslations, type Lang } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+  ];
+}
+
+const lang = 'en' as Lang;
+const t = useTranslations(lang);
 ---
 
-<BaseLayout>
-    <h2 class="text-3xl font-bold mb-10 text-center">About Me</h2>
-    <!-- Aligned Gradient Line -->
-
+<BaseLayout lang={lang}>
+    <h2 class="text-3xl font-bold mb-10 text-center">{t('about.page_title')}</h2>
     <div
         class="mt-5 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
               rounded-full animate-pulse opacity-80 max-w-4xl mx-auto"
@@ -16,12 +24,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         class="bg-white shadow p-6 rounded-2xl hover:shadow-lg max-w-4xl mx-auto my-8 transition"
     >
         <p class="text-gray-700 leading-relaxed text-justify mb-4">
-            I studied <strong>Telecommunications Engineering</strong> and completed
-            a <strong>Master’s in Artificial Intelligence</strong>.
+            {t('about.education')}
         </p>
 
         <p class="text-gray-700 leading-relaxed text-justify mb-4">
-            In my free time, I really like hiking and going to the mountain.
+            {t('about.hobbies')}
         </p>
         
         <div
@@ -52,8 +59,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             >
             </div>
         </div>
-
-        
 
         <script is:inline src="https://strava-embeds.com/embed.js"></script>
     </div>

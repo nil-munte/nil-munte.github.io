@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { useTranslations, type Lang } from "../../i18n/utils";
+
+const lang = 'ca' as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang}>
+    <h2 class="text-3xl font-bold mb-10 text-center">{t('projects.page_title')}</h2>
+    <div
+        class="mt-5 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+              rounded-full animate-pulse opacity-80 max-w-4xl mx-auto"
+    >
+    </div>
+
+    <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 hover: max-w-4xl mx-auto my-8"
+    >
+        <ProjectCard
+            title={t('projects.portfolio_title')}
+            description={t('projects.portfolio_desc')}
+            link="https://github.com/nil-munte/nil-munte.github.io"
+            lang={lang}
+        />
+
+        <ProjectCard
+            title={t('projects.python_title')}
+            description={t('projects.python_desc')}
+            link="https://github.com/nil-munte/Python_course_CAT"
+            lang={lang}
+        />
+
+        <ProjectCard
+            title={t('projects.neural_title')}
+            description={t('projects.neural_desc')}
+            link="https://github.com/nil-munte/Neural-Net"
+            lang={lang}
+        />
+    </div>
+</BaseLayout>

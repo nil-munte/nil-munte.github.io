@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { useTranslations, type Lang } from "../../i18n/utils";
+
+const lang = 'ca' as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang}>
+    <h2 class="text-3xl font-bold mb-10 text-center">{t('about.page_title')}</h2>
+    <div
+        class="mt-5 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+              rounded-full animate-pulse opacity-80 max-w-4xl mx-auto"
+    >
+    </div>
+
+    <div
+        class="bg-white shadow p-6 rounded-2xl hover:shadow-lg max-w-4xl mx-auto my-8 transition"
+    >
+        <p class="text-gray-700 leading-relaxed text-justify mb-4">
+            {t('about.education')}
+        </p>
+
+        <p class="text-gray-700 leading-relaxed text-justify mb-4">
+            {t('about.hobbies')}
+        </p>
+        
+        <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto my-5"
+        >
+            <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="16546658485"
+                data-style="standard"
+                data-from-embed="false"
+            >
+            </div>
+            <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="16440414987"
+                data-style="standard"
+                data-from-embed="false"
+            >
+            </div>
+            <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="14300206067"
+                data-style="standard"
+                data-from-embed="false"
+            >
+            </div>
+        </div>
+
+        <script is:inline src="https://strava-embeds.com/embed.js"></script>
+    </div>
+</BaseLayout>

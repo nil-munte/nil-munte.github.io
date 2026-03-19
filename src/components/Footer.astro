@@ -1,5 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { useTranslations, type Lang } from "../i18n/utils";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <footer class="mt-16 py-4 bg-gray-100 border-t border-gray-300">
@@ -7,27 +15,24 @@ import { Image } from "astro:assets";
         <div
             class="mt-2 flex flex-col md:flex-row justify-center gap-4 text-sm items-center"
         >
-            <!-- Email -->
             <a
                 href="mailto:nilmunte@gmail.com"
                 class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
-                📧 nilmunte@gmail.com
+                📧 {t('footer.email')}: nilmunte@gmail.com
             </a>
 
             <span class="hidden md:inline">•</span>
 
-            <!-- Phone -->
             <a
                 href="tel:+34628119680"
                 class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
-                📞 +34 628 119 680
+                📞 {t('footer.phone')}: +34 628 119 680
             </a>
 
             <span class="hidden md:inline">•</span>
 
-            <!-- LinkedIn Icon -->
             <a
                 href="https://www.linkedin.com/in/nilmunte"
                 target="_blank"
@@ -42,7 +47,6 @@ import { Image } from "astro:assets";
             </a>
             <span class="hidden md:inline">•</span>
 
-            <!-- GitHub Icon -->
             <a
                 href="https://github.com/nil-munte"
                 target="_blank"
@@ -50,7 +54,7 @@ import { Image } from "astro:assets";
             >
                 <Image
                     src="/logos/github-mark.png"
-                    alt="LinkedIn"
+                    alt="GitHub"
                     width="20"
                     height="20"
                 />
@@ -58,18 +62,17 @@ import { Image } from "astro:assets";
 
             <span class="hidden md:inline">•</span>
 
-            <!-- CV -->
             <a
-                href="/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf"
+                href={`/info/${lang}/CV_Nil_Munte_Guerrero_${lang.toUpperCase()}.pdf`}
                 download
                 class="hover:text-blue-600 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
-                📄 CV
+                📄 {t('footer.cv')}
             </a>
         </div>
 
         <p class="text-xs text-gray-500 mt-4">
-            © {new Date().getFullYear()} Nil Munté — All rights reserved.
+            © {new Date().getFullYear()} Nil Munté — {t('footer.copyright')}
         </p>
     </div>
 </footer>
