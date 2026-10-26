@@ -351,3 +351,8 @@
     display: none;
   }
 }
+
+/* The ICGC credit only applies to the theme that uses its terrain. */
+[data-theme="senyal"] .terrain-credit {
+  display: none;
+}
