@@ -155,38 +155,53 @@
 }
 
 /*
- * Home: the real contours of the Mola de Colldejou (public/design/colldejou.svg,
- * ICGC MET-5) with a radar sweep on the summit. The summit sits at 62.1% / 49.6%
- * of that map; the map is placed so the summit lands at ~74% of the content width.
+ * Home hero: the terrain is the background of the whole hero, from edge to
+ * edge of the window, and fades out before the text column so the text stays
+ * clean. Below 900 px it is a band under the text.
+ *
+ * Map: public/design/colldejou.svg, ICGC MET-5, 7.2 x 2.4 km (aspect 3:1), with
+ * the summit of the Mola de Colldejou at 31.04% / 49.58%. .hero-art is a size
+ * container as tall as the hero, so the map is 300cqh wide and the summit sits
+ * 93.1cqh from its left edge. --x is where the summit goes; the radar and the
+ * summit marker are placed from the same value, so they stay on it.
  */
-.hero-wrap {
-  position: relative;
+.hero-grid {
+  --gutter: 1rem;
+  display: grid;
+  grid-template-columns: [full-start] minmax(var(--gutter), 1fr) [content-start] minmax(0, 68rem) [content-end] minmax(var(--gutter), 1fr) [full-end];
   overflow: hidden;
 }
-.hero {
-  position: relative;
+@media (min-width: 640px) {
+  .hero-grid { --gutter: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .hero-grid { --gutter: 2rem; }
 }
 .hero-text {
-  position: relative;
+  grid-column: content;
   max-width: 36rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-art {
+  --x: 50cqw;
+  grid-column: full;
+  height: 18rem;
+  position: relative;
+  container-type: size;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 75%, transparent);
+  pointer-events: none;
 }
 .terrain {
   position: absolute;
-  top: 50%;
-  left: 21%;
-  width: 85%;
-  aspect-ratio: 3 / 2;
-  transform: translateY(-50%);
-  background: url("/design/colldejou.svg") center / 100% 100% no-repeat;
-  mask-image: linear-gradient(to right, transparent 0, #000 35%), linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent);
-  mask-composite: intersect;
-  pointer-events: none;
+  inset: 0;
+  background: url("/design/colldejou.svg") calc(var(--x) - 93.1cqh) 0 / auto 100% no-repeat;
 }
 .radar {
   position: absolute;
-  left: 62.1%;
-  top: 49.6%;
-  width: 44%;
+  left: var(--x);
+  top: 49.58%;
+  width: min(66cqh, 26rem, 85cqw);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 9999px;
@@ -208,40 +223,37 @@
 }
 .summit {
   position: absolute;
-  left: 62.1%;
-  top: 49.6%;
+  left: var(--x);
+  top: 49.58%;
   width: 1rem;
   height: 0.9rem;
   transform: translate(-50%, -70%);
   background: var(--color-rust);
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
-.terrain-label {
-  position: absolute;
-  left: 62.1%;
-  top: calc(49.6% + 1rem);
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-rust);
-  white-space: nowrap;
-}
-@media (max-width: 899px) {
-  .terrain {
-    top: 0;
-    left: auto;
-    right: -45vw;
-    width: 150vw;
-    transform: none;
-    opacity: 0.6;
-    mask-image: linear-gradient(to right, transparent 0, #000 45%), linear-gradient(to bottom, #000 70%, transparent);
+@media (min-width: 900px) {
+  /* Text column ends at ~50% of the window (content is centred and the text
+     takes its left half); the summit sits 18rem to the right of the centre. */
+  .hero-text {
+    grid-row: 1;
+    max-width: min(34rem, 100%);
   }
-  .terrain-label {
-    display: none;
+  .hero-art {
+    --x: min(50cqw + 18rem, 100cqw - 14rem);
+    grid-column: full;
+    grid-row: 1;
+    height: auto;
+    mask-image:
+      linear-gradient(to right, transparent calc(50% - 1rem), #000 calc(50% + 10rem)),
+      linear-gradient(to bottom, transparent 0, #000 12%, #000 80%, transparent);
+    mask-composite: intersect;
   }
 }
 
-/* Inner pages: a thin strip of the same contours behind the title. */
+/* Inner pages: a strip of the same contours behind the title. Same framing as
+   the first version (a 3:2 map max(900px, 70vw) wide, "right 8% top 45%"); the
+   map is now the same area plus as much again to the east, so it is twice as
+   wide at the same scale and reaches the right edge. */
 .page-header {
   position: relative;
   overflow: hidden;
@@ -250,7 +262,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/design/colldejou.svg") right 8% top 45% / max(900px, 70%) auto no-repeat;
+  background: url("/design/colldejou.svg") calc(0.92 * (100vw - max(900px, 70vw))) 45% / max(1800px, 140vw) auto no-repeat;
   mask-image: linear-gradient(to right, transparent 25%, #000 75%), linear-gradient(to bottom, #000 55%, transparent);
   mask-composite: intersect;
   opacity: 0.8;
