@@ -32,7 +32,7 @@ Tots els textos proposats, pàgina per pàgina, són a [`PROPOSTES-CONTINGUT.md`
 | 2.4 📝 | Les publicacions estaven enterrades dins del text. | Secció de publicacions amb la cita completa. |
 | 2.5 📝 | Projectes tenia 3 targetes, una de les quals era la mateixa web. | Projectes agrupats (recerca, aplicacions web, docència) amb demo i codi: calculadora del cost del viatge, Cuina amb mi, Riudoms 3D, Model-Region, Física de 2n de BAT, catapulta, radars, curs de Python… |
 | 2.6 📝 | La portada era genèrica: sense xifres ni proposta de valor. | Portada amb frase de valor, xifres clau, projectes destacats i accés al CV i al contacte. |
-| 2.7 📝 | Sobre mi tenia dues frases. El README deia més coses que la web. | Text personal: muntanya, escoltes, delegat de curs, premi de recerca jove, mobilitat elèctrica. |
+| 2.7 ✅ | Sobre mi tenia dues frases. El README deia més coses que la web. | Text ampliat amb fets: delegat de curs, Premi de Recerca Jove, docència, monitor d'esplai i Cuina amb mi; bloc de contacte. |
 | 2.8 ⏳ | **Feina actual.** El CV de novembre de 2025 diu «Applus+ IDIADA, maig 2024 – actualitat». | Confirma-ho o digues què hi ha de posar. Es canvia a `src/data/cv.yaml` (`experience[0].end`). |
 | 2.9 ⏳ | **Foto.** No n'hi ha cap; ara es mostra el monograma. | Desa una foto quadrada a `src/assets/profile.jpg` i surt sola a la portada. |
 | 2.10 ⏳ | **DOI de les publicacions.** | Afegeix `doi:` a cada publicació de `cv.yaml` i s'enllaça sol. |

@@ -1,6 +1,7 @@
 ---
 import Icon from "../components/Icon.astro";
 import PageHeader from "../components/PageHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import { cv, inline } from "../data/cv";
 import { useTranslations, type Lang } from "../i18n/ui";
 
@@ -10,6 +11,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const more = cv.about_projects.map((id) => {
+  const project = cv.projects.find((p) => p.id === id);
+  if (!project) throw new Error(`about_projects in cv.yaml refers to "${id}", which is not a project`);
+  return project;
+});
 ---
 
 <PageHeader title={t("title.about")} />
@@ -17,6 +23,21 @@ const t = useTranslations(lang);
   <div class="max-w-2xl space-y-5 text-lg leading-relaxed text-stone-700">
     {cv.about.map((p) => <p set:html={inline(p[lang])} />)}
   </div>
+
+  {
+    more.length > 0 && (
+      <section aria-labelledby="more" class="mt-14">
+        <h2 id="more" class="eyebrow mb-5 text-sm">
+          {t("about.more")}
+        </h2>
+        <div class="grid max-w-4xl gap-5 sm:grid-cols-2">
+          {more.map((p) => (
+            <ProjectCard project={p} lang={lang} />
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   <section aria-labelledby="contact" class="card mt-14 max-w-2xl p-6 sm:p-8">
     <h2 id="contact" class="text-2xl font-bold tracking-tight">{t("about.contact")}</h2>

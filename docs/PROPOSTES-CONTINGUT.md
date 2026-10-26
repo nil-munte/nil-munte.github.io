@@ -215,7 +215,7 @@ Es poden corregir sense canviar res més:
 
 1. Vaig estudiar Enginyeria de Telecomunicacions a la Universitat Rovira i Virgili, on vaig ser delegat de curs tres anys seguits, i després el Màster en Seguretat Informàtica i Intel·ligència Artificial. La curiositat ve de lluny: als 17 anys el treball de recerca «Nassos electrònics» va guanyar un Premi de Recerca Jove.
 2. M'agrada entendre les coses fins al fons i, després, explicar-les. Per això combino l'enginyeria amb la docència: a la URV, a l'Acadèmia Gaudí i amb materials oberts com els de Física de 2n de Batxillerat.
-3. Fora de la feina sóc de muntanya: m'agrada fer cims i caminar per la serralada. També he estat monitor d'escoltes.
+3. Fora de la feina sóc de muntanya: m'agrada fer cims i caminar per la serralada. També he estat monitor d'esplai.
 
 ⚠️ A revisar:
 - «als 17 anys» està deduït de l'any del premi (2017).

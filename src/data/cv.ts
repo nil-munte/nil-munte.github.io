@@ -47,7 +47,7 @@ const schema = z.object({
   projects: z.array(
     z.object({
       id: z.string(),
-      category: z.enum(["research", "web", "teaching"]),
+      category: z.enum(["research", "web", "teaching", "personal"]),
       title: t,
       description: t,
       image: z.string().optional(),
@@ -57,6 +57,7 @@ const schema = z.object({
     }),
   ),
   about: z.array(t),
+  about_projects: z.array(z.string()).default([]),
 });
 
 export type CV = z.infer<typeof schema>;
