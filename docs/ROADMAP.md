@@ -70,8 +70,8 @@ Abans, una feina nova s'havia d'escriure a 4 o 5 llocs (PDF a part, `utils.ts` e
 | 5.3 📝 | **PDF automàtics:** `cv/cv.typ` llegeix el mateix YAML. GitHub Actions genera el CV en català i en anglès a cada desplegament. |
 | 5.4 ✅ | Les PR compilen el lloc i els PDF abans de fusionar. |
 | 5.5 ✅ | Tailwind 4 amb `@tailwindcss/vite`; fora `@astrojs/tailwind` (obsolet) i les dependències que no es feien servir. |
-| 5.6 ⏳ | Protegir `main` (PR obligatòria i check de compilació), igual que a `calcul-cost-trajecte`. |
-| 5.7 ⏳ | Pujar a Astro 7 quan convingui (ara s'usa l'última 5.x). |
+| 5.6 ✅ | `main` protegida: PR obligatòria i compilació en verd, també per a l'admin. Dependabot activat (npm i Actions, mensual) amb alertes i correccions de seguretat. |
+| 5.7 ✅ | Astro 7: `npm audit` passa de 13 vulnerabilitats (1 crítica) a 0. Lighthouse (mòbil): accessibilitat, bones pràctiques i SEO a 100 a totes les pàgines; rendiment 99–100. |
 
 ### Com s'edita ara el CV
 
