@@ -22,6 +22,8 @@ Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-
 
 ## 2. Contingut
 
+Tots els textos proposats, pàgina per pàgina, són a [`PROPOSTES-CONTINGUT.md`](PROPOSTES-CONTINGUT.md).
+
 | # | Problema | Solució |
 |---|---|---|
 | 2.1 📝 | La Carrera no tenia cap data. | Línia de temps amb dates de cada etapa, presa del CV. |
