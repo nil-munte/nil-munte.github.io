@@ -11,18 +11,18 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<footer class="mt-24 border-t border-stone-200 dark:border-stone-800">
-  <div class="container-page flex flex-col items-center gap-4 py-10 text-sm text-stone-600 dark:text-stone-400">
+<footer class="mt-24 border-t border-stone-200">
+  <div class="container-page flex flex-col items-center gap-4 py-10 text-sm text-stone-600">
     <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
       <li>
-        <a href={`mailto:${cv.person.email}`} class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+        <a href={`mailto:${cv.person.email}`} class="inline-flex items-center gap-2 hover:text-stone-900">
           <Icon name="mail" />{cv.person.email}
         </a>
       </li>
       {
         cv.person.links.map((l) => (
           <li>
-            <a href={l.url} rel="me noopener" target="_blank" class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+            <a href={l.url} rel="me noopener" target="_blank" class="inline-flex items-center gap-2 hover:text-stone-900">
               <Icon name={l.id} />
               {l.label}
             </a>
@@ -30,14 +30,14 @@ const t = useTranslations(lang);
         ))
       }
       <li>
-        <a href={cvPdf(lang)} download class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+        <a href={cvPdf(lang)} download class="inline-flex items-center gap-2 hover:text-stone-900">
           <Icon name="download" />CV
         </a>
       </li>
     </ul>
     <p class="text-xs text-stone-500">© {new Date().getFullYear()} Nil Munté — {t("footer.copyright")}</p>
     <!-- The contours on the home page come from ICGC data (CC BY 4.0), which requires attribution. -->
-    <p class="terrain-credit text-xs text-stone-500">
+    <p class="text-xs text-stone-500">
       {t("footer.terrain")}
       <a href="https://www.icgc.cat" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-stone-800">Institut Cartogràfic i Geològic de Catalunya</a>
       (<a href="https://creativecommons.org/licenses/by/4.0/deed.ca" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-stone-800">CC BY 4.0</a>)

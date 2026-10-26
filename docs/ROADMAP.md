@@ -3,7 +3,6 @@
 Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-munte.github.io/> i el codi de `main` (`da066d6`). Cada punt diu què passava, per què importa i com es resol.
 
 - ✅ resolt a la branca `redisseny-portfoli`
-- 🎨 en revisió: disseny visual (maquetes A i B)
 - 📝 pendent de la revisió de contingut, que es farà a part. **Fins llavors, el contingut de la web és exactament l'anterior.**
 - ⏳ depèn d'una decisió o d'una acció teva
 
@@ -52,10 +51,10 @@ Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-
 
 | # | Canvi |
 |---|---|
-| 4.1 🎨 | Identitat pròpia. Dues maquetes navegables amb el selector «Maqueta» o `?tema=`: **A · Senyal** (radar, fosc, taronja, Space Grotesk) i **B · Relleu** (corbes de nivell, paper, verd, Instrument Sans, tocs de senyal). Les corbes de la B són sintètiques; es poden generar amb dades reals de l'ICGC d'una muntanya concreta. |
-| 4.2 🎨 | Mode fosc: per decidir un cop triat el disseny. |
-| 4.3 🎨 | Fora la barra de gradient amb pulsació i el text justificat. |
-| 4.4 🎨 | Carrera com a línia de temps; projectes com a targetes amb etiquetes i enllaços. |
+| 4.1 ✅ | Identitat pròpia: mapa topogràfic de la **Mola de Colldejou** (corbes reals del MET-5 de l'ICGC) amb tocs de senyal de radar: escombrat a la portada, ona *chirp* sota els títols i etiquetes monoespaiades. Paper, verd i Instrument Sans. Es va triar entre dues maquetes (A · Senyal i B · Relleu). |
+| 4.2 ✅ | Sense mode fosc, a propòsit: el paper forma part de la identitat. |
+| 4.3 ✅ | Fora la barra de gradient amb pulsació i el text justificat. Portada més equilibrada: pàgina més ampla i radar lligat a la graella. |
+| 4.4 ✅ | Carrera com a camí amb un cim per etapa; franja de relleu a dalt de cada pàgina interior. |
 | 4.5 ⏳ | Captures o miniatures per a cada projecte web (es poden afegir a `src/assets/projects/`). |
 
 ## 5. Mantenibilitat i edició del CV

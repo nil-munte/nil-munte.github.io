@@ -26,7 +26,6 @@ Altres canvis habituals:
 |---|---|
 | Afegir una imatge a una feina | Fitxer a `src/assets/media/` i entrada `media` a `cv.yaml` |
 | Canviar textos de la interfície (menú, botons) | `src/i18n/ui.ts` |
-| Provar els dos dissenys | Selector «Maqueta» a baix, o `?tema=senyal` / `?tema=relleu` |
 
 ## Desenvolupament
 

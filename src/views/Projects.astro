@@ -1,4 +1,5 @@
 ---
+import PageHeader from "../components/PageHeader.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { cv } from "../data/cv";
 import { useTranslations, type Lang } from "../i18n/ui";
@@ -11,9 +12,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<div class="container-page pt-12 sm:pt-16">
-  <h1 class="page-title">{t("title.projects")}</h1>
-  <div class="signal-rule mt-6 mb-12" aria-hidden="true"></div>
+<PageHeader title={t("title.projects")} />
+<div class="container-page">
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
     {cv.projects.map((p) => <ProjectCard project={p} lang={lang} />)}
   </div>

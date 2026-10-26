@@ -10,9 +10,13 @@ The content is currently the previous site's, unchanged on purpose: a content re
 
 Never hard-code content in pages. Add it to `cv.yaml` and render it.
 
-## Design preview
+## Design
 
-Two directions are under review, switched with `data-theme` on `<html>` (`?tema=senyal|relleu`, stored in localStorage, plus the temporary `ThemeSwitcher`): `relleu` (topographic, light, green) and `senyal` (radar, dark, orange). Each theme remaps the Tailwind `stone` and `accent` scales in `global.css`, so components use those scales only. Once one is chosen, delete the other theme block, its decorative CSS and `ThemeSwitcher`.
+A topographic map of the Mola de Colldejou with touches of radar signal: warm paper (`stone` scale remapped in `global.css`), green `accent`, `rust` markers, Instrument Sans plus IBM Plex Mono for labels.
+
+- `public/design/colldejou.svg`: real contours (every 20 m) from the ICGC MET-5 elevation model, CC BY 4.0, credited in the footer. The summit is at 62.1% / 49.6% of the map; `.radar`, `.summit` and `.terrain-label` are positioned on it.
+- `public/design/chirp.svg`: the FMCW chirp used as the `.signal-rule` separator under every title.
+- No dark mode, on purpose: the paper is part of the identity.
 
 ## Structure
 
@@ -21,7 +25,7 @@ src/
 ├── data/cv.yaml, cv.ts      # content + validation
 ├── i18n/ui.ts               # UI strings, localized routes, pathFor(), cvPdf()
 ├── layouts/BaseLayout.astro # SEO: title, description, canonical, hreflang, Open Graph, JSON-LD
-├── components/              # Header (mobile menu), Footer, LinkButtons, ProjectCard, Media, YouTube, Icon, ThemeSwitcher
+├── components/              # Header (mobile menu), Footer, PageHeader, LinkButtons, ProjectCard, Media, YouTube, Icon
 ├── views/                   # Home, Career, Projects, About (one template for both languages)
 ├── pages/
 │   ├── index.astro          # instant redirect by browser language
@@ -30,7 +34,7 @@ src/
 ├── assets/media/            # images processed by astro:assets (WebP, responsive)
 └── styles/global.css        # Tailwind 4 theme (accent colour) and utilities
 public/info/                 # CV, papers and thesis PDFs
-public/design/               # chirp and topographic SVGs
+public/design/               # Colldejou contours and chirp SVGs
 ```
 
 Routes are defined once in `routes` in `src/i18n/ui.ts` (`/ca/carrera/` ↔ `/en/career/`, etc.). `trailingSlash: "always"`.

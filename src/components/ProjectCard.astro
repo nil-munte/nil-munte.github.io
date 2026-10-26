@@ -12,9 +12,9 @@ const { project, lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<article class="card relative flex flex-col p-6 transition hover:border-accent-300 dark:hover:border-accent-700">
+<article class="card relative flex flex-col p-6 transition hover:border-accent-300">
   <h3 class="text-lg font-semibold">{project.title[lang]}</h3>
-  <p class="mt-2 flex-1 leading-relaxed text-stone-600 dark:text-stone-400">{project.description[lang]}</p>
+  <p class="mt-2 flex-1 leading-relaxed text-stone-600">{project.description[lang]}</p>
   <a href={project.link} target="_blank" rel="noopener" class="link mt-4 inline-flex items-center gap-1.5 text-sm after:absolute after:inset-0">
     {t("common.view_project")}<Icon name="arrow" />
   </a>

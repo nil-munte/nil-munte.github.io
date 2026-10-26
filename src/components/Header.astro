@@ -21,12 +21,12 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
 ---
 
 <header
-  class="sticky top-0 z-40 border-b border-stone-200/80 bg-stone-50/85 backdrop-blur dark:border-stone-800/80 dark:bg-stone-950/85"
+  class="sticky top-0 z-40 border-b border-stone-200/80 bg-stone-50/85 backdrop-blur"
 >
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href={pathFor("home", lang)} class="flex items-center gap-2.5 font-semibold text-stone-900 dark:text-stone-50">
+    <a href={pathFor("home", lang)} class="flex items-center gap-2.5 font-semibold text-stone-900">
       <span
-        class="grid size-8 place-items-center rounded-lg bg-accent-700 text-xs font-bold tracking-tight text-[var(--on-accent)] dark:bg-accent-400 dark:text-stone-950"
+        class="grid size-8 place-items-center rounded-lg bg-accent-700 text-xs font-bold tracking-tight text-white"
         aria-hidden="true">{initials}</span
       >
       <span>{cv.person.site_title[lang]}</span>
@@ -41,7 +41,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
                 <a
                   href={pathFor(item.key, lang)}
                   aria-current={item.key === page ? "page" : undefined}
-                  class="rounded-lg px-3 py-2 text-stone-600 hover:bg-stone-100 hover:text-stone-900 aria-[current=page]:text-accent-700 dark:text-stone-300 dark:hover:bg-stone-800 dark:hover:text-white dark:aria-[current=page]:text-accent-300"
+                  class="rounded-lg px-3 py-2 text-stone-600 hover:bg-stone-100 hover:text-stone-900 aria-[current=page]:text-accent-700"
                 >
                   {item.label}
                 </a>
@@ -51,7 +51,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
         </ul>
       </nav>
 
-      <div class="flex rounded-lg border border-stone-200 p-0.5 text-xs font-semibold dark:border-stone-700" role="group" aria-label={t("a11y.lang")}>
+      <div class="flex rounded-lg border border-stone-200 p-0.5 text-xs font-semibold" role="group" aria-label={t("a11y.lang")}>
         {
           langs.map((l) => (
             <a
@@ -59,7 +59,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
               hreflang={l}
               lang={l}
               aria-current={l === lang ? "true" : undefined}
-              class="rounded-md px-2 py-1 uppercase text-stone-500 hover:text-stone-900 aria-[current=true]:bg-stone-900 aria-[current=true]:text-stone-50 dark:text-stone-400 dark:hover:text-white dark:aria-[current=true]:bg-stone-100 dark:aria-[current=true]:text-stone-900"
+              class="rounded-md px-2 py-1 uppercase text-stone-500 hover:text-stone-900 aria-[current=true]:bg-stone-900 aria-[current=true]:text-stone-50"
             >
               {l}
             </a>
@@ -69,7 +69,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
 
       <button
         type="button"
-        class="group grid size-10 place-items-center rounded-lg text-stone-700 hover:bg-stone-100 md:hidden dark:text-stone-200 dark:hover:bg-stone-800"
+        class="group grid size-10 place-items-center rounded-lg text-stone-700 hover:bg-stone-100 md:hidden"
         aria-controls="mobile-nav"
         aria-expanded="false"
         data-menu-toggle
@@ -81,7 +81,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
     </div>
   </div>
 
-  <nav id="mobile-nav" aria-label={t("a11y.menu")} class="hidden border-t border-stone-200 md:hidden dark:border-stone-800">
+  <nav id="mobile-nav" aria-label={t("a11y.menu")} class="hidden border-t border-stone-200 md:hidden">
     <ul class="container-page flex flex-col py-2 text-base font-medium">
       {
         nav.map((item) => (
@@ -89,7 +89,7 @@ const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("")
             <a
               href={pathFor(item.key, lang)}
               aria-current={item.key === page ? "page" : undefined}
-              class="block rounded-lg px-3 py-3 text-stone-700 hover:bg-stone-100 aria-[current=page]:text-accent-700 dark:text-stone-200 dark:hover:bg-stone-800 dark:aria-[current=page]:text-accent-300"
+              class="block rounded-lg px-3 py-3 text-stone-700 hover:bg-stone-100 aria-[current=page]:text-accent-700"
             >
               {item.label}
             </a>
