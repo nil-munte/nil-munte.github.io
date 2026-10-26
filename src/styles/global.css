@@ -255,14 +255,7 @@
   position: relative;
   overflow: hidden;
 }
-[data-theme="senyal"] .hero-art::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 45%, transparent), transparent 18%);
-  animation: sweep 6s linear infinite;
-}
+
 [data-theme="senyal"] .hero-art::after {
   content: "";
   position: absolute;
@@ -293,10 +286,33 @@
   background: var(--rust);
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
-[data-theme="relleu"] .hero-art::before {
+
+
+/* Rotating radar sweep, shared by both themes. */
+.radar {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.radar::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at 54% 37%, transparent 0 3.5rem, color-mix(in oklab, var(--rust) 55%, transparent) 3.5rem calc(3.5rem + 1px), transparent calc(3.5rem + 2px));
+  background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 45%, transparent), transparent 18%);
+  animation: sweep 6s linear infinite;
+}
+/* B: the radar scans the map, with range rings over the contours. */
+[data-theme="relleu"] .radar {
+  inset: 7%;
+  background:
+    radial-gradient(circle, transparent 0 32.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 33% 33.4%, transparent 34% 65.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 66% 66.4%, transparent 67% 98.6%, color-mix(in oklab, var(--color-accent-700) 55%, transparent) 99% 100%),
+    linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 1px 100% no-repeat,
+    linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 100% 1px no-repeat;
+}
+[data-theme="relleu"] .radar::before {
+  background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 30%, transparent), transparent 16%);
+}
+[data-theme="relleu"] .hero-art::after {
+  z-index: 1;
 }
