@@ -11,6 +11,13 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
+<div class="hero-wrap">
+  <!-- B: real contours of the Mola de Colldejou, with the radar on the summit. -->
+  <div class="terrain" aria-hidden="true">
+    <span class="radar"></span>
+    <span class="summit"></span>
+    <span class="terrain-label">Mola de Colldejou · 921 m</span>
+  </div>
 <section class="container-page hero py-20 sm:py-28">
   <div class="hero-text">
     <p class="eyebrow hero-kicker">{cv.person.roles[lang]}</p>
@@ -37,3 +44,4 @@ const t = useTranslations(lang);
   </div>
   <div class="hero-art" aria-hidden="true"><span class="radar"></span></div>
 </section>
+</div>

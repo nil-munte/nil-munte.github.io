@@ -100,13 +100,6 @@
     @apply bg-stone-50 text-stone-800 antialiased;
   }
 
-  [data-theme="relleu"] body {
-    background-image: url("/design/topo.svg");
-    background-size: 1400px auto;
-    background-position: right -200px top 40px;
-    background-repeat: no-repeat;
-  }
-
   h1, h2, h3 {
     @apply text-stone-900;
     text-wrap: balance;
@@ -241,11 +234,6 @@
 @media (min-width: 900px) {
   .hero-art { display: block; }
 }
-[data-theme="relleu"] .hero-art {
-  border-radius: 1rem;
-  border: 1px solid var(--color-stone-200);
-  background: var(--card) url("/design/topo.svg") 70% 30% / 260% auto no-repeat;
-}
 [data-theme="senyal"] .hero-art {
   border-radius: 9999px;
   background:
@@ -270,22 +258,6 @@
 @keyframes sweep {
   to { transform: rotate(360deg); }
 }
-[data-theme="relleu"] .hero-art {
-  position: relative;
-  background-size: 180% auto;
-  background-position: 62% 32%;
-}
-/* Summit marker on the map. */
-[data-theme="relleu"] .hero-art::after {
-  content: "";
-  position: absolute;
-  top: 34%;
-  left: 52%;
-  width: 1.1rem;
-  height: 1rem;
-  background: var(--rust);
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
-}
 
 
 /* Rotating radar sweep, shared by both themes. */
@@ -302,17 +274,80 @@
   background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 45%, transparent), transparent 18%);
   animation: sweep 6s linear infinite;
 }
-/* B: the radar scans the map, with range rings over the contours. */
-[data-theme="relleu"] .radar {
-  inset: 7%;
+/* B: range rings drawn straight on the contours, no frame. */
+.terrain .radar {
+  inset: auto;
+  left: 62.1%;
+  top: 49.6%;
+  width: 44%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
   background:
     radial-gradient(circle, transparent 0 32.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 33% 33.4%, transparent 34% 65.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 66% 66.4%, transparent 67% 98.6%, color-mix(in oklab, var(--color-accent-700) 55%, transparent) 99% 100%),
     linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 1px 100% no-repeat,
     linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 100% 1px no-repeat;
 }
-[data-theme="relleu"] .radar::before {
+.terrain .radar::before {
   background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 30%, transparent), transparent 16%);
 }
-[data-theme="relleu"] .hero-art::after {
-  z-index: 1;
+
+/* B: hero over the real contours of the Mola de Colldejou (public/design/colldejou.svg).
+   The radar and summit are placed at the summit's position in that map: 62.1% / 49.6%. */
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero-wrap .hero {
+  position: relative;
+}
+.terrain {
+  display: none;
+}
+[data-theme="relleu"] .hero-art {
+  display: none;
+}
+[data-theme="relleu"] .terrain {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -8vw;
+  width: min(72vw, 1150px);
+  aspect-ratio: 3 / 2;
+  transform: translateY(-50%);
+  background: url("/design/colldejou.svg") center / 100% 100% no-repeat;
+  mask-image: linear-gradient(to right, transparent 0, #000 40%);
+  pointer-events: none;
+}
+.summit {
+  position: absolute;
+  left: 62.1%;
+  top: 49.6%;
+  width: 1rem;
+  height: 0.9rem;
+  transform: translate(-50%, -70%);
+  background: var(--rust);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.terrain-label {
+  position: absolute;
+  left: 62.1%;
+  top: calc(49.6% + 1rem);
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--rust);
+  white-space: nowrap;
+}
+@media (max-width: 899px) {
+  [data-theme="relleu"] .terrain {
+    top: 0;
+    right: -45vw;
+    width: 150vw;
+    transform: none;
+    opacity: 0.6;
+    mask-image: linear-gradient(to right, transparent 0, #000 45%);
+  }
+  .terrain-label {
+    display: none;
+  }
 }
