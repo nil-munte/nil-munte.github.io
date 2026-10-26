@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Career from "../../views/Career.astro";
+import Projects from "../../views/Projects.astro";
+import About from "../../views/About.astro";
+import { langs, routes, useTranslations, type Lang } from "../../i18n/ui";
+
+const views = { career: Career, projects: Projects, about: About } as const;
+type ViewKey = keyof typeof views;
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) =>
+    (["career", "projects", "about"] as const).map((key) => ({
+      params: { lang, page: routes[key][lang] },
+      props: { key },
+    })),
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const { key } = Astro.props as { key: ViewKey };
+const t = useTranslations(lang);
+const View = views[key];
+---
+
+<BaseLayout lang={lang} page={key} title={t(`nav.${key}`)} description={t(`meta.${key}`)}>
+  <View lang={lang} />
+</BaseLayout>

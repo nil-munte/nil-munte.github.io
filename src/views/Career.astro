@@ -1,0 +1,159 @@
+---
+import ExperienceItem from "../components/ExperienceItem.astro";
+import Icon from "../components/Icon.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { cv, experience, formatRange, tr } from "../data/cv";
+import { publicFileSize } from "../lib/files";
+import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const sections = [
+  { id: "experience", label: t("career.experience") },
+  { id: "education", label: t("career.education") },
+  { id: "publications", label: t("career.publications") },
+  { id: "awards", label: t("career.awards") },
+  { id: "skills", label: t("career.skills") },
+];
+---
+
+<div class="container-page pt-12 sm:pt-16">
+  <SectionHeading level={1} title={t("career.title")}>
+    <p class="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-400">{t("career.intro")}</p>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <a href={cvPdf(lang)} class="btn-primary"><Icon name="download" />{t("cta.cv")}</a>
+    </div>
+  </SectionHeading>
+
+  <nav class="mb-12 flex flex-wrap gap-2 text-sm" aria-label={t("career.title")}>
+    {sections.map((s) => <a href={`#${s.id}`} class="tag py-1 hover:bg-stone-200 dark:hover:bg-stone-700">{s.label}</a>)}
+  </nav>
+
+  <section aria-labelledby="experience">
+    <SectionHeading id="experience" title={t("career.experience")} />
+    <ol class="relative ml-1.5 space-y-8 border-l border-stone-200 dark:border-stone-800">
+      {experience.map((item) => <ExperienceItem item={item} lang={lang} />)}
+    </ol>
+  </section>
+
+  <section aria-labelledby="education" class="mt-20">
+    <SectionHeading id="education" title={t("career.education")} />
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        cv.education.map((e) => (
+          <li class="card p-5">
+            <p class="text-sm font-medium text-stone-500 tabular-nums">{formatRange(e.start, e.end, lang)}</p>
+            <h3 class="mt-1 font-semibold">{e.title[lang]}</h3>
+            <p class="text-stone-600 dark:text-stone-400">{e.org}</p>
+            {e.detail && <p class="mt-3 text-sm text-stone-600 dark:text-stone-400">{e.detail[lang]}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section aria-labelledby="publications" class="mt-20">
+    <SectionHeading id="publications" title={t("career.publications")} />
+    <ol class="space-y-4">
+      {
+        cv.publications.map((p) => {
+          const size = p.pdf ? publicFileSize(p.pdf) : null;
+          return (
+            <li class="card p-5">
+              <p class="text-sm text-stone-600 dark:text-stone-400">
+                {p.authors} ({p.year})
+              </p>
+              <h3 class="mt-1 font-semibold">{p.title}</h3>
+              <p class="text-sm text-stone-600 italic dark:text-stone-400">{p.venue}</p>
+              <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                {p.pdf && (
+                  <a href={p.pdf} class="link inline-flex items-center gap-1.5">
+                    <Icon name="file" />
+                    {t("pdf")}
+                    {size && <span class="font-normal text-stone-500">· {size}</span>}
+                  </a>
+                )}
+                {p.doi && (
+                  <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" class="link inline-flex items-center gap-1.5">
+                    <Icon name="external" />
+                    DOI {p.doi}
+                  </a>
+                )}
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </section>
+
+  <section aria-labelledby="awards" class="mt-20 grid gap-12 md:grid-cols-2">
+    <div>
+      <SectionHeading id="awards" title={t("career.awards")} />
+      <ul class="space-y-5">
+        {
+          cv.awards.map((a) => (
+            <li class="grid grid-cols-[3.5rem_1fr] gap-3">
+              <span class="font-semibold text-accent-700 tabular-nums dark:text-accent-300">{a.year}</span>
+              <div>
+                <p class="font-medium text-stone-900 dark:text-stone-100">{a.title[lang]}</p>
+                <p class="text-sm text-stone-600 dark:text-stone-400">{a.org[lang]}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2 class="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{t("career.courses")}</h2>
+      <ul class="space-y-5">
+        {
+          cv.courses.map((c) => (
+            <li class="grid grid-cols-[3.5rem_1fr] gap-3">
+              <span class="font-semibold text-accent-700 tabular-nums dark:text-accent-300">{c.year}</span>
+              <div>
+                <p class="font-medium text-stone-900 dark:text-stone-100">{c.title[lang]}</p>
+                <p class="text-sm text-stone-600 dark:text-stone-400">{c.org[lang]}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills" class="mt-20">
+    <SectionHeading id="skills" title={t("career.skills")} />
+    <dl class="grid gap-6 sm:grid-cols-2">
+      {
+        cv.skills.map((s) => (
+          <div>
+            <dt class="font-semibold text-stone-900 dark:text-stone-100">{s.name[lang]}</dt>
+            <dd class="mt-2 flex flex-wrap gap-1.5">
+              {s.items.map((i) => (
+                <span class="tag">{tr(i, lang)}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+      <div>
+        <dt class="font-semibold text-stone-900 dark:text-stone-100">{t("career.languages")}</dt>
+        <dd class="mt-2 flex flex-wrap gap-1.5">
+          {
+            cv.languages.map((l) => (
+              <span class="tag">
+                {l.name[lang]} · {l.level[lang]}
+              </span>
+            ))
+          }
+        </dd>
+      </div>
+    </dl>
+  </section>
+</div>

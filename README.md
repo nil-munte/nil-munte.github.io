@@ -1,96 +1,49 @@
-# Nil Munté Guerrero — Portfolio
+# Nil Munté Guerrero · Portfoli
 
-Welcome to the source code of my personal portfolio website! This portfolio showcases my professional trajectory, projects, and teaching experience in Telecommunications, AI, and Autonomous Mobility.
+Codi de la meva web personal: <https://nil-munte.github.io> ([català](https://nil-munte.github.io/ca/) · [English](https://nil-munte.github.io/en/)).
 
----
+Hi ha la trajectòria, els projectes, les publicacions i el CV en PDF en català i anglès.
 
-## 🌐 Live Site
-[Visit my portfolio](https://nil-munte.github.io)
+## Com funciona
 
-**Available in:**
-- [English](https://nil-munte.github.io/en/)
-- [Català](https://nil-munte.github.io/ca/)
+Tot el contingut surt d'**un sol fitxer**, [`src/data/cv.yaml`](src/data/cv.yaml):
 
----
+```
+src/data/cv.yaml ──► web (Astro)            /ca/, /en/, /ca/carrera/, /en/career/…
+                 └─► CV en PDF (Typst)      /info/ca/CV_…_CA.pdf, /info/en/CV_…_EN.pdf
+```
 
-## 👨‍💻 About Me
-I am a Telecommunications Engineer with a Master's in Artificial Intelligence.  
-I have hands-on experience in embedded systems, software development, ADAS & autonomous mobility projects, research & development, and teaching.
+- La web està feta amb [Astro](https://astro.build/) i [Tailwind CSS](https://tailwindcss.com/) 4, i es publica a GitHub Pages.
+- Els PDF els genera [Typst](https://typst.app/) amb la plantilla [`cv/cv.typ`](cv/cv.typ).
+- Cada push a `main` compila els PDF i la web i els desplega. Les PR només compilen, per comprovar que tot funciona.
 
-Highlights:  
-- Winner of **three awards** for university projects.  
-- Featured in **university campaigns**.  
-- Passionate about **hiking** and a **Boy Scouts monitor**.  
+## Editar el CV
 
----
+1. Obre `src/data/cv.yaml`. Es pot fer des de github.com, amb el llapis.
+2. Canvia o afegeix l'entrada, amb el text en català (`ca`) i en anglès (`en`).
+3. Obre una PR. En fusionar-la, la web i els dos PDF s'actualitzen sols.
 
-## 🛠️ Technologies Used
-- **Framework & Styling:** [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/)  
-- **Frontend:** HTML, CSS, JavaScript, React  
-- **Backend & Tools:** Python, C++, MATLAB, Linux, CAN bus  
-- **Other Tools:** DevOps (CI/CD pipelines), Embedded Systems  
+Si falta un camp o una traducció, la compilació falla i diu exactament on.
 
----
+Altres canvis habituals:
 
-## 📂 Portfolio Sections
-1. **Home:** Introduction and key highlights.  
-2. **Trajectory:** Detailed career and R&D projects:  
-   - ADAS & Autonomous Mobility projects at Applus+ IDIADA  
-   - European research projects (AITHENA, AIGGREGATE)  
-   - NEPHOS Lab projects (Radar & Hand-Gesture Detection Systems)  
-3. **Teaching:** Courses taught at URV, programming workshops, and short projects.  
-4. **About Me:** Personal background, awards, and hobbies.  
+| Vull… | On |
+|---|---|
+| Afegir una foto | Desa-la a `src/assets/profile.jpg` (quadrada) |
+| Afegir una imatge a una feina | Fitxer a `src/assets/media/` i entrada `media` a `cv.yaml` |
+| Destacar un projecte a la portada | `featured: true` a `projects` |
+| Mostrar el telèfon | `person.show_phone: true` |
+| Canviar textos de la interfície | `src/i18n/ui.ts` |
 
----
+## Desenvolupament
 
-## 🎯 Features
-- **Bilingual support** (English / Catalan) with language switcher.  
-- Fully responsive layout for desktop and mobile.  
-- Smooth scrolling and animations with Tailwind utilities.  
-- Interactive project sections with links to papers, GitHub repositories, and demo videos.  
-- Footer with direct contact links (Email, Phone, LinkedIn, GitHub).  
-
----
-
-## 🏗️ Local Development
-### Requirements
-- npm or yarn
-
-### Setup
 ```bash
-# Clone the repository
-git clone https://github.com/nil-munte/nil-munte.github.io.git
-cd nil-munte.github.io
-
-# Install dependencies
 npm install
-
-# Start local dev server
-npm run dev
+npm run dev      # http://localhost:4321
+npm run cv       # genera els PDF (cal Typst: winget install --id Typst.Typst)
+npm run build    # web estàtica a dist/
 ```
 
-### Build
-```bash
-# Build for production
-npm run build
+## Full de ruta
 
-# Preview production build
-npm run preview
-```
-
----
-
-## 🌐 Internationalization
-
-The site is fully bilingual (English / Catalan). All translations are managed in `src/i18n/utils.ts`.
-
-To add or modify content:
-1. Edit the translation keys in `src/i18n/utils.ts`
-2. Add both English and Catalan versions of each text
-
----
-
-## 📄 CV Downloads
-
-- [Download CV (English)](https://nil-munte.github.io/info/en/CV_Nil_Munte_Guerrero_EN.pdf)
-- [Descarregar CV (Català)](https://nil-munte.github.io/info/ca/CV_Nil_Munte_Guerrero_CA.pdf)
+Les millores fetes i les pendents són a [`docs/ROADMAP.md`](docs/ROADMAP.md).

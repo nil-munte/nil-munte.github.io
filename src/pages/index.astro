@@ -1,3 +1,27 @@
 ---
-return Astro.redirect('/en/');
+// GitHub Pages can't redirect on the server, so the root page picks the
+// language in the browser right away. Search engines follow the canonical
+// link and the sitemap instead.
 ---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nil Munté Guerrero</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://nil-munte.github.io/en/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      var prefersCatalan = (navigator.languages || [navigator.language]).some(function (l) {
+        return /^ca\b/i.test(l);
+      });
+      location.replace(prefersCatalan ? "/ca/" : "/en/");
+    </script>
+    <noscript><meta http-equiv="refresh" content="0;url=/en/" /></noscript>
+  </head>
+  <body>
+    <p><a href="/en/">English</a> · <a href="/ca/">Català</a></p>
+  </body>
+</html>

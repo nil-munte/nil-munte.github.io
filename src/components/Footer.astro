@@ -1,6 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import { useTranslations, type Lang } from "../i18n/utils";
+import Icon from "./Icon.astro";
+import { cv } from "../data/cv";
+import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
@@ -10,69 +11,45 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<footer class="mt-16 py-4 bg-gray-100 border-t border-gray-300">
-    <div class="max-w-4xl mx-auto px-4 text-center text-gray-700">
-        <div
-            class="mt-2 flex flex-col md:flex-row justify-center gap-4 text-sm items-center"
-        >
-            <a
-                href="mailto:nilmunte@gmail.com"
-                class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-                📧 {t('footer.email')}: nilmunte@gmail.com
-            </a>
-
-            <span class="hidden md:inline">•</span>
-
-            <a
-                href="tel:+34628119680"
-                class="hover:text-blue-600 flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-                📞 {t('footer.phone')}: +34 628 119 680
-            </a>
-
-            <span class="hidden md:inline">•</span>
-
-            <a
-                href="https://www.linkedin.com/in/nilmunte"
-                target="_blank"
-                class="hover:text-gray-800 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-                <Image
-                    src="/logos/linkedin.png"
-                    alt="LinkedIn"
-                    width="20"
-                    height="20"
-                />
-            </a>
-            <span class="hidden md:inline">•</span>
-
-            <a
-                href="https://github.com/nil-munte"
-                target="_blank"
-                class="hover:text-gray-800 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-                <Image
-                    src="/logos/github-mark.png"
-                    alt="GitHub"
-                    width="20"
-                    height="20"
-                />
-            </a>
-
-            <span class="hidden md:inline">•</span>
-
-            <a
-                href={`/info/${lang}/CV_Nil_Munte_Guerrero_${lang.toUpperCase()}.pdf`}
-                download
-                class="hover:text-blue-600 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-                📄 {t('footer.cv')}
-            </a>
-        </div>
-
-        <p class="text-xs text-gray-500 mt-4">
-            © {new Date().getFullYear()} Nil Munté — {t('footer.copyright')}
-        </p>
+<footer class="mt-24 border-t border-stone-200 dark:border-stone-800">
+  <div class="container-page flex flex-col gap-6 py-10 text-sm text-stone-600 sm:flex-row sm:items-center sm:justify-between dark:text-stone-400">
+    <div>
+      <p class="font-semibold text-stone-900 dark:text-stone-100">{cv.person.name}</p>
+      <p>{cv.person.degrees[lang]}</p>
     </div>
+    <ul class="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <li>
+        <a href={`mailto:${cv.person.email}`} class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+          <Icon name="mail" />{cv.person.email}
+        </a>
+      </li>
+      {
+        cv.person.show_phone && cv.person.phone && (
+          <li>
+            <a href={`tel:${cv.person.phone.replace(/\s/g, "")}`} class="hover:text-stone-900 dark:hover:text-white">
+              {cv.person.phone}
+            </a>
+          </li>
+        )
+      }
+      {
+        cv.person.links.map((l) => (
+          <li>
+            <a href={l.url} rel="me noopener" target="_blank" class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+              <Icon name={l.id as "github" | "linkedin"} />
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href={cvPdf(lang)} class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+          <Icon name="download" />CV (PDF)
+        </a>
+      </li>
+    </ul>
+  </div>
+  <p class="container-page pb-8 text-xs text-stone-500">
+    © {new Date().getFullYear()} {cv.person.name}. {t("footer.updated")}
+  </p>
 </footer>

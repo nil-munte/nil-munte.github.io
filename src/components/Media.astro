@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import YouTube from "./YouTube.astro";
+import type { Media } from "../data/cv";
+import type { Lang } from "../i18n/ui";
+
+interface Props {
+  items: Media[];
+  lang: Lang;
+}
+
+const { items, lang } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/media/*.{jpg,jpeg,png,webp}", { eager: true });
+
+function imageFor(file: string): ImageMetadata {
+  const found = images[`../assets/media/${file}`];
+  if (!found) throw new Error(`cv.yaml refers to src/assets/media/${file}, which does not exist`);
+  return found.default;
+}
+---
+
+{
+  items.length > 0 && (
+    <div class:list={["mt-6 grid gap-4", items.length > 1 && "sm:grid-cols-2"]}>
+      {items.map((item, i) =>
+        "image" in item ? (
+          <Image
+            src={imageFor(item.image)}
+            alt={item.alt[lang]}
+            widths={[480, 800, 1200]}
+            sizes={items.length > 1 ? "(min-width: 640px) 380px, 100vw" : "(min-width: 768px) 760px, 100vw"}
+            class:list={[
+              "aspect-video w-full rounded-xl object-cover",
+              items.length === 3 && i === 0 && "sm:col-span-2",
+            ]}
+          />
+        ) : (
+          <YouTube id={item.youtube} title={item.alt[lang]} lang={lang} />
+        ),
+      )}
+    </div>
+  )
+}
