@@ -15,7 +15,8 @@ Never hard-code content in pages. Add it to `cv.yaml` and render it.
 A topographic map of the Mola de Colldejou with touches of radar signal: warm paper (`stone` scale remapped in `global.css`), green `accent`, `rust` markers, Instrument Sans plus IBM Plex Mono for labels.
 
 - `public/design/colldejou.svg`: real contours (every 20 m) of the Mola de Colldejou and the ridges east of it, 7.2 x 2.4 km, from the ICGC MET-5 elevation model, CC BY 4.0, credited in the footer. The summit is at 31.04% / 49.58% of the map.
-- Home hero (`.hero-grid` in `global.css`): CSS Grid with the text in the page column and the terrain in its own column running to the window's right edge, never behind the text; under 900 px it is a band below the text. `.hero-art` is a size container, and the map, radar and summit marker are all placed from the same `--x` / `--h` values in container units, so the radar stays on the summit at any width. Checked at 375, 768, 1024, 1280, 1440, 1920 and 2560 px.
+- Home hero (`.hero-grid` in `global.css`): the terrain is the background of the whole hero, edge to edge, and fades out before the text column so the text stays clean; under 900 px it is a band below the text. `.hero-art` is a size container, and the map, radar and summit marker are all placed from the same `--x` value in container units, so the radar stays on the summit at any width.
+- Inner pages (`.page-header`): a strip of the same contours behind the title, framed as in the first version of the design.
 - `public/design/chirp.svg`: the FMCW chirp used as the `.signal-rule` separator under every title.
 - No dark mode, on purpose: the paper is part of the identity.
 
