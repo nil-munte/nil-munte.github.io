@@ -13,9 +13,10 @@ person:
   initials: NM
   location: Barcelona
   email: nilmunte@gmail.com
-  phone: "+34 628 119 680"
-  # El telèfon no es publica (spam). Posa-ho a true per mostrar-lo a la web i al PDF.
-  show_phone: false
+  # El telèfon no es publica (spam). Aquest fitxer és públic a GitHub, així que
+  # només hi has d'escriure el número si el vols a la web i al PDF:
+  # phone: "+34 ..."
+  # show_phone: true
   website: https://nil-munte.github.io
   links:
     - id: linkedin
