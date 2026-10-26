@@ -185,37 +185,115 @@ career:
             alt:
               ca: Example Project Video
               en: Example Project Video
+# category: research | web | teaching. image: file in src/assets/projects/.
 projects:
-  - id: portfolio
+  # Recerca i enginyeria
+  - id: radar
+    category: research
     title:
-      ca: El Meu Portfoli
-      en: My Portfolio
+      ca: Detecció d'ocupació i gestos amb radar
+      en: Occupancy and gesture detection with radar
     description:
-      ca: Disseny d'un lloc web de portafoli personal utilitzant Astro i Tailwind CSS.
-      en: Design of a personal portfolio website using Astro and Tailwind CSS.
-    link: https://github.com/nil-munte/nil-munte.github.io
+      ca: Radars FMCW de 60 i 77 GHz per saber qui hi ha dins d'un cotxe i reconèixer gestos de la mà; dos articles IEEE i un premi del COITT.
+      en: 60 and 77 GHz FMCW radars that detect who is inside a car and recognise hand gestures; two IEEE papers and a COITT award.
+    code: https://github.com/nil-munte/Radar_Texas_AWR1642
+    links:
+      - label: { ca: Article IEEE (PDF), en: IEEE paper (PDF) }
+        url: /info/IEEESensors_77GHz.pdf
+      - label: { ca: Radar IWR1443, en: IWR1443 radar }
+        url: https://github.com/nil-munte/Radar_Texas_IWR1443
+      - label: { ca: Radar XM132, en: XM132 radar }
+        url: https://github.com/nil-munte/Radar_Acconeer_XM132
+  - id: grid
+    category: research
+    title:
+      ca: Fluctuacions de freqüència de la xarxa elèctrica
+      en: Power-grid frequency fluctuations
+    description:
+      ca: Model amb equacions diferencials de la sincronització de la xarxa elèctrica de Gran Canària, amb dades reals.
+      en: ODE-based model of power-grid synchronisation on Gran Canaria, using real data.
+    code: https://github.com/nil-munte/Sincronization-Gran-Canaria-Julia-Fortran
+  - id: neural
+    category: research
+    title:
+      ca: Implementació d'una xarxa neuronal
+      en: Neural network implementation
+    description:
+      ca: Una xarxa neuronal senzilla implementada des de zero en Java.
+      en: A simple neural network implemented from scratch in Java.
+    code: https://github.com/nil-munte/Neural-Net
+  # Aplicacions web
+  - id: calcul-cost-trajecte
+    category: web
+    image: calcul-cost-trajecte.jpg
+    title:
+      ca: Cost d'un viatge en cotxe elèctric
+      en: Electric car trip cost
+    description:
+      ca: Calcula el cost real d'un viatge combinant la càrrega a casa i fora, amb el preu de la llum tret de la factura.
+      en: Works out the real cost of a trip by combining home and public charging, with the electricity price taken from your bill.
+    demo: https://nil-munte.github.io/calcul-cost-trajecte/
+    code: https://github.com/nil-munte/calcul-cost-trajecte
+  - id: model-region
+    category: web
+    image: model-region.jpg
+    title:
+      ca: Disponibilitat de models d'IA per regió
+      en: AI model availability by region
+    description:
+      ca: Mostra en quins proveïdors de núvol i regions hi ha cada model d'IA, a partir de la seva documentació.
+      en: Shows which cloud providers and regions offer each AI model, based on their documentation.
+    demo: https://nil-munte.github.io/model-region/
+    code: https://github.com/nil-munte/model-region
+  - id: riudoms-3d
+    category: web
+    image: riudoms-3d.jpg
+    title:
+      ca: Riudoms 3D
+      en: Riudoms 3D
+    description:
+      ca: Recreació 3D navegable del poble amb dades obertes reals (Cadastre, LiDAR de l'ICGC, OpenStreetMap), feta dirigint una IA (Claude Code).
+      en: A walkable 3D model of the village built from real open data (land registry, ICGC LiDAR, OpenStreetMap), made by directing an AI (Claude Code).
+    demo: https://nil-munte.github.io/riudoms-3d/
+    code: https://github.com/nil-munte/riudoms-3d
+  # Docència i divulgació
+  - id: fisica-2n-bat
+    category: teaching
+    image: fisica-2n-bat.jpg
+    title:
+      ca: Física de 2n de Batxillerat
+      en: Upper secondary Physics
+    description:
+      ca: Teoria orientada a exercicis, demos interactives, exercicis amb solució i problemes de les PAU de Catalunya.
+      en: Exercise-oriented theory, interactive demos, worked exercises and Catalan university entrance exam problems (in Catalan).
+    demo: https://nil-munte.github.io/fisica-2n-bat/
+    code: https://github.com/nil-munte/fisica-2n-bat
+  - id: catapulta
+    category: teaching
+    image: catapulta.jpg
+    title:
+      ca: Catapulta parabòlica
+      en: Projectile motion catapult
+    description:
+      ca: Demo interactiva que descompon el moviment parabòlic en un MRU horitzontal i un MRUA vertical.
+      en: Interactive demo that splits projectile motion into uniform horizontal and uniformly accelerated vertical motion (in Catalan).
+    demo: https://nil-munte.github.io/moviment-parabolic-catapulta/
+    code: https://github.com/nil-munte/moviment-parabolic-catapulta
   - id: python
+    category: teaching
     title:
       ca: Introducció a Python
       en: Introduction to Python
     description:
-      ca: Curs introductori de programació Python dissenyat per a parlants de català.
+      ca: Curs introductori de programació en Python pensat per a catalanoparlants.
       en: Introductory Python programming course designed for Catalan speakers.
-    link: https://github.com/nil-munte/Python_course_CAT
-  - id: neural
-    title:
-      ca: Implementació de Xarxa Neuronal
-      en: Neural Network implementation
-    description:
-      ca: Una xarxa neuronal senzilla implementada des de zero en Java.
-      en: A simple neural network implemented from scratch in Java.
-    link: https://github.com/nil-munte/Neural-Net
+    code: https://github.com/nil-munte/Python_course_CAT
+# Paragraphs. [text](https://...) becomes a link.
 about:
-  - ca: Vaig estudiar Enginyeria de Telecomunicacions i vaig completar un Màster en Intel·ligència Artificial.
-    en: I studied Telecommunications Engineering and completed a Master's in Artificial Intelligence.
-  - ca: En el meu temps lliure, m'agrada molt fer senderisme i anar a la muntanya.
-    en: In my free time, I really like hiking and going to the mountain.
-strava:
-  - "16546658485"
-  - "16440414987"
-  - "14300206067"
+  - ca: Vaig estudiar Enginyeria de Telecomunicacions i vaig completar un Màster en Intel·ligència Artificial a la Universitat Rovira i Virgili, on vaig ser delegat de curs a segon, tercer i quart. El 2017, el meu treball de recerca «Nassos electrònics, l'olfacte en un xip» va rebre un Premi de Recerca Jove de la Generalitat de Catalunya.
+    en: >-
+      I studied Telecommunications Engineering and completed a Master's in Artificial Intelligence at Universitat Rovira i Virgili, where I was class representative in my second, third and fourth years. In 2017, my research project "Electronic Noses: Smell on a Chip" received a Youth Research Award from the Government of Catalonia.
+  - ca: També em dedico a la docència. Soc professor associat a la URV des del 2021, faig cursos de Python a l'Acadèmia Gaudí i preparo materials oberts, com els de [Física de 2n de Batxillerat](https://nil-munte.github.io/fisica-2n-bat/).
+    en: I also teach. I've been an associate professor at URV since 2021, I run Python courses at Acadèmia Gaudí and I prepare open materials, such as my [upper secondary Physics](https://nil-munte.github.io/fisica-2n-bat/) site.
+  - ca: En el meu temps lliure, m'agrada molt fer senderisme i anar a la muntanya. Soc monitor d'escoltes i m'agrada cuinar; les receptes que he fet són a [Cuina amb mi](https://nil-munte.github.io/cuina-amb-mi/).
+    en: In my free time, I really like hiking and going to the mountains. I'm a scout leader and I enjoy cooking; the recipes I've made are on [Cuina amb mi](https://nil-munte.github.io/cuina-amb-mi/) (in Catalan).
