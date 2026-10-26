@@ -40,6 +40,7 @@ export const ui = {
     "a11y.skip": "Vés al contingut",
     "a11y.lang": "Idioma",
     "a11y.play": "Reprodueix el vídeo",
+    "a11y.strava": "Activitat a Strava",
   },
   en: {
     "nav.home": "Home",
@@ -57,6 +58,7 @@ export const ui = {
     "a11y.skip": "Skip to content",
     "a11y.lang": "Language",
     "a11y.play": "Play video",
+    "a11y.strava": "Strava activity",
   },
 } as const;
 

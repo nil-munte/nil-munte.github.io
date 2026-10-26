@@ -22,12 +22,24 @@ const t = useTranslations(lang);
     {
       cv.strava.length > 0 && (
         <>
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {/* min-h reserves the embed's height so the page doesn't jump when it loads. */}
+          <div class="strava mt-8 grid gap-4 md:grid-cols-3" data-title={t("a11y.strava")}>
             {cv.strava.map((id) => (
-              <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id={id} data-style="standard" data-from-embed="false" />
+              <div class="min-h-[458px]">
+                <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id={id} data-style="standard" data-from-embed="false" />
+              </div>
             ))}
           </div>
           <script is:inline defer src="https://strava-embeds.com/embed.js" />
+          <script>
+            // Strava's script adds untitled iframes; name them for screen readers.
+            const box = document.querySelector<HTMLElement>(".strava");
+            if (box) {
+              const name = () => box.querySelectorAll("iframe:not([title])").forEach((f) => f.setAttribute("title", box.dataset.title ?? "Strava"));
+              new MutationObserver(name).observe(box, { childList: true, subtree: true });
+              name();
+            }
+          </script>
         </>
       )
     }
