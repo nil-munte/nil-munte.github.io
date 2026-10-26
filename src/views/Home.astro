@@ -1,0 +1,46 @@
+---
+import Icon from "../components/Icon.astro";
+import { cv } from "../data/cv";
+import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="hero-wrap">
+<section class="container-page hero py-20 sm:py-32">
+  <!-- Real contours of the Mola de Colldejou, with the radar on the summit. -->
+  <div class="terrain" aria-hidden="true">
+    <span class="radar"></span>
+    <span class="summit"></span>
+    <span class="terrain-label">Mola de Colldejou · 921 m</span>
+  </div>
+  <div class="hero-text">
+    <p class="eyebrow">{cv.person.roles[lang]}</p>
+    <h1 class="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">{cv.person.name}</h1>
+    <div class="signal-rule mt-6" aria-hidden="true"></div>
+    <p class="mt-5 text-lg text-stone-600">{cv.person.degrees[lang]}</p>
+    <p class="mt-8 text-lg leading-relaxed text-stone-700">{cv.person.presentation[lang]}</p>
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a href={cvPdf(lang)} download class="btn-primary"><Icon name="download" />{t("common.download_cv")}</a>
+      {
+        cv.person.links.map((l) => (
+          <a
+            href={l.url}
+            target="_blank"
+            rel="me noopener"
+            class="grid size-11 place-items-center rounded-lg text-stone-500 hover:bg-stone-100 hover:text-stone-900"
+          >
+            <Icon name={l.id} class="size-5" />
+            <span class="sr-only">{l.label}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+</div>

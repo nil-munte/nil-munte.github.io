@@ -1,39 +1,79 @@
 ---
 import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { ui, type Lang } from "../i18n/utils";
+import { cv } from "../data/cv";
+import { langs, pathFor, useTranslations, type Lang, type PageKey } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
+  /** null for pages without a counterpart in the other language (404). */
+  page: PageKey | null;
+  title?: string;
+  description: string;
 }
 
-const { lang } = Astro.props;
-const currentPath = Astro.url.pathname;
-const site = Astro.site?.toString().replace(/\/$/, '') || 'https://nil-munte.github.io';
+const { lang, page, title, description } = Astro.props;
+const t = useTranslations(lang);
+const site = Astro.site!;
+const siteTitle = cv.person.site_title[lang];
+const fullTitle = title ? `${title} · ${siteTitle}` : siteTitle;
+const canonical = page ? new URL(pathFor(page, lang), site).href : undefined;
+const ogImage = new URL(`/og-${lang}.png`, site).href;
 
-const translations = ui[lang];
-const pageTitle = translations['meta.title'] || translations['nav.portfolio_title'];
-
-function getAlternatePath(targetLang: Lang): string {
-  return currentPath.replace(`/${lang}/`, `/${targetLang}/`);
-}
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: cv.person.name,
+  url: site.href,
+  email: `mailto:${cv.person.email}`,
+  jobTitle: cv.person.roles[lang],
+  description: cv.person.presentation[lang],
+  sameAs: cv.person.links.map((l) => l.url),
+};
 ---
 
-<html lang={lang} class="scroll-smooth h-full">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{pageTitle}</title>
-        <link rel="alternate" hreflang="en" href={`${site}/en/`} />
-        <link rel="alternate" hreflang="ca" href={`${site}/ca/`} />
-        <link rel="alternate" hreflang="x-default" href={`${site}/en/`} />
-    </head>
-    <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-        <Navbar lang={lang} currentPath={currentPath} />
-        <main class="flex-grow px-6 md:px-16 lg:px-32 py-8">
-            <slot />
-        </main>
-        <Footer lang={lang} />
-    </body>
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={cv.person.name} />
+    <meta name="theme-color" content="#f4efe4" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {
+      page &&
+        langs.map((l) => <link rel="alternate" hreflang={l} href={new URL(pathFor(page, l), site).href} />)
+    }
+    {page && <link rel="alternate" hreflang="x-default" href={new URL(pathFor(page, "en"), site).href} />}
+
+    <meta property="og:type" content={page === "home" ? "profile" : "website"} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === "ca" ? "ca_ES" : "en_GB"} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {page === "home" && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow"
+      >{t("a11y.skip")}</a
+    >
+    <Header lang={lang} page={page} />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
 </html>

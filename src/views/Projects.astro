@@ -1,0 +1,20 @@
+---
+import PageHeader from "../components/PageHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { cv } from "../data/cv";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageHeader title={t("title.projects")} />
+<div class="container-page">
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {cv.projects.map((p) => <ProjectCard project={p} lang={lang} />)}
+  </div>
+</div>

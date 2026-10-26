@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { cv } from "../data/cv";
+import { pathFor, useTranslations } from "../i18n/ui";
+
+const ca = useTranslations("ca");
+const en = useTranslations("en");
+---
+
+<BaseLayout lang="en" page={null} title="404" description={cv.person.presentation.en}>
+  <section class="container-page py-28 text-center">
+    <p class="page-title text-7xl">404</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href={pathFor("home", "ca")} lang="ca" class="btn-primary">{ca("nav.home")}</a>
+      <a href={pathFor("home", "en")} class="btn-ghost">{en("nav.home")}</a>
+    </div>
+  </section>
+</BaseLayout>

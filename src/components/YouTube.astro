@@ -1,0 +1,45 @@
+---
+import Icon from "./Icon.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+// Shows the thumbnail and only loads the player (from youtube-nocookie) on click.
+interface Props {
+  id: string;
+  title: string;
+  lang: Lang;
+}
+
+const { id, title, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="relative aspect-video overflow-hidden rounded-xl bg-stone-900" data-youtube={id} data-title={title}>
+  <img
+    src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+    alt=""
+    loading="lazy"
+    decoding="async"
+    width="480"
+    height="360"
+    class="absolute inset-0 size-full object-cover"
+  />
+  <button type="button" class="group absolute inset-0 grid place-items-center text-white" aria-label={`${t("a11y.play")}: ${title}`}>
+    <span class="grid size-16 place-items-center rounded-full bg-black/60 transition group-hover:scale-105 group-hover:bg-accent-700">
+      <Icon name="play" class="ml-1 size-7" />
+    </span>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-youtube]").forEach((box) => {
+    box.querySelector("button")?.addEventListener("click", () => {
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${box.dataset.youtube}?autoplay=1`;
+      iframe.title = box.dataset.title ?? "";
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+      iframe.allowFullscreen = true;
+      iframe.className = "absolute inset-0 size-full";
+      box.replaceChildren(iframe);
+    });
+  });
+</script>

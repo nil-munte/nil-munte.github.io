@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import YouTube from "./YouTube.astro";
+import type { Media } from "../data/cv";
+import type { Lang } from "../i18n/ui";
+
+interface Props {
+  items: Media[];
+  lang: Lang;
+}
+
+const { items, lang } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/media/*.{jpg,jpeg,png,webp}", { eager: true });
+
+function imageFor(file: string): ImageMetadata {
+  const found = images[`../assets/media/${file}`];
+  if (!found) throw new Error(`cv.yaml refers to src/assets/media/${file}, which does not exist`);
+  return found.default;
+}
+
+// Two items side by side from 640 px; otherwise one per row. The card content
+// is at most ~890 px wide, so 1780 px covers high-density screens.
+const twoUp = items.length === 2;
+const sizes = twoUp ? "(min-width: 1000px) 440px, (min-width: 640px) 45vw, 100vw" : "(min-width: 1000px) 890px, 100vw";
+---
+
+{
+  items.length > 0 && (
+    <div class:list={["mt-6 grid gap-4", twoUp && "sm:grid-cols-2"]}>
+      {items.map((item) =>
+        "image" in item ? (
+          <Image
+            src={imageFor(item.image)}
+            alt={item.alt[lang]}
+            widths={[480, 890, 1200, 1780]}
+            sizes={sizes}
+            quality={85}
+            class="aspect-video w-full rounded-xl object-cover"
+          />
+        ) : (
+          <YouTube id={item.youtube} title={item.alt[lang]} lang={lang} />
+        ),
+      )}
+    </div>
+  )
+}

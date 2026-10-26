@@ -1,0 +1,111 @@
+---
+import Icon from "./Icon.astro";
+import { cv } from "../data/cv";
+import { langs, pathFor, useTranslations, type Lang, type PageKey } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+  page: PageKey | null;
+}
+
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+
+const nav: { key: PageKey; label: string }[] = [
+  { key: "home", label: t("nav.home") },
+  { key: "career", label: t("nav.career") },
+  { key: "projects", label: t("nav.projects") },
+  { key: "about", label: t("nav.about") },
+];
+const initials = cv.person.name.split(" ").slice(0, 2).map((w) => w[0]).join("");
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-stone-200/80 bg-stone-50/85 backdrop-blur"
+>
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href={pathFor("home", lang)} class="flex items-center gap-2.5 font-semibold text-stone-900">
+      <span
+        class="grid size-8 place-items-center rounded-lg bg-accent-700 text-xs font-bold tracking-tight text-white"
+        aria-hidden="true">{initials}</span
+      >
+      <span>{cv.person.site_title[lang]}</span>
+    </a>
+
+    <div class="flex items-center gap-2">
+      <nav aria-label={t("a11y.menu")} class="hidden md:block">
+        <ul class="flex items-center gap-1 text-sm font-medium">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={pathFor(item.key, lang)}
+                  aria-current={item.key === page ? "page" : undefined}
+                  class="rounded-lg px-3 py-2 text-stone-600 hover:bg-stone-100 hover:text-stone-900 aria-[current=page]:text-accent-700"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex rounded-lg border border-stone-200 p-0.5 text-xs font-semibold" role="group" aria-label={t("a11y.lang")}>
+        {
+          langs.map((l) => (
+            <a
+              href={pathFor(page ?? "home", l)}
+              hreflang={l}
+              lang={l}
+              aria-current={l === lang ? "true" : undefined}
+              class="rounded-md px-2 py-1 uppercase text-stone-500 hover:text-stone-900 aria-[current=true]:bg-stone-900 aria-[current=true]:text-stone-50"
+            >
+              {l}
+            </a>
+          ))
+        }
+      </div>
+
+      <button
+        type="button"
+        class="group grid size-10 place-items-center rounded-lg text-stone-700 hover:bg-stone-100 md:hidden"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span class="sr-only">{t("a11y.menu")}</span>
+        <Icon name="menu" class="size-5 group-aria-expanded:hidden" />
+        <Icon name="close" class="hidden size-5 group-aria-expanded:block" />
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" aria-label={t("a11y.menu")} class="hidden border-t border-stone-200 md:hidden">
+    <ul class="container-page flex flex-col py-2 text-base font-medium">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={pathFor(item.key, lang)}
+              aria-current={item.key === page ? "page" : undefined}
+              class="block rounded-lg px-3 py-3 text-stone-700 hover:bg-stone-100 aria-[current=page]:text-accent-700"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.getElementById("mobile-nav");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    menu?.classList.toggle("hidden", !open);
+  });
+</script>

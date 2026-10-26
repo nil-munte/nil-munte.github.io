@@ -1,3 +1,261 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@fontsource/instrument-sans/400.css";
+@import "@fontsource/instrument-sans/500.css";
+@import "@fontsource/instrument-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/*
+ * Identity: a topographic map of the Mola de Colldejou (warm paper, green ink)
+ * with touches of radar signal (monospaced labels, an FMCW chirp, a sweep).
+ * The stone scale is remapped to warm paper tones.
+ */
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-stone-50: #f4efe4;
+  --color-stone-100: #ebe5d6;
+  --color-stone-200: #e0d9c7;
+  --color-stone-300: #cbc3ae;
+  --color-stone-400: #a39b86;
+  --color-stone-500: #7d7663;
+  --color-stone-600: #5b5648;
+  --color-stone-700: #45413a;
+  --color-stone-800: #2b2a24;
+  --color-stone-900: #1f1e1a;
+  --color-stone-950: #141310;
+
+  --color-accent-50: #eef4f0;
+  --color-accent-100: #d5e5dc;
+  --color-accent-300: #8fb3a0;
+  --color-accent-400: #5d8f77;
+  --color-accent-500: #3f765d;
+  --color-accent-600: #346a52;
+  --color-accent-700: #2f5d4a;
+  --color-accent-800: #264c3d;
+  --color-accent-900: #1d3a2f;
+
+  --color-rust: #a0522d;
+}
+
+:root {
+  --card: #fbf8f1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-stone-50 text-stone-800 antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply text-stone-900;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility eyebrow {
+  @apply font-mono text-[0.8rem] font-medium tracking-[0.04em] text-accent-800;
+}
+
+@utility page-title {
+  @apply text-4xl font-bold tracking-tight sm:text-5xl;
+}
+
+@utility card {
+  @apply rounded-xl border border-stone-200;
+  background: var(--card);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors;
+}
+
+@utility btn-primary {
+  @apply btn bg-accent-700 text-white hover:bg-accent-800;
+}
+
+@utility btn-ghost {
+  @apply btn border border-stone-300 text-stone-800 hover:border-stone-400 hover:bg-stone-100;
+}
+
+@utility link {
+  @apply font-medium text-accent-700 underline decoration-accent-300 underline-offset-4 hover:decoration-2;
+}
+
+.prose-text strong {
+  @apply font-semibold text-stone-900;
+}
+
+.bullet {
+  @apply relative pl-5;
+}
+.bullet::before {
+  content: "";
+  @apply absolute top-[0.65em] left-0 size-1.5 rounded-full bg-accent-500;
+}
+
+/* Signal separator: an FMCW chirp drawn in the accent colour. */
+.signal-rule {
+  width: 15rem;
+  max-width: 100%;
+  height: 1.5rem;
+  background-color: var(--color-accent-700);
+  mask: url("/design/chirp.svg") left center / contain no-repeat;
+}
+
+/* Career timeline: a hiking trail with a summit marker per stage. */
+.timeline {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.4rem;
+  border-left: 2px dashed var(--color-stone-300);
+}
+.timeline-item {
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 1.9rem;
+  left: -1.75rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  background: var(--color-rust);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/*
+ * Home: the real contours of the Mola de Colldejou (public/design/colldejou.svg,
+ * ICGC MET-5) with a radar sweep on the summit. The summit sits at 62.1% / 49.6%
+ * of that map; the map is placed so the summit lands at ~74% of the content width.
+ */
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero {
+  position: relative;
+}
+.hero-text {
+  position: relative;
+  max-width: 36rem;
+}
+.terrain {
+  position: absolute;
+  top: 50%;
+  left: 21%;
+  width: 85%;
+  aspect-ratio: 3 / 2;
+  transform: translateY(-50%);
+  background: url("/design/colldejou.svg") center / 100% 100% no-repeat;
+  mask-image: linear-gradient(to right, transparent 0, #000 35%), linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+.radar {
+  position: absolute;
+  left: 62.1%;
+  top: 49.6%;
+  width: 44%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, transparent 0 32.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 33% 33.4%, transparent 34% 65.5%, color-mix(in oklab, var(--color-accent-700) 35%, transparent) 66% 66.4%, transparent 67% 98.6%, color-mix(in oklab, var(--color-accent-700) 55%, transparent) 99% 100%),
+    linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 1px 100% no-repeat,
+    linear-gradient(color-mix(in oklab, var(--color-accent-700) 25%, transparent), color-mix(in oklab, var(--color-accent-700) 25%, transparent)) center / 100% 1px no-repeat;
+}
+.radar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, color-mix(in oklab, var(--color-accent-700) 30%, transparent), transparent 16%);
+  animation: sweep 6s linear infinite;
+}
+@keyframes sweep {
+  to { transform: rotate(360deg); }
+}
+.summit {
+  position: absolute;
+  left: 62.1%;
+  top: 49.6%;
+  width: 1rem;
+  height: 0.9rem;
+  transform: translate(-50%, -70%);
+  background: var(--color-rust);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.terrain-label {
+  position: absolute;
+  left: 62.1%;
+  top: calc(49.6% + 1rem);
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-rust);
+  white-space: nowrap;
+}
+@media (max-width: 899px) {
+  .terrain {
+    top: 0;
+    left: auto;
+    right: -45vw;
+    width: 150vw;
+    transform: none;
+    opacity: 0.6;
+    mask-image: linear-gradient(to right, transparent 0, #000 45%), linear-gradient(to bottom, #000 70%, transparent);
+  }
+  .terrain-label {
+    display: none;
+  }
+}
+
+/* Inner pages: a thin strip of the same contours behind the title. */
+.page-header {
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/design/colldejou.svg") right 8% top 45% / max(900px, 70%) auto no-repeat;
+  mask-image: linear-gradient(to right, transparent 25%, #000 75%), linear-gradient(to bottom, #000 55%, transparent);
+  mask-composite: intersect;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.page-header > * {
+  position: relative;
+}
