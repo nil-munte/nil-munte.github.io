@@ -18,22 +18,25 @@ function imageFor(file: string): ImageMetadata {
   if (!found) throw new Error(`cv.yaml refers to src/assets/media/${file}, which does not exist`);
   return found.default;
 }
+
+// Two items side by side from 640 px; otherwise one per row. The card content
+// is at most ~890 px wide, so 1780 px covers high-density screens.
+const twoUp = items.length === 2;
+const sizes = twoUp ? "(min-width: 1000px) 440px, (min-width: 640px) 45vw, 100vw" : "(min-width: 1000px) 890px, 100vw";
 ---
 
 {
   items.length > 0 && (
-    <div class:list={["mt-6 grid gap-4", items.length > 1 && "sm:grid-cols-2"]}>
-      {items.map((item, i) =>
+    <div class:list={["mt-6 grid gap-4", twoUp && "sm:grid-cols-2"]}>
+      {items.map((item) =>
         "image" in item ? (
           <Image
             src={imageFor(item.image)}
             alt={item.alt[lang]}
-            widths={[480, 800, 1200]}
-            sizes={items.length > 1 ? "(min-width: 640px) 380px, 100vw" : "(min-width: 768px) 760px, 100vw"}
-            class:list={[
-              "aspect-video w-full rounded-xl object-cover",
-              items.length === 3 && i === 0 && "sm:col-span-2",
-            ]}
+            widths={[480, 890, 1200, 1780]}
+            sizes={sizes}
+            quality={85}
+            class="aspect-video w-full rounded-xl object-cover"
           />
         ) : (
           <YouTube id={item.youtube} title={item.alt[lang]} lang={lang} />

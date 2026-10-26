@@ -1,10 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
 import Icon from "../components/Icon.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import { cv, experience, formatDate, yearsSince } from "../data/cv";
-import { cvPdf, pathFor, useTranslations, type Lang } from "../i18n/ui";
+import { cv } from "../data/cv";
+import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
@@ -12,123 +9,31 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
-// Drop a square photo at src/assets/profile.(jpg|png|webp) and it replaces the monogram.
-const photos = import.meta.glob<{ default: ImageMetadata }>("../assets/profile.{jpg,jpeg,png,webp}", { eager: true });
-const photo = Object.values(photos)[0]?.default;
-
-const stats = [
-  { value: cv.publications.length, label: t("home.stats.papers") },
-  { value: cv.awards.length, label: t("home.stats.awards") },
-  { value: cv.person.eu_projects, label: t("home.stats.eu") },
-  { value: yearsSince(experience.filter((e) => e.kind === "teaching").map((e) => e.id)), label: t("home.stats.teaching") },
-];
-
-const current = experience.filter((e) => e.end === null);
-const featured = cv.projects.filter((p) => p.featured).slice(0, 3);
 ---
 
-<section class="container-page grid items-center gap-10 pt-12 pb-16 sm:pt-20 md:grid-cols-[1fr_auto] md:gap-16">
-  <div>
-    <p class="eyebrow">{cv.person.roles[lang]}</p>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">{cv.person.name}</h1>
-    <p class="mt-5 max-w-2xl text-xl leading-snug font-medium text-stone-800 sm:text-2xl dark:text-stone-100">
-      {cv.person.headline[lang]}
-    </p>
-    <p class="mt-5 max-w-2xl leading-relaxed text-stone-600 dark:text-stone-400">{cv.person.summary[lang]}</p>
-
-    <div class="mt-8 flex flex-wrap items-center gap-3">
-      <a href={cvPdf(lang)} class="btn-primary"><Icon name="download" />{t("cta.cv")}</a>
-      <a href={`mailto:${cv.person.email}`} class="btn-ghost"><Icon name="mail" />{t("cta.contact")}</a>
-      <div class="ml-1 flex items-center gap-1">
-        {
-          cv.person.links.map((l) => (
-            <a
-              href={l.url}
-              target="_blank"
-              rel="me noopener"
-              class="grid size-10 place-items-center rounded-lg text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:hover:bg-stone-800 dark:hover:text-white"
-            >
-              <Icon name={l.id as "github" | "linkedin"} class="size-5" />
-              <span class="sr-only">{l.label}</span>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-    <p class="mt-6 inline-flex items-center gap-1.5 text-sm text-stone-500">
-      <Icon name="pin" />{cv.person.location} · {cv.person.degrees[lang]}
-    </p>
-  </div>
-
-  {
-    photo ? (
-      <Image
-        src={photo}
-        alt={cv.person.name}
-        widths={[256, 512]}
-        sizes="256px"
-        loading="eager"
-        class="mx-auto size-48 rounded-3xl object-cover shadow-lg ring-1 ring-stone-200 sm:size-64 md:order-none dark:ring-stone-800"
-      />
-    ) : (
-      <div
-        class="relative mx-auto hidden size-64 place-items-center overflow-hidden rounded-3xl bg-accent-700 text-7xl font-bold tracking-tighter text-white shadow-lg md:grid dark:bg-accent-800"
-        aria-hidden="true"
-      >
-        <svg class="absolute inset-0 size-full opacity-25" viewBox="0 0 200 200" fill="none" stroke="currentColor">
-          <circle cx="100" cy="100" r="30" />
-          <circle cx="100" cy="100" r="55" />
-          <circle cx="100" cy="100" r="80" />
-          <circle cx="100" cy="100" r="105" />
-        </svg>
-        <span class="relative">{cv.person.initials}</span>
-      </div>
-    )
-  }
-</section>
-
-<section class="border-y border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900">
-  <dl class="container-page grid grid-cols-2 gap-y-6 py-8 sm:grid-cols-4">
-    {
-      stats.map((s) => (
-        <div class="flex flex-col-reverse items-start sm:items-center">
-          <dt class="text-sm text-stone-600 dark:text-stone-400">{s.label}</dt>
-          <dd class="text-3xl font-bold tracking-tight text-accent-700 tabular-nums dark:text-accent-300">{s.value}</dd>
-        </div>
-      ))
-    }
-  </dl>
-</section>
-
-<section class="container-page mt-16">
-  <h2 class="eyebrow">{t("home.now")}</h2>
-  <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      current.map((e) => (
-        <li>
-          <a href={pathFor("career", lang, `#${e.id}`)} class="card block h-full p-5 transition hover:border-accent-300 dark:hover:border-accent-700">
-            <p class="font-semibold text-stone-900 dark:text-stone-50">{e.role[lang]}</p>
-            <p class="text-sm text-stone-600 dark:text-stone-400">{e.org}</p>
-            <p class="mt-2 text-xs text-stone-500">
-              {lang === "ca" ? "Des de" : "Since"} {formatDate(e.start, lang)}
-            </p>
+<section class="container-page hero py-20 sm:py-28">
+  <div class="hero-text">
+    <p class="eyebrow hero-kicker">{cv.person.roles[lang]}</p>
+    <h1 class="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">{cv.person.name}</h1>
+    <div class="signal-rule mt-6" aria-hidden="true"></div>
+    <p class="mt-5 text-lg text-stone-600 dark:text-stone-400">{cv.person.degrees[lang]}</p>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-stone-700 dark:text-stone-300">{cv.person.presentation[lang]}</p>
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a href={cvPdf(lang)} download class="btn-primary"><Icon name="download" />{t("common.download_cv")}</a>
+      {
+        cv.person.links.map((l) => (
+          <a
+            href={l.url}
+            target="_blank"
+            rel="me noopener"
+            class="grid size-11 place-items-center rounded-lg text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:hover:bg-stone-800 dark:hover:text-white"
+          >
+            <Icon name={l.id} class="size-5" />
+            <span class="sr-only">{l.label}</span>
           </a>
-        </li>
-      ))
-    }
-  </ul>
-  <a href={pathFor("career", lang)} class="link mt-5 inline-flex items-center gap-1.5 text-sm">
-    {t("cta.career")}<Icon name="arrow" />
-  </a>
-</section>
-
-<section class="container-page mt-16">
-  <h2 class="text-2xl font-bold tracking-tight">{t("home.featured")}</h2>
-  <div class="mt-6 grid gap-4 md:grid-cols-3">
-    {featured.map((p) => <ProjectCard project={p} lang={lang} />)}
+        ))
+      }
+    </div>
   </div>
-  <a href={pathFor("projects", lang)} class="link mt-5 inline-flex items-center gap-1.5 text-sm">
-    {t("cta.all_projects")}<Icon name="arrow" />
-  </a>
+  <div class="hero-art" aria-hidden="true"></div>
 </section>

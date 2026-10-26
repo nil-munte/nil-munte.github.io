@@ -1,45 +1,21 @@
 ---
 import Icon from "./Icon.astro";
-import { tr, type Project } from "../data/cv";
+import type { CV } from "../data/cv";
 import { useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
-  project: Project;
+  project: CV["projects"][number];
   lang: Lang;
 }
 
 const { project, lang } = Astro.props;
 const t = useTranslations(lang);
-const main = project.demo ?? project.code;
 ---
 
-<article class="card group relative flex flex-col p-5 transition hover:border-accent-300 dark:hover:border-accent-700">
-  <h3 class="text-base font-semibold">
-    {main ? (
-      <a href={main} target="_blank" rel="noopener" class="after:absolute after:inset-0 after:rounded-2xl">
-        {project.title[lang]}
-      </a>
-    ) : project.title[lang]}
-  </h3>
-  <p class="mt-2 flex-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{project.description[lang]}</p>
-  <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
-    {project.tags.map((tag) => <li class="tag">{tag}</li>)}
-  </ul>
-  <div class="relative z-10 mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-    {project.demo && (
-      <a href={project.demo} target="_blank" rel="noopener" class="link inline-flex items-center gap-1.5">
-        <Icon name="external" />{t("projects.demo")}
-      </a>
-    )}
-    {project.code && (
-      <a href={project.code} target="_blank" rel="noopener" class="link inline-flex items-center gap-1.5">
-        <Icon name="code" />{t("projects.code")}
-      </a>
-    )}
-    {project.extra_links.map((l) => (
-      <a href={l.url} target="_blank" rel="noopener" class="link inline-flex items-center gap-1.5">
-        <Icon name={l.url.endsWith(".pdf") ? "file" : "code"} />{tr(l.label, lang)}
-      </a>
-    ))}
-  </div>
+<article class="card relative flex flex-col p-6 transition hover:border-accent-300 dark:hover:border-accent-700">
+  <h3 class="text-lg font-semibold">{project.title[lang]}</h3>
+  <p class="mt-2 flex-1 leading-relaxed text-stone-600 dark:text-stone-400">{project.description[lang]}</p>
+  <a href={project.link} target="_blank" rel="noopener" class="link mt-4 inline-flex items-center gap-1.5 text-sm after:absolute after:inset-0">
+    {t("common.view_project")}<Icon name="arrow" />
+  </a>
 </article>

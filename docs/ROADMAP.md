@@ -1,32 +1,37 @@
 # Full de ruta del portfoli
 
-Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-munte.github.io/> i el codi de `main` (`da066d6`). Cada punt diu què passava, per què importa i com es resol. Els marcats amb ✅ es resolen a la branca `redisseny-portfoli`; la resta depenen d'una decisió o d'una acció teva.
+Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-munte.github.io/> i el codi de `main` (`da066d6`). Cada punt diu què passava, per què importa i com es resol.
+
+- ✅ resolt a la branca `redisseny-portfoli`
+- 🎨 en revisió: disseny visual (maquetes A i B)
+- 📝 pendent de la revisió de contingut, que es farà a part. **Fins llavors, el contingut de la web és exactament l'anterior.**
+- ⏳ depèn d'una decisió o d'una acció teva
 
 ## 1. Errors que calia corregir ja
 
 | # | Problema | Impacte | Solució |
 |---|---|---|---|
-| 1.1 ✅ | Els tres PDF del CV (`ca`, `en` i `Executive`) eren el mateix fitxer, en anglès. | Qui baixava el CV en català el rebia en anglès. | Els PDF es generen automàticament amb Typst a partir de `src/data/cv.yaml`, un per idioma. |
+| 1.1 📝 | Els tres PDF del CV (`ca`, `en` i `Executive`) eren el mateix fitxer, en anglès. | Qui baixava el CV en català el rebia en anglès. | Generar els PDF amb Typst a partir de `src/data/cv.yaml`, un per idioma. Es farà amb la revisió de contingut; de moment es mantenen els PDF anteriors. |
 | 1.2 ✅ | L'arrel `/` mostrava «Redirecting…» durant 2 segons. | Primera impressió dolenta en l'URL que més es comparteix. | Redirecció immediata i segons l'idioma del navegador (`ca` → `/ca/`, la resta → `/en/`). |
 | 1.3 ✅ | Sense `sitemap.xml`, `robots.txt` ni pàgina 404 pròpia. | Google no tenia cap guia per indexar el lloc; avui no surt cercant el nom. | `@astrojs/sitemap` amb alternatives d'idioma, `robots.txt` i 404 bilingüe. |
 | 1.4 ✅ | Totes les pàgines tenien el mateix títol i cap descripció, Open Graph ni `canonical`. Els `hreflang` apuntaven sempre a la portada. | Resultats de cerca pobres i enllaços sense targeta a LinkedIn. | Títol i descripció per pàgina, `canonical`, `hreflang` per pàgina, Open Graph amb imatge i JSON-LD `Person`. |
 | 1.5 ✅ | La favicon era el logo d'Astro i no estava enllaçada. | Aspecte de plantilla. | Monograma propi «NM». |
 | 1.6 ✅ | La pàgina de Carrera carregava ~11 MB d'imatges sense optimitzar i dos iframes de YouTube de cop. | Càrrega lenta, sobretot al mòbil. | Imatges a `src/assets/` processades per Astro (WebP, mides responsives, càrrega diferida) i vídeos que només es carreguen en fer-hi clic (`youtube-nocookie`). |
 | 1.7 ✅ | Al mòbil el menú no es plegava i el selector EN/CA quedava fora de la vista. | Navegació trencada al mòbil. | Menú desplegable i selector d'idioma sempre visible. |
-| 1.8 ✅ | El telèfon personal sortia a totes les pàgines. | Spam i trucades comercials. | Fora de la web i del PDF públic; el contacte és el correu i LinkedIn. Es pot reactivar amb `contact.show_phone`. |
-| 1.9 ✅ | Errors de català: «coordinate múltiples socis», «Gestos de Ma», «ThinkSpeak», majúscules a l'anglesa («La Meva Carrera»), calcs («estic apassionat per»). | Resta credibilitat. | Textos catalans reescrits; «ThingSpeak» corregit en tots dos idiomes. |
+| 1.8 ✅ | El telèfon personal sortia a totes les pàgines (i és a l'historial del repo des de `d5fdd4f`). | Spam i trucades comercials. | Fora de la web i del PDF públic; el contacte és el correu i LinkedIn. Es pot reactivar amb `contact.show_phone`. |
+| 1.9 📝 | Errors de català: «coordinate múltiples socis», «Gestos de Ma», «ThinkSpeak», majúscules a l'anglesa («La Meva Carrera»), calcs («estic apassionat per»). | Resta credibilitat. | Textos catalans reescrits; «ThingSpeak» corregit en tots dos idiomes. |
 
 ## 2. Contingut
 
 | # | Problema | Solució |
 |---|---|---|
-| 2.1 ✅ | La Carrera no tenia cap data. | Línia de temps amb dates de cada etapa, presa del CV. |
-| 2.2 ✅ | Faltaven etapes que sí que hi ha al CV: ALEPHSYS Lab (2023–2024) i Generation RFID (2020–2021). | Afegides. |
-| 2.3 ✅ | Formació, premis, cursos, idiomes i habilitats només eren al PDF. | Seccions pròpies a la Carrera. |
-| 2.4 ✅ | Les publicacions estaven enterrades dins del text. | Secció de publicacions amb la cita completa. |
-| 2.5 ✅ | Projectes tenia 3 targetes, una de les quals era la mateixa web. | Projectes agrupats (recerca, aplicacions web, docència) amb demo i codi: calculadora del cost del viatge, Cuina amb mi, Riudoms 3D, Model-Region, Física de 2n de BAT, catapulta, radars, curs de Python… |
-| 2.6 ✅ | La portada era genèrica: sense xifres ni proposta de valor. | Portada amb frase de valor, xifres clau, projectes destacats i accés al CV i al contacte. |
-| 2.7 ✅ | Sobre mi tenia dues frases. El README deia més coses que la web. | Text personal: muntanya, escoltes, delegat de curs, premi de recerca jove, mobilitat elèctrica. |
+| 2.1 📝 | La Carrera no tenia cap data. | Línia de temps amb dates de cada etapa, presa del CV. |
+| 2.2 📝 | Faltaven etapes que sí que hi ha al CV: ALEPHSYS Lab (2023–2024) i Generation RFID (2020–2021). | Afegides. |
+| 2.3 📝 | Formació, premis, cursos, idiomes i habilitats només eren al PDF. | Seccions pròpies a la Carrera. |
+| 2.4 📝 | Les publicacions estaven enterrades dins del text. | Secció de publicacions amb la cita completa. |
+| 2.5 📝 | Projectes tenia 3 targetes, una de les quals era la mateixa web. | Projectes agrupats (recerca, aplicacions web, docència) amb demo i codi: calculadora del cost del viatge, Cuina amb mi, Riudoms 3D, Model-Region, Física de 2n de BAT, catapulta, radars, curs de Python… |
+| 2.6 📝 | La portada era genèrica: sense xifres ni proposta de valor. | Portada amb frase de valor, xifres clau, projectes destacats i accés al CV i al contacte. |
+| 2.7 📝 | Sobre mi tenia dues frases. El README deia més coses que la web. | Text personal: muntanya, escoltes, delegat de curs, premi de recerca jove, mobilitat elèctrica. |
 | 2.8 ⏳ | **Feina actual.** El CV de novembre de 2025 diu «Applus+ IDIADA, maig 2024 – actualitat». | Confirma-ho o digues què hi ha de posar. Es canvia a `src/data/cv.yaml` (`experience[0].end`). |
 | 2.9 ⏳ | **Foto.** No n'hi ha cap; ara es mostra el monograma. | Desa una foto quadrada a `src/assets/profile.jpg` i surt sola a la portada. |
 | 2.10 ⏳ | **DOI de les publicacions.** | Afegeix `doi:` a cada publicació de `cv.yaml` i s'enllaça sol. |
@@ -47,10 +52,10 @@ Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-
 
 | # | Canvi |
 |---|---|
-| 4.1 ✅ | Identitat pròpia: color verd blavós (mobilitat elèctrica) en lloc de l'índigo per defecte de Tailwind, tipografia Inter allotjada al mateix lloc. |
-| 4.2 ✅ | Mode fosc automàtic segons el sistema. |
-| 4.3 ✅ | Fora la barra de gradient amb pulsació i el text justificat. |
-| 4.4 ✅ | Carrera com a línia de temps; projectes com a targetes amb etiquetes i enllaços. |
+| 4.1 🎨 | Identitat pròpia. Dues maquetes navegables amb el selector «Maqueta» o `?tema=`: **A · Senyal** (radar, fosc, taronja, Space Grotesk) i **B · Relleu** (corbes de nivell, paper, verd, Instrument Sans, tocs de senyal). Les corbes de la B són sintètiques; es poden generar amb dades reals de l'ICGC d'una muntanya concreta. |
+| 4.2 🎨 | Mode fosc: per decidir un cop triat el disseny. |
+| 4.3 🎨 | Fora la barra de gradient amb pulsació i el text justificat. |
+| 4.4 🎨 | Carrera com a línia de temps; projectes com a targetes amb etiquetes i enllaços. |
 | 4.5 ⏳ | Captures o miniatures per a cada projecte web (es poden afegir a `src/assets/projects/`). |
 
 ## 5. Mantenibilitat i edició del CV
@@ -59,9 +64,9 @@ Abans, una feina nova s'havia d'escriure a 4 o 5 llocs (PDF a part, `utils.ts` e
 
 | # | Canvi |
 |---|---|
-| 5.1 ✅ | **Font única:** `src/data/cv.yaml` té tot el contingut del CV i dels projectes, en català i anglès. Es valida en compilar: si falta una traducció, la compilació falla i diu on. |
+| 5.1 ✅ | **Font única:** `src/data/cv.yaml` té tot el contingut de la web, en català i anglès. Es valida en compilar: si falta una traducció, la compilació falla i diu on. |
 | 5.2 ✅ | **Una sola plantilla per pàgina** (`src/pages/[lang]/…`) en lloc de duplicar-les per idioma. Els textos curts de la interfície són a `src/i18n/ui.ts`. |
-| 5.3 ✅ | **PDF automàtics:** `cv/cv.typ` llegeix el mateix YAML. GitHub Actions genera el CV en català i en anglès a cada desplegament. |
+| 5.3 📝 | **PDF automàtics:** `cv/cv.typ` llegeix el mateix YAML. GitHub Actions genera el CV en català i en anglès a cada desplegament. |
 | 5.4 ✅ | Les PR compilen el lloc i els PDF abans de fusionar. |
 | 5.5 ✅ | Tailwind 4 amb `@tailwindcss/vite`; fora `@astrojs/tailwind` (obsolet) i les dependències que no es feien servir. |
 | 5.6 ⏳ | Protegir `main` (PR obligatòria i check de compilació), igual que a `calcul-cost-trajecte`. |

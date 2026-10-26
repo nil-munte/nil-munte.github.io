@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 import { cv } from "../data/cv";
 import { langs, pathFor, useTranslations, type Lang, type PageKey } from "../i18n/ui";
 
@@ -16,7 +17,8 @@ interface Props {
 const { lang, page, title, description } = Astro.props;
 const t = useTranslations(lang);
 const site = Astro.site!;
-const fullTitle = title ? `${title} · ${cv.person.name}` : `${cv.person.name} · ${cv.person.roles[lang]}`;
+const siteTitle = cv.person.site_title[lang];
+const fullTitle = title ? `${title} · ${siteTitle}` : siteTitle;
 const canonical = page ? new URL(pathFor(page, lang), site).href : undefined;
 const ogImage = new URL(`/og-${lang}.png`, site).href;
 
@@ -27,24 +29,30 @@ const person = {
   url: site.href,
   email: `mailto:${cv.person.email}`,
   jobTitle: cv.person.roles[lang],
-  description: cv.person.headline[lang],
-  address: { "@type": "PostalAddress", addressLocality: cv.person.location },
-  alumniOf: [...new Set(cv.education.map((e) => e.org))].map((name) => ({ "@type": "CollegeOrUniversity", name })),
-  knowsAbout: cv.keywords[lang],
+  description: cv.person.presentation[lang],
   sameAs: cv.person.links.map((l) => l.url),
 };
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-theme="relleu">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={cv.person.name} />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0f6a61" />
+    <script is:inline>
+      // Design preview: ?tema=senyal|relleu, remembered between pages.
+      (function () {
+        var t = new URLSearchParams(location.search).get("tema");
+        try {
+          if (t) localStorage.setItem("tema", t);
+          else t = localStorage.getItem("tema");
+        } catch (e) {}
+        if (t === "senyal" || t === "relleu") document.documentElement.dataset.theme = t;
+      })();
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {canonical && <link rel="canonical" href={canonical} />}
@@ -55,7 +63,7 @@ const person = {
     {page && <link rel="alternate" hreflang="x-default" href={new URL(pathFor(page, "en"), site).href} />}
 
     <meta property="og:type" content={page === "home" ? "profile" : "website"} />
-    <meta property="og:site_name" content={cv.person.name} />
+    <meta property="og:site_name" content={siteTitle} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -71,12 +79,13 @@ const person = {
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow"
-      >{t("nav.skip")}</a
+      >{t("a11y.skip")}</a
     >
     <Header lang={lang} page={page} />
     <main id="main" class="flex-1">
       <slot />
     </main>
     <Footer lang={lang} />
+    <ThemeSwitcher />
   </body>
 </html>

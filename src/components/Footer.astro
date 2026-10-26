@@ -12,44 +12,29 @@ const t = useTranslations(lang);
 ---
 
 <footer class="mt-24 border-t border-stone-200 dark:border-stone-800">
-  <div class="container-page flex flex-col gap-6 py-10 text-sm text-stone-600 sm:flex-row sm:items-center sm:justify-between dark:text-stone-400">
-    <div>
-      <p class="font-semibold text-stone-900 dark:text-stone-100">{cv.person.name}</p>
-      <p>{cv.person.degrees[lang]}</p>
-    </div>
-    <ul class="flex flex-wrap items-center gap-x-5 gap-y-3">
+  <div class="container-page flex flex-col items-center gap-4 py-10 text-sm text-stone-600 dark:text-stone-400">
+    <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
       <li>
         <a href={`mailto:${cv.person.email}`} class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
           <Icon name="mail" />{cv.person.email}
         </a>
       </li>
       {
-        cv.person.show_phone && cv.person.phone && (
-          <li>
-            <a href={`tel:${cv.person.phone.replace(/\s/g, "")}`} class="hover:text-stone-900 dark:hover:text-white">
-              {cv.person.phone}
-            </a>
-          </li>
-        )
-      }
-      {
         cv.person.links.map((l) => (
           <li>
             <a href={l.url} rel="me noopener" target="_blank" class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
-              <Icon name={l.id as "github" | "linkedin"} />
+              <Icon name={l.id} />
               {l.label}
             </a>
           </li>
         ))
       }
       <li>
-        <a href={cvPdf(lang)} class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
-          <Icon name="download" />CV (PDF)
+        <a href={cvPdf(lang)} download class="inline-flex items-center gap-2 hover:text-stone-900 dark:hover:text-white">
+          <Icon name="download" />CV
         </a>
       </li>
     </ul>
+    <p class="text-xs text-stone-500">© {new Date().getFullYear()} Nil Munté — {t("footer.copyright")}</p>
   </div>
-  <p class="container-page pb-8 text-xs text-stone-500">
-    © {new Date().getFullYear()} {cv.person.name}. {t("footer.updated")}
-  </p>
 </footer>

@@ -1,0 +1,33 @@
+---
+import Icon from "./Icon.astro";
+import type { Link } from "../data/cv";
+import { publicFileSize } from "../lib/files";
+import type { Lang } from "../i18n/ui";
+
+interface Props {
+  links: Link[];
+  lang: Lang;
+}
+
+const { links, lang } = Astro.props;
+---
+
+{
+  links.length > 0 && (
+    <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+      {links.map((l) => {
+        const local = l.url.startsWith("/");
+        const size = publicFileSize(l.url);
+        return (
+          <li>
+            <a href={l.url} class="link inline-flex items-center gap-1.5" {...(local ? { download: "" } : { target: "_blank", rel: "noopener" })}>
+              <Icon name={l.url.endsWith(".pdf") ? "file" : l.url.includes("github.com") ? "github" : "external"} />
+              {l.label[lang]}
+              {size && <span class="font-normal text-stone-500">· {size}</span>}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  )
+}

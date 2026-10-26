@@ -1,24 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { cv } from "../data/cv";
 import { pathFor, useTranslations } from "../i18n/ui";
 
-const t = { ca: useTranslations("ca"), en: useTranslations("en") };
+const ca = useTranslations("ca");
+const en = useTranslations("en");
 ---
 
-<BaseLayout lang="en" page={null} title="404" description={t.en("404.text")}>
-  <section class="container-page grid gap-12 py-24 sm:grid-cols-2">
-    {
-      (["en", "ca"] as const).map((lang) => (
-        <div lang={lang}>
-          <p class="eyebrow">404</p>
-          <h1 class="mt-2 text-3xl font-bold tracking-tight">{t[lang]("404.title")}</h1>
-          <p class="mt-4 text-stone-600 dark:text-stone-400">{t[lang]("404.text")}</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href={pathFor("home", lang)} class="btn-primary">{t[lang]("nav.home")}</a>
-            <a href={pathFor("projects", lang)} class="btn-ghost">{t[lang]("nav.projects")}</a>
-          </div>
-        </div>
-      ))
-    }
+<BaseLayout lang="en" page={null} title="404" description={cv.person.presentation.en}>
+  <section class="container-page py-28 text-center">
+    <p class="page-title text-7xl">404</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href={pathFor("home", "ca")} lang="ca" class="btn-primary">{ca("nav.home")}</a>
+      <a href={pathFor("home", "en")} class="btn-ghost">{en("nav.home")}</a>
+    </div>
   </section>
 </BaseLayout>

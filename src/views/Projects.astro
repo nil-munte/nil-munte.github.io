@@ -1,6 +1,5 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
-import SectionHeading from "../components/SectionHeading.astro";
 import { cv } from "../data/cv";
 import { useTranslations, type Lang } from "../i18n/ui";
 
@@ -10,31 +9,12 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
-const groups = (["research", "web", "teaching"] as const).map((category) => ({
-  category,
-  title: t(`projects.${category}`),
-  items: cv.projects.filter((p) => p.category === category),
-}));
 ---
 
 <div class="container-page pt-12 sm:pt-16">
-  <SectionHeading level={1} title={t("projects.title")}>
-    <p class="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-400">{t("projects.intro")}</p>
-  </SectionHeading>
-
-  {
-    groups.map((g) => (
-      <section aria-labelledby={g.category} class="mt-14 first-of-type:mt-4">
-        <h2 id={g.category} class="text-xl font-bold tracking-tight">
-          {g.title}
-        </h2>
-        <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {g.items.map((p) => (
-            <ProjectCard project={p} lang={lang} />
-          ))}
-        </div>
-      </section>
-    ))
-  }
+  <h1 class="page-title">{t("title.projects")}</h1>
+  <div class="signal-rule mt-6 mb-12" aria-hidden="true"></div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {cv.projects.map((p) => <ProjectCard project={p} lang={lang} />)}
+  </div>
 </div>

@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Career from "../../views/Career.astro";
 import Projects from "../../views/Projects.astro";
 import About from "../../views/About.astro";
+import { cv } from "../../data/cv";
 import { langs, routes, useTranslations, type Lang } from "../../i18n/ui";
 
 const views = { career: Career, projects: Projects, about: About } as const;
@@ -23,6 +24,6 @@ const t = useTranslations(lang);
 const View = views[key];
 ---
 
-<BaseLayout lang={lang} page={key} title={t(`nav.${key}`)} description={t(`meta.${key}`)}>
+<BaseLayout lang={lang} page={key} title={t(`title.${key}`)} description={cv.person.presentation[lang]}>
   <View lang={lang} />
 </BaseLayout>
