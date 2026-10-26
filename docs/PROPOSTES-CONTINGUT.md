@@ -191,7 +191,6 @@ Es poden corregir sense canviar res més:
 | **Disponibilitat de models d'IA per regió** | Aplicacions web | ⭐ | Segueix en quins proveïdors de núvol i regions hi ha cada model d'IA. Extreu la documentació cada dia i ho mostra en un tauler. | TypeScript, Next.js, Scraping | [demo](https://nil-munte.github.io/model-region/) · [codi](https://github.com/nil-munte/model-region) |
 | **Riudoms 3D** | Aplicacions web |  | Recreació 3D navegable del poble amb dades obertes reals (Cadastre, LiDAR de l'ICGC, OpenStreetMap). Feta amb IA (Claude Code) a partir del meu encàrrec i les meves revisions. | TypeScript, 3D, Open data | [demo](https://nil-munte.github.io/riudoms-3d/) · [codi](https://github.com/nil-munte/riudoms-3d) |
 | **Cuina amb mi** | Aplicacions web |  | Les receptes que he cuinat, amb fotos de cada pas. | Astro, TypeScript | [demo](https://nil-munte.github.io/cuina-amb-mi/) · [codi](https://github.com/nil-munte/cuina-amb-mi) |
-| **Bot de despeses compartides** | Aplicacions web |  | Bot de Telegram que entén despeses escrites en llenguatge natural amb un LLM i calcula el balanç entre dues persones. | Python, LLM, Telegram | [codi](https://github.com/nil-munte/despesa-agent) |
 | **Física de 2n de Batxillerat** | Docència i divulgació |  | Teoria orientada a exercicis, demos interactives, exercicis amb solució i problemes de les PAU de Catalunya. | Python, HTML | [demo](https://nil-munte.github.io/fisica-2n-bat/) · [codi](https://github.com/nil-munte/fisica-2n-bat) |
 | **Catapulta parabòlica** | Docència i divulgació |  | Demo interactiva que descompon el moviment parabòlic en un MRU horitzontal i un MRUA vertical. | HTML, JavaScript | [demo](https://nil-munte.github.io/moviment-parabolic-catapulta/) · [codi](https://github.com/nil-munte/moviment-parabolic-catapulta) |
 | **Curs de Python en català** | Docència i divulgació |  | Curs introductori de programació en Python amb quaderns de Jupyter, pensat per a catalanoparlants. | Python, Jupyter | [codi](https://github.com/nil-munte/Python_course_CAT) |
@@ -200,7 +199,8 @@ Es poden corregir sense canviar res més:
 | **Xarxa neuronal des de zero** | Recerca i enginyeria |  | Implementació d'una xarxa neuronal amb retropropagació sense cap llibreria, en Java. | Java, Machine learning | [codi](https://github.com/nil-munte/Neural-Net) |
 
 ⚠️ A revisar:
-- Si vols públics els projectes personals: el bot de despeses de parella i Cuina amb mi.
+- El bot de despeses compartides s'ha descartat: el repositori ja no existeix.
+- Cuina amb mi va a *Sobre mi*, no a Projectes.
 - La menció «feta amb IA» de Riudoms 3D (la diu el seu README).
 - Treure «El meu portfoli» de la llista.
 - **Captures o miniatures** de cada projecte web, que ara no n'hi ha.
@@ -243,6 +243,12 @@ Es poden corregir sense canviar res més:
 
 ## 7. Contingut nou a més llarg termini
 
+- **Formació en Claude i IA.** Si vols fer cursos de Claude i d'IA com a docent, això ha de ser visible a la web, i amb proves, no només amb paraules clau:
+  - als rols de la portada (per exemple, «Formador en IA i Claude»);
+  - en una secció o targeta «Formació en IA», amb què ensenyes, a qui, el format i un botó de contacte;
+  - a les descripcions i a les dades per a Google, per aparèixer en cerques com «curs Claude Code» o «formació IA en català»;
+  - com a proves: el curs de Python avançat amb aprenentatge automàtic, el màster en IA, Riudoms 3D (fet dirigint Claude Code) i aquest mateix portfoli;
+  - al blog, amb 2 o 3 articles pràctics sobre com treballes amb Claude.
 - **Blog:** articles en Markdown amb RSS. Per exemple, un article al mes sobre radar, ADAS, IA aplicada o mobilitat elèctrica. Dona contingut que Google pot indexar i coses per compartir a LinkedIn.
 - **Assignatura d'IA a la URV:** si ja la fas, és un projecte docent molt potent per a la pàgina de projectes.
 - **CV en PDF generat automàticament** (Typst) a partir de `src/data/cv.yaml`, en català i en anglès. Es va fer i provar a la primera versió (commit `3d63f81`, carpeta `cv/`) i es recuperarà amb la revisió de contingut.

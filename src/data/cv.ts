@@ -44,9 +44,19 @@ const schema = z.object({
       media: z.array(media).default([]),
     }),
   ),
-  projects: z.array(z.object({ id: z.string(), title: t, description: t, link: z.string().url() })),
+  projects: z.array(
+    z.object({
+      id: z.string(),
+      category: z.enum(["research", "web", "teaching"]),
+      title: t,
+      description: t,
+      image: z.string().optional(),
+      demo: z.string().url().optional(),
+      code: z.string().url().optional(),
+      links: z.array(link).default([]),
+    }),
+  ),
   about: z.array(t),
-  strava: z.array(z.string()).default([]),
 });
 
 export type CV = z.infer<typeof schema>;
@@ -62,8 +72,13 @@ if (!result.success) {
 
 export const cv: CV = result.data;
 
-/** Turns **bold** into <strong>. Text is escaped first, so it is safe for set:html. */
+/**
+ * Turns **bold** into <strong> and [text](https://...) into a link. Text is
+ * escaped first, so the result is safe for set:html.
+ */
 export function inline(text: string): string {
-  const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  return escaped.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return escaped
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '<a class="link" href="$2">$1</a>');
 }

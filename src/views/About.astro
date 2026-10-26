@@ -1,6 +1,7 @@
 ---
+import Icon from "../components/Icon.astro";
 import PageHeader from "../components/PageHeader.astro";
-import { cv } from "../data/cv";
+import { cv, inline } from "../data/cv";
 import { useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
@@ -13,35 +14,25 @@ const t = useTranslations(lang);
 
 <PageHeader title={t("title.about")} />
 <div class="container-page">
-
-  <div class="card p-6 sm:p-8">
-    <div class="max-w-2xl space-y-4 text-lg leading-relaxed text-stone-700">
-      {cv.about.map((p) => <p>{p[lang]}</p>)}
-    </div>
-
-    {
-      cv.strava.length > 0 && (
-        <>
-          {/* min-h reserves the embed's height so the page doesn't jump when it loads. */}
-          <div class="strava mt-8 grid gap-4 md:grid-cols-3" data-title={t("a11y.strava")}>
-            {cv.strava.map((id) => (
-              <div class="min-h-[458px]">
-                <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id={id} data-style="standard" data-from-embed="false" />
-              </div>
-            ))}
-          </div>
-          <script is:inline defer src="https://strava-embeds.com/embed.js" />
-          <script>
-            // Strava's script adds untitled iframes; name them for screen readers.
-            const box = document.querySelector<HTMLElement>(".strava");
-            if (box) {
-              const name = () => box.querySelectorAll("iframe:not([title])").forEach((f) => f.setAttribute("title", box.dataset.title ?? "Strava"));
-              new MutationObserver(name).observe(box, { childList: true, subtree: true });
-              name();
-            }
-          </script>
-        </>
-      )
-    }
+  <div class="max-w-2xl space-y-5 text-lg leading-relaxed text-stone-700">
+    {cv.about.map((p) => <p set:html={inline(p[lang])} />)}
   </div>
+
+  <section aria-labelledby="contact" class="card mt-14 max-w-2xl p-6 sm:p-8">
+    <h2 id="contact" class="text-2xl font-bold tracking-tight">{t("about.contact")}</h2>
+    <p class="mt-3 text-stone-600">{t("about.contact_text")}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href={`mailto:${cv.person.email}`} class="btn-primary"><Icon name="mail" />{cv.person.email}</a>
+      {
+        cv.person.links
+          .filter((l) => l.id === "linkedin")
+          .map((l) => (
+            <a href={l.url} target="_blank" rel="me noopener" class="btn-ghost">
+              <Icon name={l.id} />
+              {l.label}
+            </a>
+          ))
+      }
+    </div>
+  </section>
 </div>
