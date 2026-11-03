@@ -10,7 +10,7 @@ Tot el contingut de la web surt d'**un sol fitxer**, [`src/data/cv.yaml`](src/da
 
 - La web està feta amb [Astro](https://astro.build/) i [Tailwind CSS](https://tailwindcss.com/) 4, i es publica a GitHub Pages.
 - Cada push a `main` compila la web i la desplega. Les PR només compilen, per comprovar que tot funciona.
-- Els PDF del CV són a `public/info/<idioma>/`.
+- El CV en PDF es genera amb [Typst](https://typst.app/) a partir de `src/data/resume.yaml` (vegeu més avall).
 
 ## Editar el CV
 
@@ -27,11 +27,30 @@ Altres canvis habituals:
 | Afegir una imatge a una feina | Fitxer a `src/assets/media/` i entrada `media` a `cv.yaml` |
 | Canviar textos de la interfície (menú, botons) | `src/i18n/ui.ts` |
 
+## El CV
+
+El CV complet és a [`src/data/resume.yaml`](src/data/resume.yaml), en català i anglès. A partir d'aquest fitxer, [`cv/cv.typ`](cv/cv.typ) genera tres PDF:
+
+| PDF | Adreça |
+|---|---|
+| CV complet en català | `/info/ca/CV_Nil_Munte_Guerrero_CA.pdf` |
+| CV complet en anglès | `/info/en/CV_Nil_Munte_Guerrero_EN.pdf` |
+| *Executive* d'una pàgina, en anglès | `/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf` |
+
+Per actualitzar-lo:
+
+1. Edita `src/data/resume.yaml` (també des de github.com) i canvia `updated` per la data d'avui.
+2. Obre una PR. El CI comprova que els PDF es generin bé.
+3. En fusionar-la, els PDF nous es publiquen a la web i es desa una còpia com a [*Release*](https://github.com/nil-munte/nil-munte.github.io/releases) del repo, de manera que hi queda l'historial de versions del CV.
+
+Per marcar què entra a la versió *executive*, posa `exec: true` a la feina i als punts que vulguis.
+
 ## Desenvolupament
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
+npm run cv       # genera els PDF del CV (cal Typst: winget install --id Typst.Typst)
 npm run build    # web estàtica a dist/
 ```
 

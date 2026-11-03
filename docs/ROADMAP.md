@@ -10,7 +10,7 @@ Anàlisi feta el 26 d'octubre de 2026 sobre la versió publicada a <https://nil-
 
 | # | Problema | Impacte | Solució |
 |---|---|---|---|
-| 1.1 📝 | Els tres PDF del CV (`ca`, `en` i `Executive`) eren el mateix fitxer, en anglès. | Qui baixava el CV en català el rebia en anglès. | Generar els PDF amb Typst a partir de `src/data/cv.yaml`, un per idioma. Es farà amb la revisió de contingut; de moment es mantenen els PDF anteriors. |
+| 1.1 ✅ | Els tres PDF del CV (`ca`, `en` i `Executive`) eren el mateix fitxer, en anglès. | Ara es generen amb Typst a partir de `src/data/resume.yaml`, cadascun en el seu idioma, a cada desplegament. |
 | 1.2 ✅ | L'arrel `/` mostrava «Redirecting…» durant 2 segons. | Primera impressió dolenta en l'URL que més es comparteix. | Redirecció immediata i segons l'idioma del navegador (`ca` → `/ca/`, la resta → `/en/`). |
 | 1.3 ✅ | Sense `sitemap.xml`, `robots.txt` ni pàgina 404 pròpia. | Google no tenia cap guia per indexar el lloc; avui no surt cercant el nom. | `@astrojs/sitemap` amb alternatives d'idioma, `robots.txt` i 404 bilingüe. |
 | 1.4 ✅ | Totes les pàgines tenien el mateix títol i cap descripció, Open Graph ni `canonical`. Els `hreflang` apuntaven sempre a la portada. | Resultats de cerca pobres i enllaços sense targeta a LinkedIn. | Títol i descripció per pàgina, `canonical`, `hreflang` per pàgina, Open Graph amb imatge i JSON-LD `Person`. |
@@ -48,6 +48,14 @@ Tots els textos proposats, pàgina per pàgina, són a [`PROPOSTES-CONTINGUT.md`
 4. ⏳ Si tens ORCID o Google Scholar, afegeix-los a `contact.links` de `cv.yaml`: entren al JSON-LD `sameAs`.
 5. ⏳ Valora un **domini propi** (`nilmunte.cat`, `.dev`…, uns 10–15 € l'any). Cal afegir `public/CNAME` i canviar `site` a `astro.config.mjs`. Atenció: les altres webs (`/cuina-amb-mi/`, `/calcul-cost-trajecte/`…) també canviarien de domini.
 6. ⏳ Comparteix cada projecte nou a LinkedIn amb l'enllaç a la seva fitxa del portfoli.
+7. ⏳ **LinkedIn:** comprovar que hi ha `https://nil-munte.github.io` a *Informació de contacte → Lloc web*, i afegir la web a *Destacats*. No s'ha pogut fer perquè cal la sessió de LinkedIn (Claude in Chrome no es connectava).
+8. ⏳ **Website del perfil de GitHub:** posar-hi `https://nil-munte.github.io` a <https://github.com/settings/profile> (el *homepage* del repo ja hi és).
+9. ⏳ **SEO de Física de 2n de Batxillerat** (repo `fisica-2n-bat`). Objectiu: sortir el primer a Google en cercar «PAU física», «física selectivitat», «exàmens PAU física resolts» i similars.
+   - La propietat de Search Console de `https://nil-munte.github.io/` ja cobreix `/fisica-2n-bat/`: no cal una altra verificació.
+   - Títol i descripció propis a cada pàgina i a cada tema, amb les paraules que la gent cerca («PAU», «selectivitat», «resolts», el nom del tema i l'any).
+   - Sitemap propi i dades estructurades (`LearningResource`, `Course` o `FAQPage` per als problemes resolts).
+   - Una URL i un títol per a cada examen (any, convocatòria i sèrie), perquè cada examen es pugui trobar per separat.
+   - Enllaços des del portfoli, i des de llocs on hi hagi estudiants i professors (escoles, fòrums, xarxes).
 
 ## 4. Disseny
 
@@ -67,7 +75,7 @@ Abans, una feina nova s'havia d'escriure a 4 o 5 llocs (PDF a part, `utils.ts` e
 |---|---|
 | 5.1 ✅ | **Font única:** `src/data/cv.yaml` té tot el contingut de la web, en català i anglès. Es valida en compilar: si falta una traducció, la compilació falla i diu on. |
 | 5.2 ✅ | **Una sola plantilla per pàgina** (`src/pages/[lang]/…`) en lloc de duplicar-les per idioma. Els textos curts de la interfície són a `src/i18n/ui.ts`. |
-| 5.3 📝 | **PDF automàtics:** `cv/cv.typ` llegeix el mateix YAML. GitHub Actions genera el CV en català i en anglès a cada desplegament. |
+| 5.3 ✅ | **CV automàtic:** `cv/cv.typ` llegeix `src/data/resume.yaml` i GitHub Actions genera el CV complet en català i en anglès i l'*executive* d'una pàgina a cada desplegament. Cada versió nova del CV queda també com a *Release* del repo, amb els PDF adjunts. |
 | 5.4 ✅ | Les PR compilen el lloc i els PDF abans de fusionar. |
 | 5.5 ✅ | Tailwind 4 amb `@tailwindcss/vite`; fora `@astrojs/tailwind` (obsolet) i les dependències que no es feien servir. |
 | 5.6 ✅ | `main` protegida: PR obligatòria i compilació en verd, també per a l'admin. Dependabot activat (npm i Actions, mensual) amb alertes i correccions de seguretat. |

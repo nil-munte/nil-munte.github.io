@@ -13,6 +13,9 @@ concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  TYPST_VERSION: "0.15.1"
+
 jobs:
   build:
     name: Build
@@ -27,8 +30,17 @@ jobs:
           node-version: 24
           cache: "npm"
 
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: ${{ env.TYPST_VERSION }}
+
       - name: Install dependencies
         run: npm ci
+
+      # The CV PDFs come from src/data/resume.yaml and are published with the site.
+      - name: Generate CV PDFs
+        run: npm run cv
 
       - name: Build site
         run: npm run build
@@ -54,3 +66,51 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v5
+
+  # Keeps every published version of the CV as a GitHub Release with the PDFs attached.
+  cv-release:
+    name: CV release
+    if: github.event_name == 'push'
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+
+      - name: Check whether the CV changed
+        id: changed
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -qE '^(src/data/resume\.yaml|cv/)'; then
+            echo "cv=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node
+        if: steps.changed.outputs.cv == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Setup Typst
+        if: steps.changed.outputs.cv == 'true'
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: ${{ env.TYPST_VERSION }}
+
+      - name: Create release
+        if: steps.changed.outputs.cv == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/build-cv.mjs
+          day=$(date -u +%Y-%m-%d)
+          tag="cv-${day}-${GITHUB_SHA::7}"
+          gh release create "$tag" \
+            public/info/ca/CV_Nil_Munte_Guerrero_CA.pdf \
+            public/info/en/CV_Nil_Munte_Guerrero_EN.pdf \
+            public/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf \
+            --title "CV ${day}" \
+            --notes "CV generated from src/data/resume.yaml at ${GITHUB_SHA::7}. Also published on https://nil-munte.github.io."
