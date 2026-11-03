@@ -1,0 +1,224 @@
+# CV complet: font única dels PDF (cv/cv.typ) i, més endavant, de la Carrera de la web.
+#
+# Cada text té versió catalana (ca) i anglesa (en). Dates "AAAA-MM" entre cometes;
+# end: null vol dir «actualitat». exec: true marca el que entra a la versió
+# executive d'una pàgina. **negreta** funciona als punts.
+#
+# Quan canvies aquest fitxer i fusiones la PR, GitHub Actions genera els PDF,
+# els publica a la web i en desa una còpia com a Release del repositori.
+
+updated: "2026-11"
+
+person:
+  name: Nil Munté Guerrero
+  location: Barcelona
+  email: nilmunte@gmail.com
+  website: https://nil-munte.github.io
+  links:
+    - label: LinkedIn
+      handle: linkedin.com/in/nilmunte
+      url: https://www.linkedin.com/in/nilmunte
+    - label: GitHub
+      handle: github.com/nil-munte
+      url: https://github.com/nil-munte
+  headline:
+    ca: Arquitecte d'IA · Enginyer de Telecomunicacions · Màster en IA
+    en: AI Architect · Telecommunications Engineer · MSc in AI
+  summary:
+    ca: >-
+      Arquitecte d'IA i enginyer de telecomunicacions amb un màster en intel·ligència artificial.
+      Dissenyo i desplego solucions d'IA al núvol, MLOps i IA generativa al CTTI (Generalitat de
+      Catalunya) i faig classes d'IA, IoT i programació a la Universitat Rovira i Virgili, on he creat
+      des de zero l'assignatura d'IA aplicada a les telecomunicacions. Vinc de la recerca en radar
+      d'ones mil·limètriques i de la validació de sistemes ADAS, on vaig ser cap de projecte de dos
+      projectes europeus de mobilitat autònoma. M'interessen la mobilitat elèctrica i els projectes locals.
+    en: >-
+      AI architect and telecommunications engineer with an MSc in artificial intelligence. I design
+      and deploy cloud AI, MLOps and generative AI solutions at CTTI (Government of Catalonia) and
+      teach AI, IoT and programming at Universitat Rovira i Virgili, where I created the course on AI
+      for telecommunications from scratch. My background is in millimetre-wave radar research and ADAS
+      validation, where I was project manager for two European autonomous-mobility projects.
+      I'm keen on electric mobility and local projects.
+
+keywords:
+  ca: [Arquitectura d'IA, MLOps, IA generativa, 'Núvol (Azure, AWS, GCP)', Aprenentatge automàtic, Gestió de projectes, Radar i tractament del senyal, ADAS, Sistemes encastats, Docència]
+  en: [AI architecture, MLOps, Generative AI, 'Cloud (Azure, AWS, GCP)', Machine learning, Project management, Radar and signal processing, ADAS, Embedded systems, Teaching]
+
+experience:
+  - org: CTTI · Generalitat de Catalunya
+    role: { ca: Arquitecte d'IA, en: AI Architect }
+    start: "2026-03"
+    end: null
+    exec: true
+    highlights:
+      - ca: Disseny i desplegament de solucions d'IA, aprenentatge automàtic i IA generativa natives al núvol (Azure, AWS, GCP, Databricks, Foundry, TensorFlow, PyTorch, Kubernetes i serveis *serverless*/PaaS).
+        en: Design and deploy cloud-native AI, machine learning and generative AI solutions (Azure, AWS, GCP, Databricks, Foundry, TensorFlow, PyTorch, Kubernetes and serverless/PaaS services).
+        exec: true
+      - ca: Construcció i industrialització de plataformes MLOps i *pipelines* d'IA, de l'entrenament al desplegament, el seguiment i el CI/CD, amb arquitectures d'autoservei escalables.
+        en: Build and industrialise MLOps platforms and AI pipelines, from training to deployment, monitoring and CI/CD, with scalable self-service architectures.
+        exec: true
+      - ca: Definició d'arquitectures de referència d'IA, governança de dades, pràctiques d'IA responsable i patrons d'integració segura per a sistemes en producció.
+        en: Define AI reference architectures, data governance, responsible-AI practices and secure integration patterns for production systems.
+      - ca: Treball amb equips multidisciplinaris per modernitzar plataformes corporatives amb metodologies àgils, DevOps i MLOps.
+        en: Work with cross-functional teams to modernise enterprise platforms using Agile, DevOps and MLOps.
+
+  - org: Universitat Rovira i Virgili (URV)
+    role: { ca: Professor associat, en: Associate Professor }
+    start: "2021-09"
+    end: null
+    exec: true
+    highlights:
+      - ca: 'He dissenyat des de zero i imparteixo l''assignatura **Integració de la IA en Telecomunicacions**: Python, aprenentatge automàtic i aprenentatge profund aplicats a les telecomunicacions.'
+        en: 'Designed from scratch and teach **AI Integration in Telecommunications**: Python, machine learning and deep learning applied to telecommunications.'
+        exec: true
+      - ca: Pràctiques d'IoT i xarxes de sensors (WiFi, Zigbee, Bluetooth amb Arduino i Silicon Labs), programació d'FPGA i microcontroladors (VHDL, C, assemblador) i comunicacions digitals (MATLAB).
+        en: Lab courses in IoT and sensor networks (WiFi, Zigbee, Bluetooth with Arduino and Silicon Labs), FPGA and microcontroller programming (VHDL, C, assembly) and digital communications (MATLAB).
+      - ca: Uns 40 estudiants per curs, als graus d'Enginyeria de Telecomunicacions i d'Enginyeria Biomèdica.
+        en: Around 40 students per course, in the Telecommunications and Biomedical Engineering degrees.
+
+  - org: Acadèmia Gaudí
+    role: { ca: Formador de Python, en: Python Trainer }
+    start: "2024-04"
+    end: null
+    highlights:
+      - ca: Disseny i docència dels cursos **Introducció a Python** i **Python avançat** (6 h cadascun; anàlisi de dades i aprenentatge automàtic amb NumPy, pandas, scikit-learn i PyTorch), amb uns 10 alumnes per sessió.
+        en: Designed and teach **Introduction to Python** and **Advanced Python** (6 h each; data analysis and machine learning with NumPy, pandas, scikit-learn and PyTorch), with around 10 students per session.
+      - ca: Curs de programació de robots per a infants (mBot i Makeblock).
+        en: Robot programming course for children (mBot and Makeblock).
+
+  - org: Applus+ IDIADA
+    role: { ca: Enginyer de funcions ADAS i AV · Cap de projectes, en: ADAS & AV Functions Developer Engineer · Project Manager }
+    start: "2024-05"
+    end: "2026-03"
+    exec: true
+    highlights:
+      - ca: Cap de projecte de dos projectes europeus de mobilitat autònoma, **AITHENA** i **AIGGREGATE**. A AITHENA (Horizon Europe, 17 socis de 7 països) vaig liderar un paquet de treball fins a assolir-ne les fites.
+        en: Project manager for two European autonomous-mobility projects, **AITHENA** and **AIGGREGATE**. In AITHENA (Horizon Europe, 17 partners from 7 countries) I led a work package through its milestones.
+        exec: true
+      - ca: Programa de proves ADAS (Euro NCAP, Reglament UN 152 i ASEAN NCAP) per a una càmera amb IA, des de la definició de KPI amb el client fins al lliurament, amb CI/CD i automatització de proves.
+        en: ADAS test programme (Euro NCAP, UN Regulation 152 and ASEAN NCAP) for an AI-based camera, from client KPI definition to delivery, with CI/CD and test automation.
+        exec: true
+      - ca: Captura de dades dels sensors i activació automàtica de les proves amb l'equip de programari (programari encastat, CAN, C++, Python, Linux).
+        en: Sensor data capture and automated test triggering with the software team (embedded software, CAN, C++, Python, Linux).
+      - ca: Projecte de visió per computador ADAS amb fusió de dades de diversos sensors i xarxes neuronals (YOLO, segmentació, seguiment).
+        en: Computer-vision ADAS project fusing data from several sensors with neural networks (YOLO, segmentation, tracking).
+      - ca: Eina de *reporting* per al client (React, Python) per presentar resultats i analítiques de les proves.
+        en: Client reporting tool (React, Python) to present test results and analytics.
+
+  - org: ALEPHSYS Lab · Universitat Rovira i Virgili
+    role: { ca: Enginyer R+D, en: R&D Engineer }
+    start: "2023-09"
+    end: "2024-04"
+    highlights:
+      - ca: Algorismes d'aprenentatge supervisat i no supervisat (xarxes neuronals, SVM, retropropagació) en Java, C, Python i Julia.
+        en: Supervised and unsupervised learning algorithms (neural networks, SVM, backpropagation) in Java, C, Python and Julia.
+      - ca: Model dinàmic amb equacions diferencials de les fluctuacions de freqüència de la xarxa elèctrica, amb dades reals de Red Eléctrica (Fortran, Linux), i administració dels servidors Linux del grup.
+        en: ODE-based dynamical model of power-grid frequency fluctuations using real data from Red Eléctrica (Fortran, Linux), plus administration of the group's Linux servers.
+
+  - org: NEPHOS Lab · Universitat Rovira i Virgili
+    role: { ca: Enginyer R+D, en: R&D Engineer }
+    start: "2021-03"
+    end: "2023-08"
+    exec: true
+    highlights:
+      - ca: Detector d'ocupació de vehicles amb radars FMCW d'ones mil·limètriques de Texas Instruments i una Raspberry Pi, publicat a l'IEEE Sensors Journal [1] i guardonat pel COITT.
+        en: Vehicle occupancy detector using Texas Instruments millimetre-wave FMCW radars and a Raspberry Pi, published in the IEEE Sensors Journal [1] and awarded by COITT.
+        exec: true
+      - ca: Sistema de detecció i classificació de gestos de la mà amb radar de 60 GHz i xarxes neuronals convolucionals (MATLAB, Python) [2].
+        en: Hand-gesture detection and classification with a 60 GHz radar and convolutional neural networks (MATLAB, Python) [2].
+      - ca: Sistemes encastats i microcontroladors (PIC, ESP32, plaques de ràdio de Silicon Labs, Arduino).
+        en: Embedded systems and microcontrollers (PIC, ESP32, Silicon Labs radio boards, Arduino).
+
+  - org: Generation RFID
+    role: { ca: Enginyer de programari i maquinari (pràctiques), en: Software & Hardware Engineer Intern }
+    start: "2020-11"
+    end: "2021-03"
+    highlights:
+      - ca: Optimització del consum d'un prototip encastat RFID d'alta freqüència amb Simplicity Studio i la placa Silicon Labs Blue Gecko (C, Python, SCons, bootloader).
+        en: Power optimisation of a high-frequency RFID embedded prototype with Simplicity Studio and the Silicon Labs Blue Gecko board (C, Python, SCons, bootloader).
+
+education:
+  - title: { ca: Màster en Seguretat Informàtica i Intel·ligència Artificial, en: MSc in Computer Security and Artificial Intelligence }
+    org: Universitat Rovira i Virgili, Tarragona
+    start: "2022"
+    end: "2023"
+    detail: { ca: "Nota mitjana 9,42/10 · 8 matrícules d'honor", en: "GPA 9.42/10 · 8 distinctions" }
+  - title: { ca: Grau en Enginyeria de Telecomunicacions, en: BSc in Telecommunications Engineering }
+    org: Universitat Rovira i Virgili, Tarragona
+    start: "2017"
+    end: "2021"
+    detail: { ca: "Nota mitjana 9,01/10 · 16 matrícules d'honor", en: "GPA 9.01/10 · 16 distinctions" }
+
+courses:
+  - year: 2025
+    title: { ca: AWS Cloud Practitioner, en: AWS Cloud Practitioner }
+    org: { ca: Microcredencials URV, en: URV Microcredentials }
+  - year: 2025
+    title: { ca: MBSE a la pràctica amb Arcadia i Capella, en: MBSE in practice with Arcadia and Capella }
+    org: { ca: Samares Engineering, en: Samares Engineering }
+  - year: 2024
+    title: { ca: Curs de cap de projectes, en: Project Manager course }
+    org: { ca: Applus+ IDIADA, en: Applus+ IDIADA }
+
+skills:
+  - name: { ca: IA i dades, en: AI and data }
+    items: [PyTorch, TensorFlow, Keras, scikit-learn, OpenCV, YOLO, NumPy, pandas, SciPy, 'LLM (OpenAI, Gemini, Llama)', n8n]
+  - name: { ca: Núvol i MLOps, en: Cloud and MLOps }
+    items: [Azure, AWS, GCP, Databricks, Foundry, Kubernetes, CI/CD, Docker]
+  - name: { ca: Programació, en: Programming }
+    items: [Python, C, C++, MATLAB, VHDL, Java, Julia, Fortran, JavaScript, Git, ROS, CAN]
+  - name: { ca: Sistemes encastats i radar, en: Embedded systems and radar }
+    items:
+      - { ca: Radars FMCW de Texas Instruments, en: Texas Instruments FMCW radars }
+      - FPGA (Xilinx)
+      - PIC
+      - ESP32
+      - Silicon Labs
+      - Arduino
+      - Raspberry Pi
+  - name: { ca: Gestió, en: Management }
+    items:
+      - { ca: Gestió de projectes, en: Project management }
+      - { ca: Definició de KPI, en: KPI definition }
+      - { ca: Projectes europeus, en: European projects }
+      - MBSE
+
+languages:
+  - { name: { ca: Català, en: Catalan }, level: { ca: nadiu, en: native } }
+  - { name: { ca: Castellà, en: Spanish }, level: { ca: nadiu, en: native } }
+  - { name: { ca: Anglès, en: English }, level: { ca: 'avançat (C1, CAE)', en: 'advanced (C1, CAE)' } }
+
+publications:
+  - authors: Munte, N., Lazaro, A., Villarino, R. & Girbau, D.
+    year: 2022
+    title: Vehicle occupancy detector based on FMCW mm-wave radar at 77 GHz
+    venue: IEEE Sensors Journal, 22(24), 24504–24515
+  - authors: Lazaro, A., Munte, N., Villarino, R. & Girbau, D.
+    year: 2023
+    title: In-Vehicle Monitoring Based on a Low-Cost mm-Wave Radar at 60 GHz
+    venue: 2023 SBMO/IEEE MTT-S International Microwave and Optoelectronics Conference (IMOC), 241–243
+
+awards:
+  - year: 2022
+    title: { ca: Premi Extraordinari de Grau en Enginyeria de Sistemes i Serveis de Telecomunicació, en: Extraordinary Bachelor's Degree Award in Telecommunications Systems and Services Engineering }
+    org: { ca: COETCC · Universitat Rovira i Virgili, en: COETCC · Universitat Rovira i Virgili }
+  - year: 2022
+    title:
+      ca: 2n premi «Futur de les Telecomunicacions», categoria Enginyeria de Sistemes de Telecomunicació
+      en: 2nd "Future of Telecommunications" Award, Telecommunication Systems Engineering category
+    org: { ca: Col·legi Oficial d'Enginyers Tècnics de Telecomunicació (COITT), en: Official College of Telecommunication Engineers (COITT) }
+  - year: 2017
+    title:
+      ca: Premi de Recerca Jove pel treball «Nassos electrònics, l'olfacte en un xip»
+      en: Youth Research Award for "Electronic Noses, Smell on a Chip"
+    org: { ca: Generalitat de Catalunya, en: Government of Catalonia }
+
+projects:
+  - title: { ca: Llibreria de radars mmWave, en: mmWave radar toolkit }
+    url: https://github.com/nil-munte/Radar_Texas_AWR1642
+  - title: { ca: Cost d'un viatge en cotxe elèctric, en: Electric car trip cost calculator }
+    url: https://nil-munte.github.io/calcul-cost-trajecte/
+  - title: { ca: Riudoms 3D, en: Riudoms 3D }
+    url: https://nil-munte.github.io/riudoms-3d/
+  - title: { ca: Física de 2n de Batxillerat (PAU), en: Upper secondary Physics (exam prep) }
+    url: https://nil-munte.github.io/fisica-2n-bat/

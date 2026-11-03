@@ -10,6 +10,8 @@ The content is currently the previous site's, unchanged on purpose: a content re
 
 Never hard-code content in pages. Add it to `cv.yaml` and render it.
 
+`src/data/resume.yaml` is the full CV, `{ ca, en }` like the rest. `cv/cv.typ` (Typst, fonts in `cv/fonts/`) renders it to `public/info/ca/CV_Nil_Munte_Guerrero_CA.pdf`, `public/info/en/CV_Nil_Munte_Guerrero_EN.pdf` and the one-page `public/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf` (`exec: true` marks what goes in it). Those PDFs are gitignored: `npm run cv` (Typst CLI) builds them locally and CI builds them before `astro build`. On a push to `main` that touches `resume.yaml` or `cv/`, the `cv-release` job publishes them as a GitHub Release `cv-<date>-<sha>`. The career page will later read `resume.yaml` too.
+
 ## Design
 
 A topographic map of the Mola de Colldejou with touches of radar signal: warm paper (`stone` scale remapped in `global.css`), green `accent`, `rust` markers, Instrument Sans plus IBM Plex Mono for labels.
@@ -46,6 +48,7 @@ Routes are defined once in `routes` in `src/i18n/ui.ts` (`/ca/carrera/` ↔ `/en
 | Command | Description |
 |---|---|
 | `npm run dev` | Dev server at http://localhost:4321 |
+| `npm run cv` | Build the CV PDFs (needs the `typst` CLI) |
 | `npm run build` | Build to `dist/` |
 | `npm run preview` | Serve the build |
 
