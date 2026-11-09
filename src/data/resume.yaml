@@ -41,8 +41,8 @@ person:
       I'm keen on electric mobility and local projects.
 
 keywords:
-  ca: [Arquitectura d'IA, MLOps, IA generativa, 'Núvol (Azure, AWS, GCP)', Aprenentatge automàtic, Gestió de projectes, Radar i tractament del senyal, ADAS, Sistemes encastats, Docència]
-  en: [AI architecture, MLOps, Generative AI, 'Cloud (Azure, AWS, GCP)', Machine learning, Project management, Radar and signal processing, ADAS, Embedded systems, Teaching]
+  ca: [Arquitectura d'IA, MLOps, IA generativa, 'Núvol (Azure, AWS, GCP)', Aprenentatge automàtic, Ciència de dades, Gestió de projectes, Telecomunicacions, Radiofreqüència, Radar i tractament del senyal, Adquisició de dades, ADAS, Sistemes encastats, Enginyeria de programari, Docència]
+  en: [AI architecture, MLOps, Generative AI, 'Cloud (Azure, AWS, GCP)', Machine learning, Data science, Project management, Telecommunications, Radio frequency, Radar and signal processing, Data acquisition, ADAS, Embedded systems, Software engineering, Teaching]
 
 experience:
   - org: CTTI · Generalitat de Catalunya
@@ -63,18 +63,20 @@ experience:
         en: Work with cross-functional teams to modernise enterprise platforms using Agile, DevOps and MLOps.
 
   - org: Universitat Rovira i Virgili (URV)
+    # Official list of the courses taught, kept up to date by URV.
+    url: https://www.urv.cat/html/grupsrecerca/investigadors/docencia-I79429.php
     role: { ca: Professor associat, en: Associate Professor }
     start: "2021-09"
     end: null
     exec: true
     highlights:
-      - ca: 'He dissenyat des de zero i imparteixo l''assignatura **Integració de la IA en Telecomunicacions**: Python, aprenentatge automàtic i aprenentatge profund aplicats a les telecomunicacions.'
-        en: 'Designed from scratch and teach **AI Integration in Telecommunications**: Python, machine learning and deep learning applied to telecommunications.'
+      - ca: 'He dissenyat des de zero i imparteixo l''assignatura **Integració de la Intel·ligència Artificial en Telecomunicacions**: Python, aprenentatge automàtic i aprenentatge profund aplicats a les telecomunicacions.'
+        en: 'Designed from scratch and teach **Integration of Artificial Intelligence in Telecommunications**: Python, machine learning and deep learning applied to telecommunications.'
         exec: true
-      - ca: Pràctiques d'IoT i xarxes de sensors (WiFi, Zigbee, Bluetooth amb Arduino i Silicon Labs), programació d'FPGA i microcontroladors (VHDL, C, assemblador) i comunicacions digitals (MATLAB).
-        en: Lab courses in IoT and sensor networks (WiFi, Zigbee, Bluetooth with Arduino and Silicon Labs), FPGA and microcontroller programming (VHDL, C, assembly) and digital communications (MATLAB).
-      - ca: Uns 40 estudiants per curs, als graus d'Enginyeria de Telecomunicacions i d'Enginyeria Biomèdica.
-        en: Around 40 students per course, in the Telecommunications and Biomedical Engineering degrees.
+      - ca: Fonaments de Comunicacions II, Comunicacions Digitals, Transmissió i Propagació d'Ones, Electrònica Digital, i Tecnologies per a Xarxes de Sensors, la Internet de les Coses i les Ciutats Intel·ligents, amb pràctiques d'Arduino, Silicon Labs, FPGA (VHDL, C, assemblador) i MATLAB.
+        en: Communications Fundamentals II, Digital Communications, Wave Transmission and Propagation, Digital Electronics, and Technologies for Sensor Networks, the Internet of Things and Smart Cities, with labs using Arduino, Silicon Labs, FPGA (VHDL, C, assembly) and MATLAB.
+      - ca: Uns 40 estudiants per curs, als graus d'Enginyeria de Sistemes i Serveis de Telecomunicació i d'Enginyeria Biomèdica, i a la doble titulació.
+        en: Around 40 students per course, in the Telecommunications Systems and Services Engineering and Biomedical Engineering degrees and their double degree.
 
   - org: Acadèmia Gaudí
     role: { ca: Formador de Python, en: Python Trainer }
@@ -147,7 +149,7 @@ education:
     org: Universitat Rovira i Virgili, Tarragona
     start: "2017"
     end: "2021"
-    detail: { ca: "Nota mitjana 9,01/10 · 16 matrícules d'honor", en: "GPA 9.01/10 · 16 distinctions" }
+    detail: { ca: "Nota mitjana 9,01/10 · 16 matrícules d'honor · delegat de curs a 2n, 3r i 4t", en: "GPA 9.01/10 · 16 distinctions · class representative in years 2, 3 and 4" }
 
 courses:
   - year: 2025

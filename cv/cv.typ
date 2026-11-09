@@ -132,12 +132,14 @@
 #tr(p.summary)
 
 // ---------- Experience ----------
+// The organisation links to its page when resume.yaml gives a url.
+#let org(e) = if e.at("url", default: none) != none { link(e.url, e.org) } else { text(fill: muted, e.org) }
 #section(labels.experience)
 #let entry(e, bullets) = block(breakable: false, below: 0.95em, {
   grid(
     columns: (1fr, auto),
     column-gutter: 1em,
-    [#text(weight: 700, size: 10pt, tr(e.role)) \ #text(fill: muted, e.org)],
+    [#text(weight: 700, size: 10pt, tr(e.role)) \ #org(e)],
     text(size: 8.8pt, fill: muted, fmt-range(e.start, e.end)),
   )
   if bullets.len() > 0 {
@@ -157,7 +159,7 @@
   for e in data.experience.filter(e => not e.at("exec", default: false)) {
     block(below: 0.45em, grid(
       columns: (1fr, auto),
-      [#text(weight: 600, tr(e.role)) · #text(fill: muted, e.org)],
+      [#text(weight: 600, tr(e.role)) · #org(e)],
       text(size: 8.8pt, fill: muted, fmt-range(e.start, e.end)),
     ))
   }
