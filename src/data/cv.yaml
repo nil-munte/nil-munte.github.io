@@ -6,6 +6,9 @@ person:
   name: Nil Munté Guerrero
   email: nilmunte@gmail.com
   website: https://nil-munte.github.io
+  # Other official pages about this person, for search engines (JSON-LD sameAs).
+  same_as:
+    - https://www.urv.cat/html/grupsrecerca/investigadors/docencia-I79429.php
   links:
     - id: linkedin
       label: LinkedIn

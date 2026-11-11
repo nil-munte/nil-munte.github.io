@@ -29,7 +29,7 @@ const person = {
   email: `mailto:${cv.person.email}`,
   jobTitle: cv.person.roles[lang],
   description: cv.person.presentation[lang],
-  sameAs: cv.person.links.map((l) => l.url),
+  sameAs: [...cv.person.links.map((l) => l.url), ...cv.person.same_as],
 };
 ---
 
