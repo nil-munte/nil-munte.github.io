@@ -1,13 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { cv } from "../data/cv";
 import { pathFor, useTranslations } from "../i18n/ui";
 
 const ca = useTranslations("ca");
 const en = useTranslations("en");
 ---
 
-<BaseLayout lang="en" page={null} title="404" description={cv.person.presentation.en}>
+<BaseLayout lang="en" page={null} title="404" description={en("meta.home")}>
   <section class="container-page py-28 text-center">
     <p class="page-title text-7xl">404</p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">

@@ -21,25 +21,31 @@ function imageFor(file: string): ImageMetadata {
 
 // Two items side by side from 640 px; otherwise one per row. The card content
 // is at most ~890 px wide, so 1780 px covers high-density screens.
-const twoUp = items.length === 2;
-const sizes = twoUp ? "(min-width: 1000px) 440px, (min-width: 640px) 45vw, 100vw" : "(min-width: 1000px) 890px, 100vw";
+// From 640 px, items go two per row; with an odd count the first one spans
+// the whole row (e.g. one large photo and two smaller ones below).
+const twoUp = items.length >= 2;
+const wide = (i: number) => !twoUp || (items.length % 2 === 1 && i === 0);
+const half = "(min-width: 1000px) 440px, (min-width: 640px) 45vw, 100vw";
+const full = "(min-width: 1000px) 890px, 100vw";
 ---
 
 {
   items.length > 0 && (
     <div class:list={["mt-6 grid gap-4", twoUp && "sm:grid-cols-2"]}>
-      {items.map((item) =>
+      {items.map((item, i) =>
         "image" in item ? (
           <Image
             src={imageFor(item.image)}
             alt={item.alt[lang]}
             widths={[480, 890, 1200, 1780]}
-            sizes={sizes}
+            sizes={wide(i) ? full : half}
             quality={85}
-            class="aspect-video w-full rounded-xl object-cover"
+            class:list={["aspect-video w-full rounded-xl object-cover", twoUp && wide(i) && "sm:col-span-2"]}
           />
         ) : (
-          <YouTube id={item.youtube} title={item.alt[lang]} lang={lang} />
+          <div class:list={[twoUp && wide(i) && "sm:col-span-2"]}>
+            <YouTube id={item.youtube} title={item.alt[lang]} lang={lang} />
+          </div>
         ),
       )}
     </div>

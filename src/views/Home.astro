@@ -1,6 +1,6 @@
 ---
 import Icon from "../components/Icon.astro";
-import { cv } from "../data/cv";
+import { cv, resume } from "../data/cv";
 import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
@@ -13,11 +13,10 @@ const t = useTranslations(lang);
 
 <section class="hero-grid">
   <div class="hero-text py-20 sm:py-32">
-    <p class="eyebrow">{cv.person.roles[lang]}</p>
+    <p class="eyebrow">{resume.person.headline[lang]}</p>
     <h1 class="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">{cv.person.name}</h1>
     <div class="signal-rule mt-6" aria-hidden="true"></div>
-    <p class="mt-5 text-lg text-stone-600">{cv.person.degrees[lang]}</p>
-    <p class="mt-8 text-lg leading-relaxed text-stone-700">{cv.person.presentation[lang]}</p>
+    <p class="mt-8 text-lg leading-relaxed text-stone-700">{resume.person.summary[lang]}</p>
     <div class="mt-10 flex flex-wrap items-center gap-3">
       <a href={cvPdf(lang)} download class="btn-primary"><Icon name="download" />{t("common.download_cv")}</a>
       {
