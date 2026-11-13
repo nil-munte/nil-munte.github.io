@@ -179,17 +179,24 @@
 }
 .hero-text {
   grid-column: content;
+  grid-row: 1;
   max-width: 36rem;
   position: relative;
   z-index: 1;
 }
+/* Phone: the terrain sits behind the top of the hero and fades out to the
+   left and downwards, like the strip behind the title on the inner pages. */
 .hero-art {
-  --x: 50cqw;
+  --x: 74cqw;
   grid-column: full;
-  height: 18rem;
+  grid-row: 1;
+  align-self: start;
+  height: 24rem;
   position: relative;
   container-type: size;
-  mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 75%, transparent);
+  opacity: 0.7;
+  mask-image: linear-gradient(to right, transparent 10%, #000 65%), linear-gradient(to bottom, #000 40%, transparent);
+  mask-composite: intersect;
   pointer-events: none;
 }
 .terrain {
@@ -201,7 +208,7 @@
   position: absolute;
   left: var(--x);
   top: 49.58%;
-  width: min(66cqh, 26rem, 85cqw);
+  width: min(66cqh, 26rem, 55cqw);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 9999px;
@@ -242,7 +249,9 @@
     --x: min(50cqw + 18rem, 100cqw - 14rem);
     grid-column: full;
     grid-row: 1;
+    align-self: stretch;
     height: auto;
+    opacity: 1;
     mask-image:
       linear-gradient(to right, transparent calc(50% - 1rem), #000 calc(50% + 10rem)),
       linear-gradient(to bottom, transparent 0, #000 12%, #000 80%, transparent);

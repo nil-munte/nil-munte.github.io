@@ -70,11 +70,14 @@ career_extras:
         alt: { ca: Detector de gestos amb radar, en: Radar gesture detector }
   genrfid: {}
 # category: research | web | teaching show on Projects; personal only in About.
+# featured: true also shows the project on the home page (3 at most).
 # image: file in src/assets/projects/.
 projects:
   # Recerca i enginyeria
   - id: radar
     category: research
+    featured: true
+    image: radar.jpg
     title:
       ca: Detecció d'ocupació i gestos amb radar
       en: Occupancy and gesture detection with radar
@@ -110,6 +113,7 @@ projects:
   # Aplicacions web
   - id: calcul-cost-trajecte
     category: web
+    featured: true
     image: calcul-cost-trajecte.jpg
     title:
       ca: Cost d'un viatge en cotxe elèctric
@@ -144,6 +148,7 @@ projects:
   # Docència i divulgació
   - id: fisica-2n-bat
     category: teaching
+    featured: true
     image: fisica-2n-bat.jpg
     title:
       ca: Física de 2n de Batxillerat
