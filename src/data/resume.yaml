@@ -54,8 +54,8 @@ experience:
     end: null
     exec: true
     highlights:
-      - ca: Disseny i desplegament de solucions d'IA, aprenentatge automàtic i IA generativa natives al núvol (Azure, AWS, GCP, Databricks, Foundry, TensorFlow, PyTorch, Kubernetes i serveis *serverless*/PaaS).
-        en: Design and deploy cloud-native AI, machine learning and generative AI solutions (Azure, AWS, GCP, Databricks, Foundry, TensorFlow, PyTorch, Kubernetes and serverless/PaaS services).
+      - ca: Disseny i desplegament de solucions d'IA generativa natives al núvol (Azure, AWS, GCP, Databricks, Foundry, Kubernetes i serveis *serverless*/PaaS).
+        en: Design and deploy cloud-native generative AI solutions (Azure, AWS, GCP, Databricks, Foundry, Kubernetes and serverless/PaaS services).
         exec: true
       - ca: Construcció i industrialització de plataformes MLOps i *pipelines* d'IA, de l'entrenament al desplegament, el seguiment i el CI/CD, amb arquitectures d'autoservei escalables.
         en: Build and industrialise MLOps platforms and AI pipelines, from training to deployment, monitoring and CI/CD, with scalable self-service architectures.

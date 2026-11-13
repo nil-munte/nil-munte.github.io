@@ -36,6 +36,7 @@ const schema = z.object({
     z.object({
       id: z.string(),
       category: z.enum(["research", "web", "teaching", "personal"]),
+      featured: z.boolean().default(false),
       title: t,
       description: t,
       image: z.string().optional(),

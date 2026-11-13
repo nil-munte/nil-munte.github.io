@@ -1,7 +1,8 @@
 ---
 import Icon from "../components/Icon.astro";
-import { cv, resume } from "../data/cv";
-import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
+import ProjectCard from "../components/ProjectCard.astro";
+import { cv, formatRange, resume } from "../data/cv";
+import { cvPdf, pathFor, useTranslations, type Lang } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
@@ -9,6 +10,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// What I do now (the CV's current jobs) and the featured projects: they show
+// there is more to the site than the hero, also on a phone.
+const current = resume.experience.filter((job) => job.end === null);
+const featured = cv.projects.filter((p) => p.featured).slice(0, 3);
 ---
 
 <section class="hero-grid">
@@ -40,4 +46,34 @@ const t = useTranslations(lang);
     <div class="radar"></div>
     <span class="summit"></span>
   </div>
+</section>
+
+<section aria-labelledby="now" class="container-page mt-4">
+  <h2 id="now" class="eyebrow mb-5 text-sm">{t("home.now")}</h2>
+  <ul class="grid gap-4 sm:grid-cols-3">
+    {
+      current.map((job) => (
+        <li>
+          <a href={pathFor("career", lang, `#${job.id}`)} class="card block h-full p-5 transition hover:border-accent-300">
+            <p class="font-semibold text-stone-900">{job.role[lang]}</p>
+            <p class="text-stone-600">{job.org}</p>
+            <p class="mt-2 font-mono text-xs text-stone-500">{formatRange(job.start, job.end, lang)}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a href={pathFor("career", lang)} class="link mt-5 inline-flex items-center gap-1.5 text-sm">
+    {t("home.all_career")}<Icon name="arrow" />
+  </a>
+</section>
+
+<section aria-labelledby="featured" class="container-page mt-16">
+  <h2 id="featured" class="eyebrow mb-5 text-sm">{t("home.featured")}</h2>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {featured.map((p) => <ProjectCard project={p} lang={lang} />)}
+  </div>
+  <a href={pathFor("projects", lang)} class="link mt-5 inline-flex items-center gap-1.5 text-sm">
+    {t("home.all_projects")}<Icon name="arrow" />
+  </a>
 </section>
