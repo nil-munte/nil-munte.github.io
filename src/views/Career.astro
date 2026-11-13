@@ -1,9 +1,15 @@
 ---
-import PageHeader from "../components/PageHeader.astro";
+import Icon from "../components/Icon.astro";
 import LinkButtons from "../components/LinkButtons.astro";
 import Media from "../components/Media.astro";
-import { cv, inline } from "../data/cv";
-import { useTranslations, type Lang } from "../i18n/ui";
+import PageHeader from "../components/PageHeader.astro";
+import { cv, formatRange, inline, resume, tr } from "../data/cv";
+import { publicFileSize } from "../lib/files";
+import { cvPdf, useTranslations, type Lang } from "../i18n/ui";
+
+// The texts come from src/data/resume.yaml, the same source as the PDF CV, so
+// the page and the PDF always say the same. Photos, videos and links are in
+// career_extras in src/data/cv.yaml.
 
 interface Props {
   lang: Lang;
@@ -15,42 +21,142 @@ const t = useTranslations(lang);
 
 <PageHeader title={t("title.career")} />
 <div class="container-page">
+  <a href={cvPdf(lang)} download class="btn-primary -mt-4 mb-12"><Icon name="download" />{t("common.download_cv")}</a>
 
+  <h2 class="eyebrow mb-6 text-sm">{t("career.experience")}</h2>
   <ol class="timeline space-y-8">
     {
-      cv.career.map((item) => (
-        <li class="timeline-item">
-          <article class="card p-5 sm:p-8" id={item.id}>
-            <h2 class="text-xl font-bold sm:text-2xl">{item.title[lang]}</h2>
-            <p class="org mt-1 text-stone-500">{item.org[lang]}</p>
-            <p class="mt-5 leading-relaxed text-stone-700">{item.intro[lang]}</p>
-
-            {item.list.length > 0 && (
+      resume.experience.map((job) => {
+        const extras = cv.career_extras[job.id];
+        return (
+          <li class="timeline-item">
+            <article class="card p-5 sm:p-8" id={job.id}>
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <h3 class="text-xl font-bold sm:text-2xl">{job.role[lang]}</h3>
+                <p class="shrink-0 font-mono text-sm text-stone-500">{formatRange(job.start, job.end, lang)}</p>
+              </div>
+              <p class="mt-1 text-stone-600">
+                {job.url ? (
+                  <a href={job.url} target="_blank" rel="noopener" class="link">
+                    {job.org}
+                  </a>
+                ) : (
+                  job.org
+                )}
+              </p>
               <ul class="prose-text mt-5 space-y-3 leading-relaxed text-stone-700">
-                {item.list.map((entry) => (
+                {job.highlights.map((h) => (
                   <li class="bullet">
-                    <Fragment set:html={inline(entry[lang])} />
+                    <Fragment set:html={inline(h[lang])} />
                   </li>
                 ))}
               </ul>
-            )}
-
-            {item.sections.map((section) => (
-              <section class="mt-8">
-                <h3 class="text-lg font-semibold">{section.title[lang]}</h3>
-                {section.paragraphs.map((p) => (
-                  <p class="mt-3 leading-relaxed text-stone-700">{p[lang]}</p>
-                ))}
-                <LinkButtons links={section.links} lang={lang} />
-                <Media items={section.media} lang={lang} />
-              </section>
-            ))}
-
-            <LinkButtons links={item.links} lang={lang} />
-            <Media items={item.media} lang={lang} />
-          </article>
-        </li>
-      ))
+              <LinkButtons links={extras.links} lang={lang} />
+              <Media items={extras.media} lang={lang} />
+            </article>
+          </li>
+        );
+      })
     }
   </ol>
+
+  <div class="mt-16 grid gap-12 lg:grid-cols-2">
+    <section aria-labelledby="education">
+      <h2 id="education" class="eyebrow mb-5 text-sm">{t("career.education")}</h2>
+      <ul class="space-y-5">
+        {
+          resume.education.map((e) => (
+            <li>
+              <p class="font-semibold text-stone-900">{e.title[lang]}</p>
+              <p class="text-stone-600">
+                {e.org} · {e.start} – {e.end}
+              </p>
+              <p class="text-sm text-stone-600">{e.detail[lang]}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="awards">
+      <h2 id="awards" class="eyebrow mb-5 text-sm">{t("career.awards")}</h2>
+      <ul class="space-y-4">
+        {
+          resume.awards.map((a) => (
+            <li class="grid grid-cols-[3.25rem_1fr] gap-2">
+              <span class="font-mono text-sm text-stone-500">{a.year}</span>
+              <span>
+                <span class="text-stone-900">{a.title[lang]}</span>
+                <span class="block text-sm text-stone-600">{a.org[lang]}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <section aria-labelledby="publications" class="mt-14">
+    <h2 id="publications" class="eyebrow mb-5 text-sm">{t("career.publications")}</h2>
+    <ol class="space-y-4">
+      {
+        resume.publications.map((p, i) => {
+          const size = p.pdf ? publicFileSize(p.pdf) : null;
+          return (
+            <li class="card p-5">
+              <p class="text-sm text-stone-600">
+                [{i + 1}] {p.authors} ({p.year})
+              </p>
+              <p class="mt-1 font-semibold text-stone-900">{p.title}</p>
+              <p class="text-sm text-stone-600 italic">{p.venue}</p>
+              {p.pdf && (
+                <a href={p.pdf} download class="link mt-3 inline-flex items-center gap-1.5 text-sm">
+                  <Icon name="file" />
+                  PDF
+                  {size && <span class="font-normal text-stone-500">· {size}</span>}
+                </a>
+              )}
+            </li>
+          );
+        })
+      }
+    </ol>
+  </section>
+
+  <div class="mt-14 grid gap-12 lg:grid-cols-2">
+    <section aria-labelledby="skills">
+      <h2 id="skills" class="eyebrow mb-5 text-sm">{t("career.skills")}</h2>
+      <dl class="space-y-3">
+        {
+          resume.skills.map((s) => (
+            <div>
+              <dt class="font-semibold text-stone-900">{s.name[lang]}</dt>
+              <dd class="text-stone-600">{s.items.map((i) => tr(i, lang)).join(", ")}</dd>
+            </div>
+          ))
+        }
+        <div>
+          <dt class="font-semibold text-stone-900">{t("career.languages")}</dt>
+          <dd class="text-stone-600">{resume.languages.map((l) => `${l.name[lang]} (${l.level[lang]})`).join(", ")}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="courses">
+      <h2 id="courses" class="eyebrow mb-5 text-sm">{t("career.courses")}</h2>
+      <ul class="space-y-4">
+        {
+          resume.courses.map((c) => (
+            <li class="grid grid-cols-[3.25rem_1fr] gap-2">
+              <span class="font-mono text-sm text-stone-500">{c.year}</span>
+              <span>
+                <span class="text-stone-900">{c.title[lang]}</span>
+                <span class="block text-sm text-stone-600">{c.org[lang]}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
 </div>

@@ -10,7 +10,7 @@ The content is currently the previous site's, unchanged on purpose: a content re
 
 Never hard-code content in pages. Add it to `cv.yaml` and render it.
 
-`src/data/resume.yaml` is the full CV, `{ ca, en }` like the rest. `cv/cv.typ` (Typst, fonts in `cv/fonts/`) renders it to `public/info/ca/CV_Nil_Munte_Guerrero_CA.pdf`, `public/info/en/CV_Nil_Munte_Guerrero_EN.pdf` and the one-page `public/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf` (`exec: true` marks what goes in it). Those PDFs are gitignored: `npm run cv` (Typst CLI) builds them locally and CI builds them before `astro build`. On a push to `main` that touches `resume.yaml` or `cv/`, the `cv-release` job publishes them as a GitHub Release `cv-<date>-<sha>`. The career page will later read `resume.yaml` too.
+`src/data/resume.yaml` is the full CV, `{ ca, en }` like the rest. `cv/cv.typ` (Typst, fonts in `cv/fonts/`) renders it to `public/info/ca/CV_Nil_Munte_Guerrero_CA.pdf`, `public/info/en/CV_Nil_Munte_Guerrero_EN.pdf` and the one-page `public/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf` (`exec: true` marks what goes in it). Those PDFs are gitignored: `npm run cv` (Typst CLI) builds them locally and CI builds them before `astro build`. On a push to `main` that touches `resume.yaml` or `cv/`, the `cv-release` job publishes them as a GitHub Release `cv-<date>-<sha>`. The career page and the home headline and summary read `resume.yaml` too; `career_extras` in `cv.yaml` adds the photos, videos and links of each job (same `id`).
 
 ## Design
 

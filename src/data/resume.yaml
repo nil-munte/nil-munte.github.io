@@ -2,7 +2,9 @@
 #
 # Cada text té versió catalana (ca) i anglesa (en). Dates "AAAA-MM" entre cometes;
 # end: null vol dir «actualitat». exec: true marca el que entra a la versió
-# executive d'una pàgina. **negreta** funciona als punts.
+# executive d'una pàgina. **negreta** i *cursiva* funcionen als punts.
+# id: lliga cada feina amb les fotos, els vídeos i els enllaços de la web
+# (career_extras a cv.yaml).
 #
 # Quan canvies aquest fitxer i fusiones la PR, GitHub Actions genera els PDF,
 # els publica a la web i en desa una còpia com a Release del repositori.
@@ -45,7 +47,8 @@ keywords:
   en: [AI architecture, MLOps, Generative AI, 'Cloud (Azure, AWS, GCP)', Machine learning, Data science, Project management, Telecommunications, Radio frequency, Radar and signal processing, Data acquisition, ADAS, Embedded systems, Software engineering, Teaching]
 
 experience:
-  - org: CTTI · Generalitat de Catalunya
+  - id: ctti
+    org: CTTI · Generalitat de Catalunya
     role: { ca: Arquitecte d'IA, en: AI Architect }
     start: "2026-03"
     end: null
@@ -62,7 +65,8 @@ experience:
       - ca: Treball amb equips multidisciplinaris per modernitzar plataformes corporatives amb metodologies àgils, DevOps i MLOps.
         en: Work with cross-functional teams to modernise enterprise platforms using Agile, DevOps and MLOps.
 
-  - org: Universitat Rovira i Virgili (URV)
+  - id: urv
+    org: Universitat Rovira i Virgili (URV)
     # Official list of the courses taught, kept up to date by URV.
     url: https://www.urv.cat/html/grupsrecerca/investigadors/docencia-I79429.php
     role: { ca: Professor associat, en: Associate Professor }
@@ -78,7 +82,8 @@ experience:
       - ca: Uns 40 estudiants per curs, als graus d'Enginyeria de Sistemes i Serveis de Telecomunicació i d'Enginyeria Biomèdica, i a la doble titulació.
         en: Around 40 students per course, in the Telecommunications Systems and Services Engineering and Biomedical Engineering degrees and their double degree.
 
-  - org: Acadèmia Gaudí
+  - id: gaudi
+    org: Acadèmia Gaudí
     role: { ca: Formador de Python, en: Python Trainer }
     start: "2024-04"
     end: null
@@ -88,7 +93,8 @@ experience:
       - ca: Curs de programació de robots per a infants (mBot i Makeblock).
         en: Robot programming course for children (mBot and Makeblock).
 
-  - org: Applus+ IDIADA
+  - id: idiada
+    org: Applus+ IDIADA
     role: { ca: Enginyer de funcions ADAS i AV · Cap de projectes, en: ADAS & AV Functions Developer Engineer · Project Manager }
     start: "2024-05"
     end: "2026-03"
@@ -107,7 +113,8 @@ experience:
       - ca: Eina de *reporting* per al client (React, Python) per presentar resultats i analítiques de les proves.
         en: Client reporting tool (React, Python) to present test results and analytics.
 
-  - org: ALEPHSYS Lab · Universitat Rovira i Virgili
+  - id: aleph
+    org: ALEPHSYS Lab · Universitat Rovira i Virgili
     role: { ca: Enginyer R+D, en: R&D Engineer }
     start: "2023-09"
     end: "2024-04"
@@ -117,7 +124,8 @@ experience:
       - ca: Model dinàmic amb equacions diferencials de les fluctuacions de freqüència de la xarxa elèctrica, amb dades reals de Red Eléctrica (Fortran, Linux), i administració dels servidors Linux del grup.
         en: ODE-based dynamical model of power-grid frequency fluctuations using real data from Red Eléctrica (Fortran, Linux), plus administration of the group's Linux servers.
 
-  - org: NEPHOS Lab · Universitat Rovira i Virgili
+  - id: nephos
+    org: NEPHOS Lab · Universitat Rovira i Virgili
     role: { ca: Enginyer R+D, en: R&D Engineer }
     start: "2021-03"
     end: "2023-08"
@@ -131,7 +139,8 @@ experience:
       - ca: Sistemes encastats i microcontroladors (PIC, ESP32, plaques de ràdio de Silicon Labs, Arduino).
         en: Embedded systems and microcontrollers (PIC, ESP32, Silicon Labs radio boards, Arduino).
 
-  - org: Generation RFID
+  - id: genrfid
+    org: Generation RFID
     role: { ca: Enginyer de programari i maquinari (pràctiques), en: Software & Hardware Engineer Intern }
     start: "2020-11"
     end: "2021-03"
@@ -145,7 +154,7 @@ education:
     start: "2022"
     end: "2023"
     detail: { ca: "Nota mitjana 9,42/10 · 8 matrícules d'honor", en: "GPA 9.42/10 · 8 distinctions" }
-  - title: { ca: Grau en Enginyeria de Telecomunicacions, en: BSc in Telecommunications Engineering }
+  - title: { ca: Grau en Enginyeria de Sistemes i Serveis de Telecomunicacions, en: BSc in Telecommunications Systems and Services Engineering }
     org: Universitat Rovira i Virgili, Tarragona
     start: "2017"
     end: "2021"
@@ -195,10 +204,12 @@ publications:
     year: 2022
     title: Vehicle occupancy detector based on FMCW mm-wave radar at 77 GHz
     venue: IEEE Sensors Journal, 22(24), 24504–24515
+    pdf: /info/IEEESensors_77GHz.pdf
   - authors: Lazaro, A., Munte, N., Villarino, R. & Girbau, D.
     year: 2023
     title: In-Vehicle Monitoring Based on a Low-Cost mm-Wave Radar at 60 GHz
     venue: 2023 SBMO/IEEE MTT-S International Microwave and Optoelectronics Conference (IMOC), 241–243
+    pdf: /info/IEEE_IMOC2023_60GHz_v3short.pdf
 
 awards:
   - year: 2022

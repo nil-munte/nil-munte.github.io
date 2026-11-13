@@ -5,7 +5,7 @@ Fitxers que generen els gràfics de `public/`. No formen part de la web; només 
 | Fitxer | Genera | Quan |
 |---|---|---|
 | `contours.py` | `public/design/colldejou.svg`: corbes de nivell de la Mola de Colldejou (MET-5 de l'ICGC, CC BY 4.0) | Si vols una altra zona o un altre interval de corbes |
-| `og.typ` | `public/og-ca.png` i `public/og-en.png`: la imatge que surt en compartir l'enllaç | Si canvien el nom, els rols o la titulació a `src/data/cv.yaml` |
+| `og.typ` | `public/og-ca.png` i `public/og-en.png`: la imatge que surt en compartir l'enllaç | Si canvien el nom (`src/data/cv.yaml`) o el titular (`headline` a `src/data/resume.yaml`) |
 
 ## Imatge per compartir
 

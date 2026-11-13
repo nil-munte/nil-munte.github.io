@@ -1,6 +1,7 @@
 // Share image (1200x630 at 144 ppi): paper, the Mola de Colldejou contours and the radar.
 #let lang = sys.inputs.at("lang", default: "en")
 #let p = yaml("../src/data/cv.yaml").person
+#let resume = yaml("../src/data/resume.yaml").person
 #let paper = rgb("#f4efe4")
 #let green = rgb("#2f5d4a")
 #let rust = rgb("#a0522d")
@@ -31,7 +32,7 @@
 
 // Text.
 #place(top + left, dx: 44pt, dy: 0pt, box(width: 310pt, height: 315pt, align(horizon, {
-  text(font: "IBM Plex Mono", size: 8.5pt, weight: 500, fill: green, p.roles.at(lang))
+  text(font: "IBM Plex Mono", size: 7.4pt, weight: 500, fill: green, resume.headline.at(lang))
   v(6pt)
   text(size: 33pt, weight: 700, tracking: -0.02em, p.name)
   v(2pt)
@@ -42,5 +43,5 @@
   })
   curve(stroke: 1pt + green, curve.move(pts.first()), ..pts.slice(1).map(q => curve.line(q)))
   v(6pt)
-  text(size: 10.5pt, fill: rgb("#5b5648"), p.degrees.at(lang))
+  text(size: 10.5pt, fill: rgb("#5b5648"), p.website.replace("https://", ""))
 })))
