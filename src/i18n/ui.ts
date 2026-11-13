@@ -48,6 +48,12 @@ export const ui = {
     "a11y.lang": "Idioma",
     "a11y.play": "Reprodueix el vídeo",
     "a11y.strava": "Activitat a Strava",
+    // Search engines: the full name goes in every <title> and description.
+    "meta.home_title": "Nil Munté Guerrero · Arquitecte d'IA i enginyer de telecomunicacions",
+    "meta.home": "Web de Nil Munté Guerrero, arquitecte d'IA al CTTI, enginyer de telecomunicacions i professor associat a la URV: trajectòria, projectes i CV.",
+    "meta.career": "Trajectòria de Nil Munté Guerrero: arquitectura d'IA al CTTI, ADAS i projectes europeus a Applus+ IDIADA, recerca en radar i docència a la URV.",
+    "meta.projects": "Projectes de Nil Munté Guerrero: radar per a automoció, aplicacions web i materials docents de física i Python.",
+    "meta.about": "Qui és Nil Munté Guerrero: formació, docència i el que fa fora de la feina.",
   },
   en: {
     "nav.home": "Home",
@@ -73,6 +79,11 @@ export const ui = {
     "a11y.lang": "Language",
     "a11y.play": "Play video",
     "a11y.strava": "Strava activity",
+    "meta.home_title": "Nil Munté Guerrero · AI Architect and Telecommunications Engineer",
+    "meta.home": "Website of Nil Munté Guerrero, AI architect at CTTI, telecommunications engineer and associate professor at URV: career, projects and CV.",
+    "meta.career": "Career of Nil Munté Guerrero: AI architecture at CTTI, ADAS and European projects at Applus+ IDIADA, radar research and teaching at URV.",
+    "meta.projects": "Projects by Nil Munté Guerrero: automotive radar, web apps and teaching materials for physics and Python.",
+    "meta.about": "About Nil Munté Guerrero: education, teaching and life outside work.",
   },
 } as const;
 

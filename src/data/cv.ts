@@ -1,6 +1,7 @@
 import { parse } from "yaml";
 import { z } from "astro/zod";
 import source from "./cv.yaml?raw";
+import resumeSource from "./resume.yaml?raw";
 
 // Text in both languages. Validation fails the build if one is missing.
 const t = z.object({ ca: z.string().min(1), en: z.string().min(1) });
@@ -84,3 +85,14 @@ export function inline(text: string): string {
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '<a class="link" href="$2">$1</a>');
 }
+
+/**
+ * The full CV (src/data/resume.yaml), also used for the PDFs. For now the site
+ * only reads the current roles from it, for search engines.
+ */
+type T = { ca: string; en: string };
+export const resume = parse(resumeSource) as {
+  person: { headline: T };
+  experience: { org: string; role: T; end: string | null }[];
+  education: { org: string }[];
+};
