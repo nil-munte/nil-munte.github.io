@@ -21,7 +21,10 @@ const t = useTranslations(lang);
 
 <PageHeader title={t("title.career")} />
 <div class="container-page">
-  <a href={cvPdf(lang)} download class="btn-primary -mt-4 mb-12"><Icon name="download" />{t("common.download_cv")}</a>
+  <div class="-mt-4 mb-12 flex flex-wrap gap-3">
+    <a href={cvPdf(lang)} download class="btn-primary"><Icon name="download" />{t("common.download_cv")}</a>
+    <a href="/info/Executive_CV_Nil_Munte_Guerrero_ENG.pdf" download class="btn-ghost"><Icon name="file" />{t("common.exec_cv")}</a>
+  </div>
 
   <h2 class="eyebrow mb-6 text-sm">{t("career.experience")}</h2>
   <ol class="timeline space-y-8">

@@ -69,7 +69,7 @@ experience:
     org: Universitat Rovira i Virgili (URV)
     # Official list of the courses taught, kept up to date by URV.
     url: https://www.urv.cat/html/grupsrecerca/investigadors/docencia-I79429.php
-    role: { ca: Professor associat, en: Associate Professor }
+    role: { ca: Professor associat, en: Adjunct Lecturer }
     start: "2021-09"
     end: null
     exec: true
@@ -162,7 +162,7 @@ education:
 
 courses:
   - year: 2025
-    title: { ca: AWS Cloud Practitioner, en: AWS Cloud Practitioner }
+    title: { ca: AWS Academy Cloud Foundations, en: AWS Academy Cloud Foundations }
     org: { ca: Microcredencials URV, en: URV Microcredentials }
   - year: 2025
     title: { ca: MBSE a la pràctica amb Arcadia i Capella, en: MBSE in practice with Arcadia and Capella }
@@ -195,7 +195,7 @@ skills:
       - MBSE
 
 languages:
-  - { name: { ca: Català, en: Catalan }, level: { ca: nadiu, en: native } }
+  - { name: { ca: Català, en: Catalan }, level: { ca: 'nadiu (C2)', en: 'native (C2)' } }
   - { name: { ca: Castellà, en: Spanish }, level: { ca: nadiu, en: native } }
   - { name: { ca: Anglès, en: English }, level: { ca: 'avançat (C1, CAE)', en: 'advanced (C1, CAE)' } }
 
