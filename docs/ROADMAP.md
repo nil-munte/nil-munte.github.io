@@ -48,8 +48,8 @@ Tots els textos proposats, pàgina per pàgina, són a [`PROPOSTES-CONTINGUT.md`
 4. ⏳ Si tens ORCID o Google Scholar, afegeix-los a `contact.links` de `cv.yaml`: entren al JSON-LD `sameAs`.
 5. ⏳ Valora un **domini propi** (`nilmunte.cat`, `.dev`…, uns 10–15 € l'any). Cal afegir `public/CNAME` i canviar `site` a `astro.config.mjs`. Atenció: les altres webs (`/cuina-amb-mi/`, `/calcul-cost-trajecte/`…) també canviarien de domini.
 6. ⏳ Comparteix cada projecte nou a LinkedIn amb l'enllaç a la seva fitxa del portfoli.
-7. ⏳ **LinkedIn:** comprovar que hi ha `https://nil-munte.github.io` a *Informació de contacte → Lloc web*, i afegir la web a *Destacats*. No s'ha pogut fer perquè cal la sessió de LinkedIn (Claude in Chrome no es connectava).
-8. ⏳ **Website del perfil de GitHub:** posar-hi `https://nil-munte.github.io` a <https://github.com/settings/profile> (el *homepage* del repo ja hi és).
+7. ✅ **LinkedIn:** el perfil enllaça a `https://nil-munte.github.io` (*Informació de contacte → Lloc web* i *Destacats*), i la web enllaça al LinkedIn (peu i `sameAs`).
+8. ✅ **GitHub:** el perfil i el repo enllacen a la web. **X** (`x.com/nilmunte`) s'afegeix al peu i al `sameAs`; es pot vincular a Search Console com a *platform property*.
 9. ⏳ **SEO de Física de 2n de Batxillerat** (repo `fisica-2n-bat`). Objectiu: sortir el primer a Google en cercar «PAU física», «física selectivitat», «exàmens PAU física resolts» i similars.
    - La propietat de Search Console de `https://nil-munte.github.io/` ja cobreix `/fisica-2n-bat/`: no cal una altra verificació.
    - Títol i descripció propis a cada pàgina i a cada tema, amb les paraules que la gent cerca («PAU», «selectivitat», «resolts», el nom del tema i l'any).

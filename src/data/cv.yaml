@@ -16,6 +16,9 @@ person:
     - id: github
       label: GitHub
       url: https://github.com/nil-munte
+    - id: x
+      label: X
+      url: https://x.com/nilmunte
   site_title:
     ca: Portfoli del Nil
     en: Nil's Portfolio
