@@ -20,8 +20,8 @@ person:
       label: X
       url: https://x.com/nilmunte
   site_title:
-    ca: Portfoli del Nil
-    en: Nil's Portfolio
+    ca: Nil Munté
+    en: Nil Munté
 # Fotos, vídeos i enllaços de cada feina a la pàgina Carrera. Els textos de les
 # feines són a resume.yaml (el mateix id); aquí només hi ha el que no va al PDF.
 career_extras:
@@ -32,7 +32,7 @@ career_extras:
         url: https://www.urv.cat/html/grupsrecerca/investigadors/docencia-I79429.php
     media:
       - image: associate-professor.jpg
-        alt: { ca: Associate professor, en: Associate professor }
+        alt: { ca: Professor associat, en: Adjunct lecturer }
   gaudi:
     links:
       - label: { ca: Veure vídeo docent, en: Watch teaching reel }
@@ -123,17 +123,6 @@ projects:
       en: Works out the real cost of a trip by combining home and public charging, with the electricity price taken from your bill.
     demo: https://nil-munte.github.io/calcul-cost-trajecte/
     code: https://github.com/nil-munte/calcul-cost-trajecte
-  - id: model-region
-    category: web
-    image: model-region.jpg
-    title:
-      ca: Disponibilitat de models d'IA per regió
-      en: AI model availability by region
-    description:
-      ca: Mostra en quins proveïdors de núvol i regions hi ha cada model d'IA, a partir de la seva documentació.
-      en: Shows which cloud providers and regions offer each AI model, based on their documentation.
-    demo: https://nil-munte.github.io/model-region/
-    code: https://github.com/nil-munte/model-region
   - id: riudoms-3d
     category: web
     image: riudoms-3d.jpg
@@ -187,17 +176,17 @@ projects:
       ca: Cuina amb mi
       en: Cuina amb mi (recipes)
     description:
-      ca: Les receptes que he cuinat i aquelles en què he participat, amb fotos de cada pas.
-      en: The recipes I've cooked or helped with, with photos of every step (in Catalan).
+      ca: Les receptes que he cuinat i aquelles en què he participat.
+      en: The recipes I've cooked or helped with (in Catalan).
     demo: https://nil-munte.github.io/cuina-amb-mi/
     code: https://github.com/nil-munte/cuina-amb-mi
 # Paragraphs. [text](https://...) becomes a link.
 about:
-  - ca: Vaig estudiar Enginyeria de Telecomunicacions i vaig completar un Màster en Intel·ligència Artificial a la Universitat Rovira i Virgili.
-    en: I studied Telecommunications Engineering and completed a Master's in Artificial Intelligence at Universitat Rovira i Virgili.
+  - ca: Vaig estudiar el Grau en Enginyeria de Sistemes i Serveis de Telecomunicacions i el Màster en Seguretat Informàtica i Intel·ligència Artificial a la Universitat Rovira i Virgili.
+    en: I studied a BSc in Telecommunications Systems and Services Engineering and an MSc in Computer Security and Artificial Intelligence at Universitat Rovira i Virgili.
   - ca: També em dedico a la docència. Soc professor associat a la URV des del 2021, faig cursos de Python a l'Acadèmia Gaudí i preparo materials oberts, com els de [Física de 2n de Batxillerat](https://nil-munte.github.io/fisica-2n-bat/).
-    en: I also teach. I've been an associate professor at URV since 2021, I run Python courses at Acadèmia Gaudí and I prepare open materials, such as my [upper secondary Physics](https://nil-munte.github.io/fisica-2n-bat/) site.
+    en: I also teach. I've been an adjunct lecturer at URV since 2021, I run Python courses at Acadèmia Gaudí and I prepare open materials, such as my [upper secondary Physics](https://nil-munte.github.io/fisica-2n-bat/) site.
   - ca: En el meu temps lliure, m'agrada molt fer senderisme i anar a la muntanya. Vaig ser monitor de l'esplai de Riudoms, el meu poble, i m'agrada cuinar; les receptes que he fet són a [Cuina amb mi](https://nil-munte.github.io/cuina-amb-mi/).
     en: In my free time, I really like hiking and going to the mountains. I was a youth leader at the esplai (a Catalan youth leisure club) in Riudoms, my home town, and I enjoy cooking; the recipes I've made are on [Cuina amb mi](https://nil-munte.github.io/cuina-amb-mi/) (in Catalan).
 # Project ids shown as cards at the end of About.
-about_projects: [cuina-amb-mi, fisica-2n-bat]
+about_projects: [cuina-amb-mi]

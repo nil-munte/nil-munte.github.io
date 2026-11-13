@@ -65,7 +65,10 @@ Tots els textos proposats, pàgina per pàgina, són a [`PROPOSTES-CONTINGUT.md`
 | 4.2 ✅ | Sense mode fosc, a propòsit: el paper forma part de la identitat. |
 | 4.3 ✅ | Fora la barra de gradient amb pulsació i el text justificat. Portada més equilibrada: pàgina més ampla i radar lligat a la graella. |
 | 4.4 ✅ | Carrera com a camí amb un cim per etapa; franja de relleu a dalt de cada pàgina interior. |
-| 4.5 ⏳ | Captures o miniatures per a cada projecte web (es poden afegir a `src/assets/projects/`). |
+| 4.5 ⏳ | Captures o miniatures per a cada projecte web (es poden afegir a `src/assets/projects/`). Falten les de la xarxa elèctrica i la xarxa neuronal. |
+| 4.6 ✅ | Marca «Nil Munté» a la capçalera, com al CV i al LinkedIn. |
+
+**Model-Region** s'ha tret de Projectes (13/11/2026): s'obria buida (Azure, 0 models) i les dades d'AWS eren d'abril. Quan funcioni, es torna a afegir a `projects` de `cv.yaml` (la imatge és a `src/assets/projects/model-region.jpg`).
 
 ## 5. Mantenibilitat i edició del CV
 

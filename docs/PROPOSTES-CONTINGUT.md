@@ -156,7 +156,7 @@ Es poden corregir sense canviar res més:
 
 **Cursos i certificacions**
 
-- **2025** · AWS Cloud Practitioner · Microcredencials URV
+- **2025** · AWS Academy Cloud Foundations · Microcredencials URV
 - **2025** · MBSE a la pràctica amb Arcadia i Capella · Samares Engineering
 - **2024** · Curs de cap de projectes · Applus+ IDIADA
 
