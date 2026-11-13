@@ -18,7 +18,7 @@ const schema = z.object({
     name: z.string(),
     email: z.string().email(),
     website: z.string().url(),
-    links: z.array(z.object({ id: z.enum(["linkedin", "github"]), label: z.string(), url: z.string().url() })),
+    links: z.array(z.object({ id: z.enum(["linkedin", "github", "x"]), label: z.string(), url: z.string().url() })),
     same_as: z.array(z.string().url()).default([]),
     site_title: t,
     roles: t,
